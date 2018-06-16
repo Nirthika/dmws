@@ -16,16 +16,16 @@
 
                             <div class="col-md-6">
 <!--                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>-->
-                                <select id="userType" name="userType" placeholder="Select a Type" class="form-control{{ $errors->has('userType') ? ' is-invalid' : '' }}" value="{{ old('name') }}" required autofocus>
+                                <select id="userType" name="userType" placeholder="Select a Type" class="form-control{{ $errors->has('userType') ? ' is-invalid' : '' }}" value="{{ old('userType') }}" required autofocus>
                                     <option>Doctor</option>
                                     <option>MOH</option>
                                     <option>EU</option>
                                     <option>PHI</option>
                                     <option>RDHS</option>
                                 </select>
-                                @if ($errors->has('name'))
+                                @if ($errors->has('userType'))
                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('userType') }}</strong>
                                     </span>
                                 @endif
                             </div>
