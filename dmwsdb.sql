@@ -129,6 +129,7 @@ CREATE TABLE `eu` (
   `insName` varchar(35) NOT NULL,  
   `firstName` text NOT NULL,
   `lastName` text NOT NULL,
+  `gender` text NOT NULL,
   `euDiv` varchar(8) NOT NULL,
   `addLine1` text NOT NULL,
   `addLine2` text,
@@ -141,14 +142,15 @@ CREATE TABLE `eu` (
   CONSTRAINT eu_ins_name FOREIGN KEY (insName) REFERENCES institute(insName) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `eu` (`userId`, `insName`, `firstName`, `lastName`, `euDiv`, `addLine1`, `addLine2`, `province`, `district`, `contactNoOffice`, `contactNoMobile`) VALUES
-(10, 'Jaffna Teaching Hospital', 'Ram', 'Pavan', 'JEU101', '45, Palam Rd', 'Kandarmadam', 'Northern', 'Jaffna', '', '0777161561');
+INSERT INTO `eu` (`userId`, `insName`, `firstName`, `lastName`, `gender`, `euDiv`, `addLine1`, `addLine2`, `province`, `district`, `contactNoOffice`, `contactNoMobile`) VALUES
+(10, 'Jaffna Teaching Hospital', 'Ram', 'Pavan', 'Male', 'JEU101', '45, Palam Rd', 'Kandarmadam', 'Northern', 'Jaffna', '', '0777161561');
 
 CREATE TABLE `moh` (
   `userId` int(10) UNSIGNED NOT NULL,
   `insName` varchar(35) NOT NULL,
   `firstName` text NOT NULL,
   `lastName` text NOT NULL,
+  `gender` text NOT NULL,
   `mohRegNo` varchar(8) NOT NULL,
   `mohArea` text NOT NULL,
   `addLine1` text NOT NULL,
@@ -162,14 +164,15 @@ CREATE TABLE `moh` (
   CONSTRAINT moh_ins_name FOREIGN KEY (insName) REFERENCES institute(insName) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `moh` (`userId`, `insName`, `firstName`, `lastName`, `mohRegNo`, `mohArea`, `addLine1`, `addLine2`, `province`, `district`, `contactNoOffice`, `contactNoMobile`) VALUES
-(3, 'Jaffna Teaching Hospital', 'Aravinthan',  'Raveenran', 'JMOH101', 'Jaffna', '17/8', 'Brown Rd', 'Northern', 'Jaffna', '0212342346', '');
+INSERT INTO `moh` (`userId`, `insName`, `firstName`, `lastName`, `gender`, `mohRegNo`, `mohArea`, `addLine1`, `addLine2`, `province`, `district`, `contactNoOffice`, `contactNoMobile`) VALUES
+(3, 'Jaffna Teaching Hospital', 'Aravinthan',  'Raveenran', 'Male', 'JMOH101', 'Jaffna', '17/8', 'Brown Rd', 'Northern', 'Jaffna', '0212342346', '');
 
 CREATE TABLE `phi` (
   `userId` int(10) UNSIGNED NOT NULL,
   `insName` varchar(35) NOT NULL,
   `firstName` text NOT NULL,
   `lastName` text NOT NULL,
+  `gender` text NOT NULL,
   `phiRegNo` varchar(8) NOT NULL,
   `phiRange` text NOT NULL,
   `addLine1` text NOT NULL,
@@ -183,14 +186,15 @@ CREATE TABLE `phi` (
   CONSTRAINT phi_ins_name FOREIGN KEY (insName) REFERENCES institute(insName) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `phi` (`userId`, `insName`, `firstName`, `lastName`, `phiRegNo`, `phiRange`, `addLine1`, `addLine2`, `province`, `district`, `contactNoOffice`, `contactNoMobile`) VALUES
-(5, 'Jaffna Teaching Hospital', 'Udaya', 'Indrajith', 'JPHI101', 'Nallur', '2 Udhaya Vasa', 'Browm Rd', 'Northern', 'Jaffna', '7868473645', '021 2227272');
+INSERT INTO `phi` (`userId`, `insName`, `firstName`, `lastName`, `gender`, `phiRegNo`, `phiRange`, `addLine1`, `addLine2`, `province`, `district`, `contactNoOffice`, `contactNoMobile`) VALUES
+(5, 'Jaffna Teaching Hospital', 'Udaya', 'Indrajith', 'Male', 'JPHI101', 'Nallur', '2 Udhaya Vasa', 'Browm Rd', 'Northern', 'Jaffna', '7868473645', '021 2227272');
 
 CREATE TABLE `rdhs` (
   `userId` int(10) UNSIGNED NOT NULL,
   `insName` varchar(35) NOT NULL,
   `firstName` text NOT NULL,
   `lastName` text NOT NULL,
+  `gender` text NOT NULL,
   `rdhsDiv` varchar(8) NOT NULL,
   `addLine1` text NOT NULL,
   `addLine2` text,
@@ -203,8 +207,8 @@ CREATE TABLE `rdhs` (
   CONSTRAINT rdhs_ins_name FOREIGN KEY (insName) REFERENCES institute(insName) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `rdhs` (`userId`, `insName`, `firstName`, `lastName`, `rdhsDiv`, `addLine1`, `addLine2`, `province`, `district`, `contactNoOffice`, `contactNoMobile`) VALUES
-(8, 'Jaffna Teaching Hospital', 'Maran ', 'Naven', 'JRDHS101', '34/2', 'Sivan Rd', 'Northern', 'Jaffna', '0753415267', '0212216356');
+INSERT INTO `rdhs` (`userId`, `insName`, `firstName`, `lastName`, `gender`, `rdhsDiv`, `addLine1`, `addLine2`, `province`, `district`, `contactNoOffice`, `contactNoMobile`) VALUES
+(8, 'Jaffna Teaching Hospital', 'Maran ', 'Naven', 'Male', 'JRDHS101', '34/2', 'Sivan Rd', 'Northern', 'Jaffna', '0753415267', '0212216356');
 
 CREATE TABLE `patient` (
   `paId` int(11) NOT NULL AUTO_INCREMENT,
