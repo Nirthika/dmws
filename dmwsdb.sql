@@ -62,7 +62,7 @@ ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
-CREATE TABLE `institute` (
+CREATE TABLE `institutes` (
   `insName` varchar(35) NOT NULL,
   `insType` text NOT NULL,
   `addLine1` text NOT NULL,
@@ -71,10 +71,12 @@ CREATE TABLE `institute` (
   `district` text NOT NULL,
   `gsDiv` text NOT NULL,
   `mohArea` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`insName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `institute` (`insName`, `insType`, `addLine1`, `addLine2`, `province`, `district`, `gsDiv`, `mohArea`) VALUES
+INSERT INTO `institutes` (`insName`, `insType`, `addLine1`, `addLine2`, `province`, `district`, `gsDiv`, `mohArea`) VALUES
 ('Care and Cure', 'Private', '', NULL, '', '', '', ''),
 ('Dental Surgery', 'Private', '', NULL, '', '', '', ''),
 ('Divisional Hospital', 'Private', '', NULL, '', '', '', ''),
@@ -97,12 +99,12 @@ INSERT INTO `institute` (`insName`, `insType`, `addLine1`, `addLine2`, `province
 ('Sujeeva Hospital', 'Private', '', NULL, '', '', '', ''),
 ('Sunrise Medi Clinic', 'Private', '', NULL, '', '', '', '');
 
-CREATE TABLE `doctor` (
+CREATE TABLE `doctors` (
   `userId` int(10) UNSIGNED NOT NULL,
   `firstName` text NOT NULL,
   `lastName` text NOT NULL,
   `gender` text NOT NULL,
-  `regNo` varchar(8) NOT NULL,
+  `doctorRegNo` varchar(8) NOT NULL,
   `designation` text NOT NULL,
   `addLine1` text NOT NULL,
   `addLine2` text,
@@ -116,101 +118,107 @@ CREATE TABLE `doctor` (
   `hospital4` text,
   `hospital5` text,
   `otherHospital` text,
-  PRIMARY KEY (`regNo`),
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`doctorRegNo`),
   CONSTRAINT doctor_user_id FOREIGN KEY (userId) REFERENCES users(id) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `doctor` (`userId`, `firstName`, `lastName`, `gender`, `regNo`, `designation`, `addLine1`, `addLine2`, `province`, `district`, `contactNoOffice`, `contactNoMobile`, `hospital1`, `hospital2`, `hospital3`, `hospital4`, `hospital5`, `otherHospital`) VALUES
+INSERT INTO `doctors` (`userId`, `firstName`, `lastName`, `gender`, `doctorRegNo`, `designation`, `addLine1`, `addLine2`, `province`, `district`, `contactNoOffice`, `contactNoMobile`, `hospital1`, `hospital2`, `hospital3`, `hospital4`, `hospital5`, `otherHospital`) VALUES
 (1, 'Thirunavukarasu', 'Kumanan', 'Male', 'JDR101', 'Consultant Physician', '127/7 A', 'Temple Rd', 'Northern', 'Jaffna', ' 0212228129', '', 'Jaffna Teaching Hospital', 'Northern Central Hospitals', '', '', '', ''),
 (12, 'T', 'Peranantharajah', 'Male', 'JDR102', 'Physician', '12 A', 'Palai Rd', 'Northern', 'Jaffna', '', '077 111 1111', 'Jaffna Teaching Hospital', 'Suharni Hospital', '', '', '', '');
 
-CREATE TABLE `eu` (
+CREATE TABLE `eUs` (
   `userId` int(10) UNSIGNED NOT NULL,
-  `insName` varchar(35) NOT NULL,  
   `firstName` text NOT NULL,
   `lastName` text NOT NULL,
   `gender` text NOT NULL,
-  `euDiv` varchar(8) NOT NULL,
+  `eUDiv` varchar(8) NOT NULL,
   `addLine1` text NOT NULL,
   `addLine2` text,
-  `province` text NOT NULL,
   `district` text NOT NULL,
+  `province` text NOT NULL,
   `contactNoOffice` text NOT NULL,
   `contactNoMobile` text NOT NULL,
-  PRIMARY KEY (`euDiv`),
-  CONSTRAINT eu_user_id FOREIGN KEY (userId) REFERENCES users(id) ON UPDATE CASCADE,
-  CONSTRAINT eu_ins_name FOREIGN KEY (insName) REFERENCES institute(insName) ON UPDATE CASCADE
+  `insName` varchar(35) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL, 
+  PRIMARY KEY (`eUDiv`),
+  CONSTRAINT eu_user_id FOREIGN KEY (userId) REFERENCES users(id) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `eu` (`userId`, `insName`, `firstName`, `lastName`, `gender`, `euDiv`, `addLine1`, `addLine2`, `province`, `district`, `contactNoOffice`, `contactNoMobile`) VALUES
-(10, 'Jaffna Teaching Hospital', 'Ram', 'Pavan', 'Male', 'JEU101', '45, Palam Rd', 'Kandarmadam', 'Northern', 'Jaffna', '', '0777161561');
+INSERT INTO `eUs` (`userId`, `firstName`, `lastName`, `gender`, `eUDiv`, `addLine1`, `addLine2`, `district`, `province`, `contactNoOffice`, `contactNoMobile`, `insName`, `created_at`, `updated_at`) VALUES
+(10, 'Ram', 'Pavan', 'Male', 'JEU101', '45, Palam Rd', 'Kandarmadam', 'Jaffna', 'Northern', '', '0777161561', 'Jaffna Teaching Hospital', '', '');
 
-CREATE TABLE `moh` (
+CREATE TABLE `mOHs` (
   `userId` int(10) UNSIGNED NOT NULL,
   `insName` varchar(35) NOT NULL,
   `firstName` text NOT NULL,
   `lastName` text NOT NULL,
   `gender` text NOT NULL,
-  `mohRegNo` varchar(8) NOT NULL,
-  `mohArea` text NOT NULL,
+  `mOHRegNo` varchar(8) NOT NULL,
+  `mOHArea` text NOT NULL,
   `addLine1` text NOT NULL,
   `addLine2` text,
   `province` text NOT NULL,
   `district` text NOT NULL,
   `contactNoOffice` text NOT NULL,
   `contactNoMobile` text NOT NULL,
-  PRIMARY KEY (`mohRegNo`),
-  CONSTRAINT moh_user_id FOREIGN KEY (userId) REFERENCES users(id) ON UPDATE CASCADE,
-  CONSTRAINT moh_ins_name FOREIGN KEY (insName) REFERENCES institute(insName) ON UPDATE CASCADE
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`mOHRegNo`),
+  CONSTRAINT moh_user_id FOREIGN KEY (userId) REFERENCES users(id) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `moh` (`userId`, `insName`, `firstName`, `lastName`, `gender`, `mohRegNo`, `mohArea`, `addLine1`, `addLine2`, `province`, `district`, `contactNoOffice`, `contactNoMobile`) VALUES
+INSERT INTO `mOHs` (`userId`, `insName`, `firstName`, `lastName`, `gender`, `mOHRegNo`, `mOHArea`, `addLine1`, `addLine2`, `province`, `district`, `contactNoOffice`, `contactNoMobile`) VALUES
 (3, 'Jaffna Teaching Hospital', 'Aravinthan',  'Raveenran', 'Male', 'JMOH101', 'Jaffna', '17/8', 'Brown Rd', 'Northern', 'Jaffna', '0212342346', '');
 
-CREATE TABLE `phi` (
+CREATE TABLE `pHIs` (
   `userId` int(10) UNSIGNED NOT NULL,
   `insName` varchar(35) NOT NULL,
   `firstName` text NOT NULL,
   `lastName` text NOT NULL,
   `gender` text NOT NULL,
-  `phiRegNo` varchar(8) NOT NULL,
-  `phiRange` text NOT NULL,
+  `pHIRegNo` varchar(8) NOT NULL,
+  `pHIRange` text NOT NULL,
   `addLine1` text NOT NULL,
   `addLine2` text,
   `province` text NOT NULL,
   `district` text NOT NULL,
   `contactNoOffice` text NOT NULL,
   `contactNoMobile` text NOT NULL,
-  PRIMARY KEY (`phiRegNo`),
-  CONSTRAINT phi_user_id FOREIGN KEY (userId) REFERENCES users(id) ON UPDATE CASCADE,
-  CONSTRAINT phi_ins_name FOREIGN KEY (insName) REFERENCES institute(insName) ON UPDATE CASCADE
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`pHIRegNo`),
+  CONSTRAINT phi_user_id FOREIGN KEY (userId) REFERENCES users(id) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `phi` (`userId`, `insName`, `firstName`, `lastName`, `gender`, `phiRegNo`, `phiRange`, `addLine1`, `addLine2`, `province`, `district`, `contactNoOffice`, `contactNoMobile`) VALUES
+INSERT INTO `pHIs` (`userId`, `insName`, `firstName`, `lastName`, `gender`, `pHIRegNo`, `pHIRange`, `addLine1`, `addLine2`, `province`, `district`, `contactNoOffice`, `contactNoMobile`) VALUES
 (5, 'Jaffna Teaching Hospital', 'Udaya', 'Indrajith', 'Male', 'JPHI101', 'Nallur', '2 Udhaya Vasa', 'Browm Rd', 'Northern', 'Jaffna', '7868473645', '021 2227272');
 
-CREATE TABLE `rdhs` (
+CREATE TABLE `rDHSes` (
   `userId` int(10) UNSIGNED NOT NULL,
   `insName` varchar(35) NOT NULL,
   `firstName` text NOT NULL,
   `lastName` text NOT NULL,
   `gender` text NOT NULL,
-  `rdhsDiv` varchar(8) NOT NULL,
+  `rDHSDiv` varchar(8) NOT NULL,
   `addLine1` text NOT NULL,
   `addLine2` text,
   `province` text NOT NULL,
   `district` text NOT NULL,
   `contactNoOffice` text NOT NULL,
   `contactNoMobile` text NOT NULL,
-  PRIMARY KEY (`rdhsDiv`),
-  CONSTRAINT rdhs_user_id FOREIGN KEY (userId) REFERENCES users(id) ON UPDATE CASCADE,
-  CONSTRAINT rdhs_ins_name FOREIGN KEY (insName) REFERENCES institute(insName) ON UPDATE CASCADE
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`rDHSDiv`),
+  CONSTRAINT rdhs_user_id FOREIGN KEY (userId) REFERENCES users(id) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `rdhs` (`userId`, `insName`, `firstName`, `lastName`, `gender`, `rdhsDiv`, `addLine1`, `addLine2`, `province`, `district`, `contactNoOffice`, `contactNoMobile`) VALUES
+INSERT INTO `rDHSes` (`userId`, `insName`, `firstName`, `lastName`, `gender`, `rDHSDiv`, `addLine1`, `addLine2`, `province`, `district`, `contactNoOffice`, `contactNoMobile`) VALUES
 (8, 'Jaffna Teaching Hospital', 'Maran ', 'Naven', 'Male', 'JRDHS101', '34/2', 'Sivan Rd', 'Northern', 'Jaffna', '0753415267', '0212216356');
 
-CREATE TABLE `patient` (
+CREATE TABLE `patients` (
   `paId` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(10) UNSIGNED NOT NULL,
   `insName` varchar(35) NOT NULL,
@@ -250,17 +258,18 @@ CREATE TABLE `patient` (
   `contactNoMobile` text NOT NULL,
   `contactNoHome` text NOT NULL,
   `visitArea` text,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`paId`),
-  CONSTRAINT pa_user_id FOREIGN KEY (userId) REFERENCES users(id) ON UPDATE CASCADE,
-  CONSTRAINT pa_ins_name FOREIGN KEY (insName) REFERENCES institute(insName) ON UPDATE CASCADE
+  CONSTRAINT pa_user_id FOREIGN KEY (userId) REFERENCES users(id) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `patient` (`paId`, `userId`, `insName`, `firstName`, `lastName`, `nickName`, `gender`, `birthDate`, `yearOfBirth`, `age`, `nextOfKinFirstName`, `nextOfKinLastName`, `guardian`, `guardianFirstName`, `guardianLastName`, `ethnicGroup`, `resAddLine1`, `resAddLine2`, `resGsDivName`, `resGsDiv`, `resDsDiv`, `resDistrict`, `resProvince`, `resMohArea`, `resPhiRange`, `resLandmark`, `curAddLine1`, `curAddLine2`, `curGsDivName`, `curGsDiv`, `curDsDiv`, `curDistrict`, `curProvince`, `curMohArea`, `curPhiRange`, `curLandmark`, `contactNoMobile`, `contactNoHome`, `visitArea`) VALUES
+INSERT INTO `patients` (`paId`, `userId`, `insName`, `firstName`, `lastName`, `nickName`, `gender`, `birthDate`, `yearOfBirth`, `age`, `nextOfKinFirstName`, `nextOfKinLastName`, `guardian`, `guardianFirstName`, `guardianLastName`, `ethnicGroup`, `resAddLine1`, `resAddLine2`, `resGsDivName`, `resGsDiv`, `resDsDiv`, `resDistrict`, `resProvince`, `resMohArea`, `resPhiRange`, `resLandmark`, `curAddLine1`, `curAddLine2`, `curGsDivName`, `curGsDiv`, `curDsDiv`, `curDistrict`, `curProvince`, `curMohArea`, `curPhiRange`, `curLandmark`, `contactNoMobile`, `contactNoHome`, `visitArea`) VALUES
 (1, 1, 'Nagaa Medical Centre', 'Singh', 'Mahi', '', 'Male', '0000-00-00', 0, 18, 'Priyanka', 'Dhoni', '', '', '', '', '23 Navalar Road', '-', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '23 Navalar Road', '-', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '', '0212219947',''),
 (2, 1, 'Renny Dental and Optical Service', 'Dhoni', 'Rajendran', '', 'Male', '2014-01-16', 0, 3, 'Priyanka', 'Dhoni', '', '', '', '', '23 Navalar Road', '-', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '23 Navalar Road', '-', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '', '0212219947',''),
 (3, 1, 'Nagaa Medical Centre', 'Shadshi', 'Sai', 'Shan', 'Female', '2015-01-06', 0, 2, '', '', 'Mother', 'Shan', 'Sri', '', '67, Palam Road', 'Kandarmadam', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '67, Palam Road', 'Kandarmadam', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '077 177 1134', '', '');
 
-CREATE TABLE `notification` (
+CREATE TABLE `notifications` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(10) UNSIGNED NOT NULL,
   `insName` varchar(35) NOT NULL,
@@ -275,18 +284,19 @@ CREATE TABLE `notification` (
   `igm` text,
   `igg` text NOT NULL,
   `designation` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT noti_user_id FOREIGN KEY (userId) REFERENCES users(id) ON UPDATE CASCADE,
-  CONSTRAINT noti_ins_name FOREIGN KEY (insName) REFERENCES institute(insName) ON UPDATE CASCADE,
-  CONSTRAINT noti_pa_id FOREIGN KEY (paId) REFERENCES patient(paId) ON UPDATE CASCADE
+  CONSTRAINT noti_pa_id FOREIGN KEY (paId) REFERENCES patients(paId) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-INSERT INTO `notification` (`id`, `userId`, `insName`, `paId`, `diseaseGroup`, `diseaseName`, `onsetDate`, `regDate`, `regOrBHTNo`, `ward`, `ns1`, `igm`, `igg`, `designation`) VALUES
+INSERT INTO `notifications` (`id`, `userId`, `insName`, `paId`, `diseaseGroup`, `diseaseName`, `onsetDate`, `regDate`, `regOrBHTNo`, `ward`, `ns1`, `igm`, `igg`, `designation`) VALUES
 (29, 1, 'Nagaa Medical Centre', 1, 'Group A', 'Plague', '2017-01-03', '2017-01-13', 'BHT23', '', 'yes', '', '', 'Option 1'),
 (31, 1, 'Renny Dental and Optical Service', 2, 'Group B', 'Severe Acute Respiratory Syndrome (SARS)', '2017-01-02', '2017-01-12', 'JTH70084', '14', 'yes', 'yes', '', 'Option 1'),
 (32, 1, 'Nagaa Medical Centre', 3, 'Group A', 'Plague', '2015-01-13', '2015-01-14', 'BHT10', '', 'yes', 'yes', '', 'Consultant Physician');
 
-CREATE TABLE `h411a` (
+CREATE TABLE `h411as` (
   `notifyId` varchar(8) NOT NULL,
   `rdhsDiv` varchar(8) NOT NULL,
   `mohArea` text NOT NULL,
@@ -304,10 +314,12 @@ CREATE TABLE `h411a` (
   `confirmedBy` text NOT NULL,
   `natureOfConf` text NOT NULL,
   `officeNote` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`notifyId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `h399` (
+CREATE TABLE `h399s` (
   `entryId` varchar(8) NOT NULL,
   `weekEndDate` date NOT NULL,
   `province` text NOT NULL,
@@ -317,7 +329,7 @@ CREATE TABLE `h399` (
   PRIMARY KEY (`entryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `weeklySummary` (
+CREATE TABLE `weeklySummarys` (
   `entryId` varchar(8) NOT NULL,
   `summary` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
@@ -344,10 +356,12 @@ CREATE TABLE `weeklySummary` (
   `viralHepatitis` int(5) DEFAULT NULL,
   `whoopingCough` int(5) DEFAULT NULL,
   `tuberculosis` int(5) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`entryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `chankanai` (
+CREATE TABLE `chankanais` (
   `entryId` varchar(8) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
@@ -374,10 +388,12 @@ CREATE TABLE `chankanai` (
   `viralHepatitis` int(5) DEFAULT NULL,
   `whoopingCough` int(5) DEFAULT NULL,
   `tuberculosis` int(5) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`entryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `chavakachcheri` (
+CREATE TABLE `chavakachcheris` (
   `entryId` varchar(8) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
@@ -404,10 +420,12 @@ CREATE TABLE `chavakachcheri` (
   `viralHepatitis` int(5) DEFAULT NULL,
   `whoopingCough` int(5) DEFAULT NULL,
   `tuberculosis` int(5) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`entryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `jaffna` (
+CREATE TABLE `jaffnas` (
   `entryId` varchar(8) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
@@ -434,10 +452,12 @@ CREATE TABLE `jaffna` (
   `viralHepatitis` int(5) DEFAULT NULL,
   `whoopingCough` int(5) DEFAULT NULL,
   `tuberculosis` int(5) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`entryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `karaveddy` (
+CREATE TABLE `karaveddys` (
   `entryId` varchar(8) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
@@ -464,10 +484,12 @@ CREATE TABLE `karaveddy` (
   `viralHepatitis` int(5) DEFAULT NULL,
   `whoopingCough` int(5) DEFAULT NULL,
   `tuberculosis` int(5) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`entryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `kayts` (
+CREATE TABLE `kaytses` (
   `entryId` varchar(8) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
@@ -494,10 +516,12 @@ CREATE TABLE `kayts` (
   `viralHepatitis` int(5) DEFAULT NULL,
   `whoopingCough` int(5) DEFAULT NULL,
   `tuberculosis` int(5) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`entryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `kopay` (
+CREATE TABLE `kopays` (
   `entryId` varchar(8) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
@@ -524,10 +548,12 @@ CREATE TABLE `kopay` (
   `viralHepatitis` int(5) DEFAULT NULL,
   `whoopingCough` int(5) DEFAULT NULL,
   `tuberculosis` int(5) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`entryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `nallur` (
+CREATE TABLE `nallurs` (
   `entryId` varchar(8) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
@@ -554,10 +580,12 @@ CREATE TABLE `nallur` (
   `viralHepatitis` int(5) DEFAULT NULL,
   `whoopingCough` int(5) DEFAULT NULL,
   `tuberculosis` int(5) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`entryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `pointpedro` (
+CREATE TABLE `pointpedros` (
   `entryId` varchar(8) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
@@ -584,10 +612,12 @@ CREATE TABLE `pointpedro` (
   `viralHepatitis` int(5) DEFAULT NULL,
   `whoopingCough` int(5) DEFAULT NULL,
   `tuberculosis` int(5) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`entryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `sandilipay` (
+CREATE TABLE `sandilipays` (
   `entryId` varchar(8) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
@@ -614,10 +644,12 @@ CREATE TABLE `sandilipay` (
   `viralHepatitis` int(5) DEFAULT NULL,
   `whoopingCough` int(5) DEFAULT NULL,
   `tuberculosis` int(5) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`entryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `tellipalai` (
+CREATE TABLE `tellipalais` (
   `entryId` varchar(8) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
@@ -644,10 +676,12 @@ CREATE TABLE `tellipalai` (
   `viralHepatitis` int(5) DEFAULT NULL,
   `whoopingCough` int(5) DEFAULT NULL,
   `tuberculosis` int(5) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`entryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `uduvil` (
+CREATE TABLE `uduvils` (
   `entryId` varchar(8) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
@@ -674,10 +708,12 @@ CREATE TABLE `uduvil` (
   `viralHepatitis` int(5) DEFAULT NULL,
   `whoopingCough` int(5) DEFAULT NULL,
   `tuberculosis` int(5) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`entryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `total` (
+CREATE TABLE `totals` (
   `entryId` varchar(8) NOT NULL,
   `mohArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
@@ -704,10 +740,12 @@ CREATE TABLE `total` (
   `viralHepatitis` int(5) DEFAULT NULL,
   `whoopingCough` int(5) DEFAULT NULL,
   `tuberculosis` int(5) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`entryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `h411` (
+CREATE TABLE `h411s` (
   `notifyId` varchar(8) NOT NULL,
   `phiRegNo` varchar(8) NOT NULL,
   `phiRange` text NOT NULL,
@@ -738,10 +776,12 @@ CREATE TABLE `h411` (
   `isolated` text NOT NULL,
   `patMovement` text NOT NULL,
   `labFinding` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`notifyId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `contactInvesticate` (
+CREATE TABLE `contactInvesticates` (
   `notifyId` varchar(8) NOT NULL,
   `contId` varchar(8) NOT NULL,
   `firstName` text NOT NULL,
@@ -749,10 +789,12 @@ CREATE TABLE `contactInvesticate` (
   `age` int(3) NOT NULL,
   `seenDate` date NOT NULL,
   `opsevation` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`notifyId`,`contId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `patientEventHistory` (
+CREATE TABLE `patientEventHistorys` (
   `notifyId` varchar(8) NOT NULL,
   `symptomDevelop` text,
   `indigenous` text,
@@ -761,5 +803,7 @@ CREATE TABLE `patientEventHistory` (
   `noTreatment` text,
   `complication` text,
   `foreign` text,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`notifyId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

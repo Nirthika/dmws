@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Dengue Monitoring and Warning System</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -69,13 +69,12 @@
         @section('content')
         <div class="container">
             <div class="row justify-content-center">
-<!--                <div class="flex-center position-ref full-height">-->
-                    <div class="content">
-                        <img src="<?= asset('images/coverimage.png') ?>" alt="logo" height="346px">
-                    </div>
-<!--                </div>-->
+                <div class="content">
+                    <img src="<?= asset('images/coverimage.png') ?>" alt="logo" height="346px">
+                </div>
             </div>
         </div>
         @endsection
     </body>
 </html>
+

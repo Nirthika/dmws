@@ -13,10 +13,28 @@
 
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'prevent-back-history'],function(){
+
+	Route::get('/', function () {
+	    return view('welcome');
+	});
+
+	Auth::routes();
+	Route::get('/home', 'HomeController@index')->name('home');
 });
 
-Auth::routes();
+Route::resource('eU','EUController');
+Route::resource('mOH','MOHController');
+Route::resource('pHI','PHIController');
+Route::resource('rDHS','RDHSController');
+Route::resource('doctor','DoctorController');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/eUHome', 'EUController@index');
+Route::get('/mOHHome', 'MOHController@index');
+Route::get('/pHIHome', 'PHIController@index');
+Route::get('/rDHSHome', 'RDHSController@index');
+Route::get('/doctorHome', 'DoctorController@index');
+
+// Route::get('/EU', 'EUController@showEURegistrationForm')->name('EU');
+// Route::post('/EU', 'EUController@create')->name('EU');
+		

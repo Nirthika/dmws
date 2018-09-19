@@ -22,10 +22,18 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register-RDHS') }}</div>
+                <div class="card-header">{{ __('Register-EU') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="">
+                    @if (count($errors)>0)
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                {{$error}} <br>
+                            @endforeach
+                        </div>
+                    @endif
+                    <br>
+                    <form method="POST" action="/eU">
                         @csrf
 
                         <div class="form-group row">
@@ -34,11 +42,11 @@
                             <div class="col-md-6">
                                 <input id="firstName" type="text" class="form-control{{ $errors->has('firstName') ? ' is-invalid' : '' }}" name="firstName" value="{{ old('firstName') }}" required autofocus>
 
-                                @if ($errors->has('firstName'))
+                                <!-- @if ($errors->has('firstName'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('firstName') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
@@ -48,11 +56,11 @@
                             <div class="col-md-6">
                                 <input id="lastName" type="text" class="form-control{{ $errors->has('lastName') ? ' is-invalid' : '' }}" name="lastName" value="{{ old('lastName') }}" required autofocus>
 
-                                @if ($errors->has('lastName'))
+                                <!-- @if ($errors->has('lastName'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('lastName') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
@@ -72,16 +80,16 @@
                         </div>
                         
                         <div class="form-group row">
-                            <label for="rDHSDiv" class="col-md-4 col-form-label text-md-right">{{ __('RDHS Division') }}</label>
+                            <label for="eUDiv" class="col-md-4 col-form-label text-md-right">{{ __('EU Division') }}</label>
 
                             <div class="col-md-6">
-                                <input id="rDHSDiv" type="text" class="form-control{{ $errors->has('rDHSDiv') ? ' is-invalid' : '' }}" name="rDHSDiv" value="{{ old('rDHSDiv') }}" required>
+                                <input id="eUDiv" type="text" class="form-control{{ $errors->has('eUDiv') ? ' is-invalid' : '' }}" name="eUDiv" value="{{ old('eUDiv') }}" required>
 
-                                @if ($errors->has('rDHSDiv'))
+                                <!-- @if ($errors->has('eUDiv'))
                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('rDHSDiv') }}</strong>
+                                        <strong>{{ $errors->first('eUDiv') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
@@ -92,11 +100,11 @@
                                 <input id="addLine1" type="text" class="form-control{{ $errors->has('addLine1') ? ' is-invalid' : '' }}" name="addLine1" value="{{ old('addLine1') }}" required>
                                 <label for="addLine1" class="col-form-label-sm text-md-left">Address Line 1</label>
 
-                                @if ($errors->has('addLine1'))
+                                <!-- @if ($errors->has('addLine1'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('addLine1') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
@@ -107,11 +115,11 @@
                                 <input id="addLine2" type="text" class="form-control{{ $errors->has('addLine2') ? ' is-invalid' : '' }}" name="addLine2" value="{{ old('addLine2') }}">
                                 <label for="addLine2" class="col-form-label-sm text-md-left">Address Line 2</label>
 
-                                @if ($errors->has('addLine2'))
+                                <!-- @if ($errors->has('addLine2'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('addLine2') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
@@ -149,11 +157,11 @@
                                 </select>
                                 <label for="district" class="col-form-label-sm text-md-left">District</label>
 
-                                @if ($errors->has('district'))
+                                <!-- @if ($errors->has('district'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('district') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
@@ -164,11 +172,11 @@
                                 <input id="province" type="text" class="form-control{{ $errors->has('province') ? ' is-invalid' : '' }}" name="province" value="{{ old('province') }}" readonly="true" required autofocus>
                                 <label for="province" class="col-form-label-sm text-md-left">Province</label>
 
-                                @if ($errors->has('province'))
+                                <!-- @if ($errors->has('province'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('province') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
@@ -179,20 +187,21 @@
                                 <label for="areaCode" class="col-form-label-sm text-md-left">Area Code</label>
                                 <input id="areaCode" type="text" class="form-tel{{ $errors->has('areaCode') ? ' is-invalid' : '' }}"  name="areaCode" value="{{ old('areaCode') }}" required autofocus placeholder="###" size="3">
 
-                                @if ($errors->has('areaCode'))
+                                <!-- @if ($errors->has('areaCode'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('areaCode') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                                 &nbsp; &nbsp; &nbsp;
+
                                 <label for="phoneNo" class="col-form-label-sm text-md-left">Phone Number</label>
                                 <input id="phoneNo" type="text" class="form-tel{{ $errors->has('phoneNo') ? ' is-invalid' : '' }}"  name="phoneNo" value="{{ old('phoneNo') }}" required autofocus placeholder="#######" size="8">
                                 
-                                @if ($errors->has('phoneNo'))
+                                <!-- @if ($errors->has('phoneNo'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('phoneNo') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
@@ -200,13 +209,13 @@
                             <label for="phoneMobile" class="col-md-4 col-form-label text-md-right">{{ __('Contact No-Mobile') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phoneMobile" type="text" class="form-control{{ $errors->has('phoneMobile') ? ' is-invalid' : '' }}"  name="phoneMobile" value="{{ old('phoneMobile') }}" required autofocus placeholder="### ### ####">
+                                <input id="phoneMobile" type="text" class="form-control{{ $errors->has('phoneMobile') ? ' is-invalid' : '' }}"  name="phoneMobile" value="{{ old('phoneMobile') }}" required autofocus placeholder="##########">
                                 
-                                @if ($errors->has('phoneMobile'))
+                                <!-- @if ($errors->has('phoneMobile'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('phoneMobile') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
@@ -216,9 +225,7 @@
                             <div class="col-md-6">
                                 <select id="insName" name="insName" placeholder="Select a Type" class="form-control{{ $errors->has('insName') ? ' is-invalid' : '' }}" value="{{ old('insName') }}" required autofocus>
                                     <option value=""> </option>
-                                    <option value="Govenment">Govenment</option>
                                     <option value="Jaffna Teaching Hospital">Jaffna Teaching Hospital</option>
-                                    <option value="Private">Private</option>
                                     <option value="New Yarl Hospital">New Yarl Hospital</option>
                                     <option value="Northern Central Hospitals (pvt)">Northern Central Hospitals (pvt)</option>
                                     <option value="Rakavo Hospital">Rakavo Hospital</option>
@@ -242,11 +249,11 @@
                                     <option value="Suharni Hospital">Suharni Hospital</option>
                                 </select>
                                 
-                                @if ($errors->has('insName'))
+                                <!-- @if ($errors->has('insName'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('insName') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
@@ -257,10 +264,11 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form>                    
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+

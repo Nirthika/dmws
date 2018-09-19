@@ -23,12 +23,24 @@
             document.getElementById('hosLabel11').style.display = 'block';
             document.getElementById('hos12').style.display = 'none';
             document.getElementById('hosLabel12').style.display = 'none';
+            document.getElementById('hosLabel11').required = true;
         }
         else {  
             document.getElementById('hos11').style.display = 'none';
             document.getElementById('hosLabel11').style.display = 'none';
             document.getElementById('hos12').style.display = 'block';
             document.getElementById('hosLabel12').style.display = 'block';
+            document.getElementById('hosLabel12').required = true;
+        }
+    }
+    function isRequiredHospital_11Or12() {
+        var checkBox = document.getElementById("otherNew");
+        if (checkBox.checked != true){
+            document.getElementById("hospital11").required = true;
+            document.getElementById("hospital12").required = false;
+        } else {
+            document.getElementById("hospital11").required = false;
+            document.getElementById("hospital12").required = true;
         }
     }
 </script>
@@ -192,11 +204,11 @@
                                 </select>
                                 <label for="district" class="col-form-label-sm text-md-left">District</label>
 
-                                @if ($errors->has('district'))
+                                <!-- @if ($errors->has('district'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('district') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
@@ -207,11 +219,11 @@
                                 <input id="province" type="text" class="form-control{{ $errors->has('province') ? ' is-invalid' : '' }}" name="province" value="{{ old('province') }}" readonly="true" required autofocus>
                                 <label for="province" class="col-form-label-sm text-md-left">Province</label>
 
-                                @if ($errors->has('province'))
+                                <!-- @if ($errors->has('province'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('province') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
@@ -222,20 +234,20 @@
                                 <label for="areaCode" class="col-form-label-sm text-md-left">Area Code</label>
                                 <input id="areaCode" type="text" class="form-tel{{ $errors->has('areaCode') ? ' is-invalid' : '' }}"  name="areaCode" value="{{ old('areaCode') }}" required autofocus placeholder="###" size="3">
 
-                                @if ($errors->has('areaCode'))
+                                <!-- @if ($errors->has('areaCode'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('areaCode') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                                 &nbsp; &nbsp; &nbsp;
                                 <label for="phoneNo" class="col-form-label-sm text-md-left">Phone Number</label>
                                 <input id="phoneNo" type="text" class="form-tel{{ $errors->has('phoneNo') ? ' is-invalid' : '' }}"  name="phoneNo" value="{{ old('phoneNo') }}" required autofocus placeholder="#######" size="8">
                                 
-                                @if ($errors->has('phoneNo'))
+                                <!-- @if ($errors->has('phoneNo'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('phoneNo') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
@@ -257,7 +269,7 @@
                             <label id="hosLabel11" for="hospital11" class="col-md-4 col-form-label text-md-right">{{ __('Hospital 1') }}</label>
 
                             <div class="col-md-6" id="hos11">
-                                <select id="hospital11" name="hospital11" placeholder="Select a Type" class="form-control{{ $errors->has('hospital11') ? ' is-invalid' : '' }}" value="{{ old('hospital11') }}" required autofocus>
+                                <select id="hospital11" name="hospital11" placeholder="Select a Type" class="form-control{{ $errors->has('hospital11') ? ' is-invalid' : '' }}" value="{{ old('hospital11') }}" autofocus>
                                     <option value=""></option>
                                     <option value="Govenment">Govenment</option>
                                     <option value="Jaffna Teaching Hospital">Jaffna Teaching Hospital</option>
@@ -285,11 +297,11 @@
                                     <option value="Suharni Hospital">Suharni Hospital</option>
                                 </select>
                                 
-                                @if ($errors->has('hospital11'))
+                                <!-- @if ($errors->has('hospital11'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('hospital11') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
@@ -297,13 +309,13 @@
                             <label id="hosLabel12" for="hospital12" class="col-md-4 col-form-label text-md-right" style = "display:none">{{ __('Hospital 1') }}</label>
 
                             <div class="col-md-6" id="hos12" style = "display:none">
-                                <input id="hospital12" type="text" class="form-control{{ $errors->has('hospital12') ? ' is-invalid' : '' }}" name="hospital12" value="{{ old('hospital12') }}" required autofocus>
+                                <input id="hospital12" type="text" class="form-control{{ $errors->has('hospital12') ? ' is-invalid' : '' }}" name="hospital12" value="{{ old('hospital12') }}" autofocus>
 
-                                @if ($errors->has('hospital12'))
+                                <!-- @if ($errors->has('hospital12'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('hospital12') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
@@ -311,14 +323,14 @@
                             <label for="otherNew" class="col-md-4 col-form-label text-md-right"></label>
 
                             <div class="col-md-6">
-                                <input id="otherNew" type="checkbox" class="form-control-sm{{ $errors->has('otherNew') ? ' is-invalid' : '' }}" name="otherNew" value="{{ old('otherNew') }}" required autofocus onChange="hospital1()">
+                                <input id="otherNew" type="checkbox" class="form-control-sm{{ $errors->has('otherNew') ? ' is-invalid' : '' }}" name="otherNew" value="{{ old('otherNew') }}" autofocus onChange="hospital1()">
                                 <label for="male" class="col-form-label text-md-right">{{ __('Other New') }}</label>
 
-                                @if ($errors->has('otherNew'))
+                                <!-- @if ($errors->has('otherNew'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('otherNew') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
@@ -326,7 +338,7 @@
                             <label for="hospital2" class="col-md-4 col-form-label text-md-right">{{ __('Hospital 2') }}</label>
 
                             <div class="col-md-6">
-                                <select id="hospital2" name="hospital2" placeholder="Select a Type" class="form-control{{ $errors->has('hospital2') ? ' is-invalid' : '' }}" value="{{ old('hospital2') }}" required autofocus>
+                                <select id="hospital2" name="hospital2" placeholder="Select a Type" class="form-control{{ $errors->has('hospital2') ? ' is-invalid' : '' }}" value="{{ old('hospital2') }}" autofocus>
                                     <option value=""></option>
                                     <option value="Govenment">Govenment</option>
                                     <option value="Jaffna Teaching Hospital">Jaffna Teaching Hospital</option>
@@ -354,11 +366,11 @@
                                     <option value="Suharni Hospital">Suharni Hospital</option>
                                 </select>
                                 
-                                @if ($errors->has('hospital2'))
+                                <!-- @if ($errors->has('hospital2'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('hospital2') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
@@ -366,7 +378,7 @@
                             <label for="hospital3" class="col-md-4 col-form-label text-md-right">{{ __('Hospital 3') }}</label>
 
                             <div class="col-md-6">
-                                <select id="hospital3" name="hospital3" placeholder="Select a Type" class="form-control{{ $errors->has('hospital3') ? ' is-invalid' : '' }}" value="{{ old('hospital3') }}" required autofocus>
+                                <select id="hospital3" name="hospital3" placeholder="Select a Type" class="form-control{{ $errors->has('hospital3') ? ' is-invalid' : '' }}" value="{{ old('hospital3') }}" autofocus>
                                     <option value=""></option>
                                     <option value="Govenment">Govenment</option>
                                     <option value="Jaffna Teaching Hospital">Jaffna Teaching Hospital</option>
@@ -394,11 +406,11 @@
                                     <option value="Suharni Hospital">Suharni Hospital</option>
                                 </select>
                                 
-                                @if ($errors->has('hospital3'))
+                                <!-- @if ($errors->has('hospital3'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('hospital3') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
@@ -406,7 +418,7 @@
                             <label for="hospital4" class="col-md-4 col-form-label text-md-right">{{ __('Hospital 4') }}</label>
 
                             <div class="col-md-6">
-                                <select id="hospital4" name="hospital4" placeholder="Select a Type" class="form-control{{ $errors->has('hospital4') ? ' is-invalid' : '' }}" value="{{ old('hospital4') }}" required autofocus>
+                                <select id="hospital4" name="hospital4" placeholder="Select a Type" class="form-control{{ $errors->has('hospital4') ? ' is-invalid' : '' }}" value="{{ old('hospital4') }}" autofocus>
                                     <option value=""></option>
                                     <option value="Govenment">Govenment</option>
                                     <option value="Jaffna Teaching Hospital">Jaffna Teaching Hospital</option>
@@ -434,11 +446,11 @@
                                     <option value="Suharni Hospital">Suharni Hospital</option>
                                 </select>
                                 
-                                @if ($errors->has('hospital4'))
+                                <!-- @if ($errors->has('hospital4'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('hospital4') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
@@ -446,7 +458,7 @@
                             <label for="hospital5" class="col-md-4 col-form-label text-md-right">{{ __('Hospital 5') }}</label>
 
                             <div class="col-md-6">
-                                <select id="hospital5" name="hospital5" placeholder="Select a Type" class="form-control{{ $errors->has('hospital5') ? ' is-invalid' : '' }}" value="{{ old('hospital5') }}" required autofocus>
+                                <select id="hospital5" name="hospital5" placeholder="Select a Type" class="form-control{{ $errors->has('hospital5') ? ' is-invalid' : '' }}" value="{{ old('hospital5') }}" autofocus>
                                     <option value=""></option>
                                     <option value="Govenment">Govenment</option>
                                     <option value="Jaffna Teaching Hospital">Jaffna Teaching Hospital</option>
@@ -474,11 +486,11 @@
                                     <option value="Suharni Hospital">Suharni Hospital</option>
                                 </select>
                                 
-                                @if ($errors->has('hospital5'))
+                                <!-- @if ($errors->has('hospital5'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('hospital5') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
@@ -486,19 +498,19 @@
                             <label for="otherHospital" class="col-md-4 col-form-label text-md-right">{{ __('Other Hospital') }}</label>
 
                             <div class="col-md-6">
-                                <input id="otherHospital" type="text" class="form-control{{ $errors->has('otherHospital') ? ' is-invalid' : '' }}" name="otherHospital" value="{{ old('otherHospital') }}" required autofocus>
+                                <input id="otherHospital" type="text" class="form-control{{ $errors->has('otherHospital') ? ' is-invalid' : '' }}" name="otherHospital" value="{{ old('otherHospital') }}" autofocus>
 
-                                @if ($errors->has('otherHospital'))
+                                <!-- @if ($errors->has('otherHospital'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('otherHospital') }}</strong>
                                     </span>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" onclick="isRequiredHospital_11Or12()">
                                     {{ __('Register') }}
                                 </button>
                             </div>
@@ -510,3 +522,4 @@
     </div>
 </div>
 @endsection
+
