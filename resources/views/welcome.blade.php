@@ -68,13 +68,29 @@
     <body>
         @section('content')
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="content">
-                    <img src="<?= asset('images/coverimage.png') ?>" alt="logo" height="346px">
-                </div>
-            </div>
+            
+            <div id="myCarousel" class="carousel slide"> <!-- slider -->
+                <div class="carousel-inner">
+                    <div class="active item"> <!-- item 1 -->
+                        <img src="<?= asset('images/slide1.png') ?>" alt="">
+                    </div> <!-- end item -->
+                    <div class="item"> <!-- item 2 -->
+                        <img src="<?= asset('images/slide2.png') ?>" alt="">
+                    </div> <!-- end item -->
+                    <div class="item"> <!-- item 3 -->
+                        <img src="<?= asset('images/slide3.png') ?>" alt="">
+                    </div> <!-- end item -->
+                    <div class="item"> <!-- item 4 -->
+                        <img src="<?= asset('images/slide4.png') ?>" alt="">
+                    </div> <!-- end item -->
+                    <div class="item"> <!-- item 5 -->
+                        <img src="<?= asset('images/slide5.png') ?>" alt="">
+                    </div> <!-- end item -->
+                </div> <!-- end carousel inner -->
+                <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+            </div> <!-- end slider -->
         </div>
         @endsection
     </body>
 </html>
-
