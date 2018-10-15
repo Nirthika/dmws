@@ -8,7 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Title -->
+    <!-- <title>{{ config('app.name', 'Laravel') }}</title> -->
+    <!-- <title> @yield('title') </title> -->
+    <title>Dengue Monitoring and Warning System</title>
+    <link rel="shortcut icon" href="images/logoNoBackground.png"/>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -19,11 +23,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div id="app" style="overflow: hidden;">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
+            <div class="container" style="padding-left: 2%; padding-right: 4%;">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="<?= asset('images/logo.png') ?>" alt="logo" height="8%" width="30%">
                 </a>
@@ -51,7 +56,7 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="    min-width: 5rem;">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

@@ -81,7 +81,7 @@ body {
 	line-height: 1.6;
 	color: #212529;
 	text-align: left;
-	background-color: #f5f8fa;
+	background-color: #f5f8fa
 }
 
 [tabindex="-1"]:focus {
@@ -594,37 +594,33 @@ pre code {
 
 .container {
 	width: 100%;
-	/*padding-right: 0.1%;
-	padding-left: 0.1%;*/
+	padding-right: 15px;
+	padding-left: 15px;
 	margin-right: auto;
 	margin-left: auto
 }
 
 @media (min-width:576px) {
 	.container {
-		/*max-width: 540px*/
-		max-width: 100%
+		max-width: 540px
 	}
 }
 
 @media (min-width:768px) {
 	.container {
-		/*max-width: 720px*/
-		max-width: 100%
+		max-width: 720px
 	}
 }
 
 @media (min-width:992px) {
 	.container {
-		/*max-width: 960px*/
-		max-width: 100%
+		max-width: 960px
 	}
 }
 
 @media (min-width:1200px) {
 	.container {
-		/*max-width: 1140px*/
-		max-width: 100%
+		max-width: 1140px
 	}
 }
 
@@ -2130,10 +2126,10 @@ select.form-control:focus::-ms-value {
 }
 
 .col-form-label-sm {
-	padding-top: calc(.25rem + 0px);
-	padding-bottom: calc(.25rem + 0px);
-	font-size: .6875rem;
-	line-height: 1.0
+	padding-top: calc(.25rem + 1px);
+	padding-bottom: calc(.25rem + 1px);
+	font-size: .7875rem;
+	line-height: 1.5
 }
 
 .form-control-plaintext {
@@ -4199,8 +4195,8 @@ tbody.collapse.show {
 
 .navbar-brand {
 	display: inline-block;
-	padding-top: .06rem;
-	padding-bottom: .06rem;
+	padding-top: .32rem;
+	padding-bottom: .32rem;
 	margin-right: 1rem;
 	font-size: 1.125rem;
 	line-height: inherit;
@@ -7969,7 +7965,7 @@ button.bg-dark:hover {
 
 .pt-4,
 .py-4 {
-	padding-top: 0.5rem!important
+	padding-top: 1.5rem!important
 }
 
 .pr-4,
@@ -9302,115 +9298,4 @@ a.text-dark:hover {
 	background-color: #fff;
 	-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .04);
 	box-shadow: 0 2px 4px rgba(0, 0, 0, .04)
-}
-
-
-/******************************************************************************************************************/
-
-.form-tel {
-	padding: .375rem .75rem;
-	font-size: .9rem;
-	line-height: 1.6;
-	color: #495057;
-	background-color: #fff;
-	background-clip: padding-box;
-	border: 1px solid #ced4da;
-	border-radius: .25rem;
-	-webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
-	transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
-	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out
-}
-#nav-horizontal {
-    width: 100%;
-}
-.featured {
-	justify-content: flex-start;    
-    display: -webkit-flex; /* Safari */
-    -webkit-justify-content: center; /* Safari 6.1+ */
-    display: flex;
-    justify-content: space-between;
-	background-color: #e6f2ff;
-}
-#nav-horizontal span {
-    position: relative;
-}
-#space {
-    display: inline-block; 
-    width: 1%;
-}
-#listItem {
-    display: inline-block; 
-    width: 14%; 
-    height: 8%;
-}
-#listItem img {
-    width: 100%; 
-    background-color: #e9ddf6;
-}
-#listItem h3 {
-    background: #cc99ff;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0;
-    padding: 3% 0%;
-    text-align: center;
-    text-transform: uppercase;
-}
-#listItem div {
-    background: #f9e6ff;
-    border-top: 1px solid #fff;
-    display: block;
-    height: 87%;
-    left: -99999px;
-    margin: 0;
-    opacity: 0.9;
-    padding: 13% 3%;
-    position: absolute;
-    width: 100%;
-}
-#listItem div p {
-    color: #000000;
-    font-size: 13px;
-    line-height: 18px;
-    text-align: center;
-}
-#listItem div .more {
-    color: #000000;
-    display: block;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-}
-#listItem:hover div {
-    left: 0;
-}
-.about {
-    padding: 2% 5% ;
-}
-.btn-read-more {
-  background: #00bcd4 none repeat scroll 0 0;
-  border-radius: 50px;
-  -moz-border-radius:50px;
-  -webkit-border-radius:50px;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 2% 3%;
-}
-.btn-read-more:hover {
-	text-decoration: none;
-}
-/*.contact {
-	background-color: #f2e6ff;
-}*/
-#nav-content {
-	justify-content: flex-start;    
-    display: -webkit-flex; /* Safari */
-    -webkit-justify-content: center; /* Safari 6.1+ */
-    display: flex;
-    justify-content: center;
-    width: 100%;
 }
