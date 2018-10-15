@@ -27,6 +27,22 @@
 	}
 }
 
+.card {
+    margin: 0px auto;
+}
+
+.card-header {
+    background-color: rgba(204,230,255, 0.8);
+    font-weight: bold;
+}
+
+@media (min-width:576px) {
+    .card-deck {
+        margin-right: 0px;
+        margin-left: 0px
+    }
+}
+
 .col-form-label-sm {
 	padding-top: calc(.25rem + 0px);
 	padding-bottom: calc(.25rem + 0px);
@@ -41,23 +57,8 @@
 
 .pt-4,
 .py-4 {
-	padding-top: 0.5rem!important
-}
-
-.card {
-    margin: 0px auto
-}
-
-.card-img-top {
-    background-color: #e6f2ff;
-}
-
-.card-body {
-    padding: 0.5rem
-}
-
-.card-footer {
-    padding: 0.3rem 1.0rem;
+	padding-top: 0rem!important;
+    margin-top: auto;
 }
 
 .more {
@@ -68,17 +69,6 @@
 
 .more:hover {
     text-decoration: none;
-}
-
-.card-title {
-    font-weight: bold;
-}
-
-@media (min-width:576px) {
-    .card-deck {
-        margin-right: 0px;
-        margin-left: 0px
-    }
 }
 
 .form-tel {
@@ -96,3 +86,35 @@
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out
 }
 
+#return-to-top {
+    position: fixed;
+    z-index: 99;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(77,0,102, 0.8);
+    width: 35px;
+    height: 35px;
+    display: block;
+    display:none;
+    border-radius: 35px;
+    border-style: solid;
+}
+
+#return-to-top i {
+    color: #fff;
+    margin: 0;
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    font-size: 16px;    
+    transition: all 0.3s ease;
+}
+
+#return-to-top:hover {
+    background: #cc33ff;
+}
+
+#return-to-top:hover i {
+    color: #fff;
+    top: 4px;
+}

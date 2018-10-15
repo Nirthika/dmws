@@ -20,6 +20,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -27,7 +28,7 @@
 </head>
 <body>
     <div id="app" style="overflow: hidden;">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="width: 100%;">
             <div class="container" style="padding-left: 2%; padding-right: 4%;">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="<?= asset('images/logo.png') ?>" alt="logo" height="8%" width="30%">
@@ -53,14 +54,16 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:30px; height:32px; position:relative; border-radius:50%;">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="    min-width: 5rem;">
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 5rem;">
+                                    <a class="dropdown-item" href="{{ url('/profile') }}"><i class="fa fa-user"></i>&emsp;{{ __('Profile') }}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        <i class="fa fa-sign-out"></i>&emsp;{{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -75,8 +78,29 @@
         </nav>
 
         <main class="py-4">
+            <script>
+                // When the user scrolls down 20px from the top of the document, show the button
+                window.onscroll = function() {scrollFunction()};
+
+                function scrollFunction() {
+                    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                        document.getElementById("return-to-top").style.display = "block";
+                    } else {
+                        document.getElementById("return-to-top").style.display = "none";
+                    }
+                }
+
+                // When the user clicks on the button, scroll to the top of the document
+                function topFunction() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }
+            </script>
+            
+            <button onclick="topFunction()" id="return-to-top"><i class="fa fa-chevron-up"></i></button>
             @yield('content')
         </main>
+
     </div>
 </body>
 </html>

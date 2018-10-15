@@ -21,6 +21,28 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
 	Auth::routes();
 	Route::get('/home', 'HomeController@index')->name('home');
+
+	Route::get('profile', 'UserController@index');
+	Route::post('profile', 'UserController@updateAvatar');
+
+	Route::get('/eUHome', 'EUController@index');
+	Route::get('/mOHHome', 'MOHController@index');
+	Route::get('/pHIHome', 'PHIController@index');
+	Route::get('/rDHSHome', 'RDHSController@index');
+	Route::get('/doctorHome', 'DoctorController@index');
+
+	Route::get('/form/h544', function () {
+	    return view('form/h544');
+	});
+	Route::get('/form/h399', function () {
+	    return view('form/h399');
+	});
+	Route::get('/form/h411', function () {
+	    return view('form/h411');
+	});
+	Route::get('/form/h411a', function () {
+	    return view('form/h411a');
+	});
 });
 
 Route::resource('eU','EUController');
@@ -29,11 +51,10 @@ Route::resource('pHI','PHIController');
 Route::resource('rDHS','RDHSController');
 Route::resource('doctor','DoctorController');
 
-Route::get('/eUHome', 'EUController@index');
-Route::get('/mOHHome', 'MOHController@index');
-Route::get('/pHIHome', 'PHIController@index');
-Route::get('/rDHSHome', 'RDHSController@index');
-Route::get('/doctorHome', 'DoctorController@index');
+
+
+// Route::get('/rDHS/{rDH}', 'RDHSController@myExample');
+
 
 // Route::get('/EU', 'EUController@showEURegistrationForm')->name('EU');
 // Route::post('/EU', 'EUController@create')->name('EU');
