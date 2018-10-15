@@ -124,8 +124,8 @@
                             <label for="designation" class="col-md-4 col-form-label text-md-right">{{ __('Designation') }}</label>
 
                             <div class="col-md-6">
-                                <select id="designation" name="designation" placeholder="Select a Type" class="form-control{{ $errors->has('designation') ? ' is-invalid' : '' }}" value="{{ old('designation') }}" required autofocus>
-                                    <option value=""></option>
+                                <select id="designation" name="designation" class="form-control{{ $errors->has('designation') ? ' is-invalid' : '' }}" value="{{ old('designation') }}" required autofocus>
+                                    <option value="" disabled selected>Select a designation</option>
                                     <option value="Consultant Physician">Consultant Physician</option>
                                     <option value="Doctor">Doctor</option>
                                     <option value="General Physician">General Physician</option>
@@ -174,8 +174,8 @@
                             <label for="district" class="col-md-4 col-form-label text-md-right"></label>
 
                             <div class="col-md-6">
-                                <select id="district" name="district" placeholder="Select a Type" class="form-control{{ $errors->has('district') ? ' is-invalid' : '' }}" value="{{ old('district') }}" required autofocus onchange="selectProvince(this,province)">
-                                    <option value=""></option>
+                                <select id="district" name="district" class="form-control{{ $errors->has('district') ? ' is-invalid' : '' }}" value="{{ old('district') }}" required autofocus onchange="selectProvince(this,province)">
+                                    <option value="" disabled selected>Select a district</option>
                                     <option value="Ampara">Ampara</option>
                                     <option value="Anuradhapura">Anuradhapura</option>
                                     <option value="Badulla">Badulla</option>
@@ -269,11 +269,9 @@
                             <label id="hosLabel11" for="hospital11" class="col-md-4 col-form-label text-md-right">{{ __('Hospital 1') }}</label>
 
                             <div class="col-md-6" id="hos11">
-                                <select id="hospital11" name="hospital11" placeholder="Select a Type" class="form-control{{ $errors->has('hospital11') ? ' is-invalid' : '' }}" value="{{ old('hospital11') }}" autofocus>
-                                    <option value=""></option>
-                                    <option value="Govenment">Govenment</option>
+                                <select id="hospital11" name="hospital11" class="form-control{{ $errors->has('hospital11') ? ' is-invalid' : '' }}" value="{{ old('hospital11') }}" autofocus>
+                                    <option value="" disabled selected>Select a hostipal</option>
                                     <option value="Jaffna Teaching Hospital">Jaffna Teaching Hospital</option>
-                                    <option value="Private">Private</option>
                                     <option value="New Yarl Hospital">New Yarl Hospital</option>
                                     <option value="Northern Central Hospitals (pvt)">Northern Central Hospitals (pvt)</option>
                                     <option value="Rakavo Hospital">Rakavo Hospital</option>
@@ -324,7 +322,7 @@
 
                             <div class="col-md-6">
                                 <input id="otherNew" type="checkbox" class="form-control-sm{{ $errors->has('otherNew') ? ' is-invalid' : '' }}" name="otherNew" value="{{ old('otherNew') }}" autofocus onChange="hospital1()">
-                                <label for="male" class="col-form-label text-md-right">{{ __('Other New') }}</label>
+                                <label for="otherNew" class="col-form-label text-md-right">{{ __('Other New') }}</label>
 
                                 <!-- @if ($errors->has('otherNew'))
                                     <span class="invalid-feedback">
@@ -338,11 +336,9 @@
                             <label for="hospital2" class="col-md-4 col-form-label text-md-right">{{ __('Hospital 2') }}</label>
 
                             <div class="col-md-6">
-                                <select id="hospital2" name="hospital2" placeholder="Select a Type" class="form-control{{ $errors->has('hospital2') ? ' is-invalid' : '' }}" value="{{ old('hospital2') }}" autofocus>
-                                    <option value=""></option>
-                                    <option value="Govenment">Govenment</option>
+                                <select id="hospital2" name="hospital2" class="form-control{{ $errors->has('hospital2') ? ' is-invalid' : '' }}" value="{{ old('hospital2') }}" autofocus>
+                                    <option value="" disabled selected>Select a hospital</option>
                                     <option value="Jaffna Teaching Hospital">Jaffna Teaching Hospital</option>
-                                    <option value="Private">Private</option>
                                     <option value="New Yarl Hospital">New Yarl Hospital</option>
                                     <option value="Northern Central Hospitals (pvt)">Northern Central Hospitals (pvt)</option>
                                     <option value="Rakavo Hospital">Rakavo Hospital</option>
@@ -378,11 +374,9 @@
                             <label for="hospital3" class="col-md-4 col-form-label text-md-right">{{ __('Hospital 3') }}</label>
 
                             <div class="col-md-6">
-                                <select id="hospital3" name="hospital3" placeholder="Select a Type" class="form-control{{ $errors->has('hospital3') ? ' is-invalid' : '' }}" value="{{ old('hospital3') }}" autofocus>
-                                    <option value=""></option>
-                                    <option value="Govenment">Govenment</option>
+                                <select id="hospital3" name="hospital3" class="form-control{{ $errors->has('hospital3') ? ' is-invalid' : '' }}" value="{{ old('hospital3') }}" autofocus>
+                                    <option value="" disabled selected>Select a hospital</option>
                                     <option value="Jaffna Teaching Hospital">Jaffna Teaching Hospital</option>
-                                    <option value="Private">Private</option>
                                     <option value="New Yarl Hospital">New Yarl Hospital</option>
                                     <option value="Northern Central Hospitals (pvt)">Northern Central Hospitals (pvt)</option>
                                     <option value="Rakavo Hospital">Rakavo Hospital</option>
@@ -418,11 +412,9 @@
                             <label for="hospital4" class="col-md-4 col-form-label text-md-right">{{ __('Hospital 4') }}</label>
 
                             <div class="col-md-6">
-                                <select id="hospital4" name="hospital4" placeholder="Select a Type" class="form-control{{ $errors->has('hospital4') ? ' is-invalid' : '' }}" value="{{ old('hospital4') }}" autofocus>
-                                    <option value=""></option>
-                                    <option value="Govenment">Govenment</option>
+                                <select id="hospital4" name="hospital4" class="form-control{{ $errors->has('hospital4') ? ' is-invalid' : '' }}" value="{{ old('hospital4') }}" autofocus>
+                                    <option value="" disabled selected>Select a hospital</option>
                                     <option value="Jaffna Teaching Hospital">Jaffna Teaching Hospital</option>
-                                    <option value="Private">Private</option>
                                     <option value="New Yarl Hospital">New Yarl Hospital</option>
                                     <option value="Northern Central Hospitals (pvt)">Northern Central Hospitals (pvt)</option>
                                     <option value="Rakavo Hospital">Rakavo Hospital</option>
@@ -458,11 +450,9 @@
                             <label for="hospital5" class="col-md-4 col-form-label text-md-right">{{ __('Hospital 5') }}</label>
 
                             <div class="col-md-6">
-                                <select id="hospital5" name="hospital5" placeholder="Select a Type" class="form-control{{ $errors->has('hospital5') ? ' is-invalid' : '' }}" value="{{ old('hospital5') }}" autofocus>
-                                    <option value=""></option>
-                                    <option value="Govenment">Govenment</option>
+                                <select id="hospital5" name="hospital5" class="form-control{{ $errors->has('hospital5') ? ' is-invalid' : '' }}" value="{{ old('hospital5') }}" autofocus>
+                                    <option value="" disabled selected>Select a hospital</option>
                                     <option value="Jaffna Teaching Hospital">Jaffna Teaching Hospital</option>
-                                    <option value="Private">Private</option>
                                     <option value="New Yarl Hospital">New Yarl Hospital</option>
                                     <option value="Northern Central Hospitals (pvt)">Northern Central Hospitals (pvt)</option>
                                     <option value="Rakavo Hospital">Rakavo Hospital</option>

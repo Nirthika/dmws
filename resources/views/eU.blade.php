@@ -127,8 +127,8 @@
                             <label for="district" class="col-md-4 col-form-label text-md-right"></label>
 
                             <div class="col-md-6">
-                                <select id="district" name="district" placeholder="Select a Type" class="form-control{{ $errors->has('district') ? ' is-invalid' : '' }}" value="{{ old('district') }}" required autofocus onchange="selectProvince(this,province)">
-                                    <option value=""></option>
+                                <select id="district" name="district" class="form-control{{ $errors->has('district') ? ' is-invalid' : '' }}" value="{{ old('district') }}" required autofocus onchange="selectProvince(this,province)">
+                                    <option value="" disabled selected>Select a district</option>
                                     <option value="Ampara">Ampara</option>
                                     <option value="Anuradhapura">Anuradhapura</option>
                                     <option value="Badulla">Badulla</option>
@@ -223,8 +223,8 @@
                             <label for="insName" class="col-md-4 col-form-label text-md-right">{{ __('Institute') }}</label>
 
                             <div class="col-md-6">
-                                <select id="insName" name="insName" placeholder="Select a Type" class="form-control{{ $errors->has('insName') ? ' is-invalid' : '' }}" value="{{ old('insName') }}" required autofocus>
-                                    <option value=""> </option>
+                                <select id="insName" name="insName" class="form-control{{ $errors->has('insName') ? ' is-invalid' : '' }}" value="{{ old('insName') }}" required autofocus>
+                                    <option value="" disabled selected>Select an institute</option>
                                     <option value="Jaffna Teaching Hospital">Jaffna Teaching Hospital</option>
                                     <option value="New Yarl Hospital">New Yarl Hospital</option>
                                     <option value="Northern Central Hospitals (pvt)">Northern Central Hospitals (pvt)</option>

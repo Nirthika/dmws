@@ -108,6 +108,17 @@ class DoctorController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getAllDoctors()
+    {
+        $data=Doctor::all();
+        return view('officers', compact('data'));
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id

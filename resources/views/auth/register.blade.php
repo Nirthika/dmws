@@ -16,10 +16,11 @@
 
                             <div class="col-md-6">
                                 <!--<input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>-->
-                                <select id="userType" name="userType" placeholder="Select a Type" class="form-control{{ $errors->has('userType') ? ' is-invalid' : '' }}" value="{{ old('userType') }}" required autofocus>
+                                <select id="userType" name="userType" class="form-control{{ $errors->has('userType') ? ' is-invalid' : '' }}" value="{{ old('userType') }}" required autofocus>
+                                    <option value="" disabled selected>Select a type</option>
                                     <option>Doctor</option>
-                                    <option>MOH</option>
                                     <option>EU</option>
+                                    <option>MOH</option>
                                     <option>PHI</option>
                                     <option>RDHS</option>
                                 </select>

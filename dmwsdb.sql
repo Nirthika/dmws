@@ -228,33 +228,33 @@ CREATE TABLE `patients` (
   `nickName` text,
   `gender` text NOT NULL,
   `birthDate` date DEFAULT NULL,
-  `yearOfBirth` int(4) DEFAULT NULL,
+  `birthYear` int(4) DEFAULT NULL,
   `age` int(3) NOT NULL,
   `nextOfKinFirstName` text,
   `nextOfKinLastName` text,
-  `guardian` text,
-  `guardianFirstName` text,
-  `guardianLastName` text,
+  `childGuardian` text,
+  `childGuardianFirstName` text,
+  `childGuardianLastName` text,
   `ethnicGroup` text,
   `resAddLine1` text NOT NULL,
   `resAddLine2` text,
-  `resGsDivName` text,
-  `resGsDiv` text,
-  `resDsDiv` text,
+  `resGSDivName` text,
+  `resGSDiv` text,
+  `resDSDiv` text,
   `resDistrict` text NOT NULL,
   `resProvince` text NOT NULL,  
-  `resMohArea` text NOT NULL,
-  `resPhiRange` text NOT NULL,
+  `resMOHArea` text NOT NULL,
+  `resPHIRange` text NOT NULL,
   `resLandmark` text NOT NULL,
   `curAddLine1` text NOT NULL,
   `curAddLine2` text,
-  `curGsDivName` text,
-  `curGsDiv` text,
-  `curDsDiv` text,
+  `curGSDivName` text,
+  `curGSDiv` text,
+  `curDSDiv` text,
   `curDistrict` text NOT NULL,
   `curProvince` text NOT NULL,  
-  `curMohArea` text NOT NULL,
-  `curPhiRange` text NOT NULL,
+  `curMOHArea` text NOT NULL,
+  `curPHIRange` text NOT NULL,
   `curLandmark` text NOT NULL,
   `contactNoMobile` text NOT NULL,
   `contactNoHome` text NOT NULL,
@@ -265,7 +265,7 @@ CREATE TABLE `patients` (
   CONSTRAINT pa_user_id FOREIGN KEY (userId) REFERENCES users(id) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `patients` (`paId`, `userId`, `insName`, `firstName`, `lastName`, `nickName`, `gender`, `birthDate`, `yearOfBirth`, `age`, `nextOfKinFirstName`, `nextOfKinLastName`, `guardian`, `guardianFirstName`, `guardianLastName`, `ethnicGroup`, `resAddLine1`, `resAddLine2`, `resGsDivName`, `resGsDiv`, `resDsDiv`, `resDistrict`, `resProvince`, `resMohArea`, `resPhiRange`, `resLandmark`, `curAddLine1`, `curAddLine2`, `curGsDivName`, `curGsDiv`, `curDsDiv`, `curDistrict`, `curProvince`, `curMohArea`, `curPhiRange`, `curLandmark`, `contactNoMobile`, `contactNoHome`, `visitArea`) VALUES
+INSERT INTO `patients` (`paId`, `userId`, `insName`, `firstName`, `lastName`, `nickName`, `gender`, `birthDate`, `birthYear`, `age`, `nextOfKinFirstName`, `nextOfKinLastName`, `childGuardian`, `childGuardianFirstName`, `childGuardianLastName`, `ethnicGroup`, `resAddLine1`, `resAddLine2`, `resGSDivName`, `resGSDiv`, `resDSDiv`, `resDistrict`, `resProvince`, `resMOHArea`, `resPHIRange`, `resLandmark`, `curAddLine1`, `curAddLine2`, `curGSDivName`, `curGSDiv`, `curDSDiv`, `curDistrict`, `curProvince`, `curMOHArea`, `curPHIRange`, `curLandmark`, `contactNoMobile`, `contactNoHome`, `visitArea`) VALUES
 (1, 1, 'Nagaa Medical Centre', 'Singh', 'Mahi', '', 'Male', '0000-00-00', 0, 18, 'Priyanka', 'Dhoni', '', '', '', '', '23 Navalar Road', '-', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '23 Navalar Road', '-', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '', '0212219947',''),
 (2, 1, 'Renny Dental and Optical Service', 'Dhoni', 'Rajendran', '', 'Male', '2014-01-16', 0, 3, 'Priyanka', 'Dhoni', '', '', '', '', '23 Navalar Road', '-', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '23 Navalar Road', '-', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '', '0212219947',''),
 (3, 1, 'Nagaa Medical Centre', 'Shadshi', 'Sai', 'Shan', 'Female', '2015-01-06', 0, 2, '', '', 'Mother', 'Shan', 'Sri', '', '67, Palam Road', 'Kandarmadam', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '67, Palam Road', 'Kandarmadam', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '077 177 1134', '', '');
@@ -278,7 +278,7 @@ CREATE TABLE `notifications` (
   `diseaseGroup` text NOT NULL,
   `diseaseName` text NOT NULL,
   `onsetDate` date NOT NULL,
-  `regDate` date NOT NULL,
+  `admissionDate` date NOT NULL,
   `regOrBHTNo` text,
   `ward` text NOT NULL,
   `ns1` text,
@@ -292,7 +292,7 @@ CREATE TABLE `notifications` (
   CONSTRAINT noti_pa_id FOREIGN KEY (paId) REFERENCES patients(paId) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-INSERT INTO `notifications` (`id`, `userId`, `insName`, `paId`, `diseaseGroup`, `diseaseName`, `onsetDate`, `regDate`, `regOrBHTNo`, `ward`, `ns1`, `igm`, `igg`, `designation`) VALUES
+INSERT INTO `notifications` (`id`, `userId`, `insName`, `paId`, `diseaseGroup`, `diseaseName`, `onsetDate`, `admissionDate`, `regOrBHTNo`, `ward`, `ns1`, `igm`, `igg`, `designation`) VALUES
 (29, 1, 'Nagaa Medical Centre', 1, 'Group A', 'Plague', '2017-01-03', '2017-01-13', 'BHT23', '', 'yes', '', '', 'Option 1'),
 (31, 1, 'Renny Dental and Optical Service', 2, 'Group B', 'Severe Acute Respiratory Syndrome (SARS)', '2017-01-02', '2017-01-12', 'JTH70084', '14', 'yes', 'yes', '', 'Option 1'),
 (32, 1, 'Nagaa Medical Centre', 3, 'Group A', 'Plague', '2015-01-13', '2015-01-14', 'BHT10', '', 'yes', 'yes', '', 'Consultant Physician');

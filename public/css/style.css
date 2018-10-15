@@ -55,16 +55,32 @@
 	padding-bottom: .06rem
 }
 
+.nav-link {
+    font-weight: bold;
+}
+
+.btn-link.focus,
+.btn-link:focus,
+.btn-link:hover {
+    text-decoration: none;
+ }
+ 
+.btn-link.focus,
+.btn-link:focus {
+    color: #6600ff;
+ }   
+
 .pt-4,
 .py-4 {
 	padding-top: 0rem!important;
     margin-top: auto;
 }
 
+
+/******************************************************/
 .more {
     font-weight: bold;
     text-decoration: none;
-    text-transform: uppercase;
 }
 
 .more:hover {
