@@ -99,7 +99,6 @@ class H544Controller extends Controller
             $patient->birthYear=$request->birthYear;
             $patient->birthDate=$request->birthDate;
             $patient->age=$request->age;
-
             $patient->nextOfKinFirstName=$request->nextOfKinFirstName;     
             $patient->nextOfKinLastName=$request->nextOfKinLastName;     
             $patient->childGuardian=$request->childGuardian;     

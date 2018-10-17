@@ -208,13 +208,10 @@
         </div>
     </section>
     <!-- Contact Us Section -->
-    <br/><br/>
-
-    <div class="well" style="background-color: #e6e6e6;">
+    <div class="well" style="background-color: #cccccc;">
         <footer>
-            <p style="text-align: center;">&copy; {{ ' RA. Department of Computer Science. University of Jaffna' }}</p>
+            <p style="text-align: center; padding: 0.5%;">&copy; {{ ' RA. Department of Computer Science. University of Jaffna' }}</p>
         </footer>
     </div>
-
 </div>
 @endsection

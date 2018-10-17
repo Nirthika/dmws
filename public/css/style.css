@@ -72,7 +72,8 @@
 
 .pt-4,
 .py-4 {
-	padding-top: 0rem!important;
+    padding-top: 0rem!important;
+	padding-bottom: 0.5rem!important;
     margin-top: auto;
 }
 

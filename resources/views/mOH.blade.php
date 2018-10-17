@@ -2,7 +2,7 @@
 
 @section('content')
 <script type="text/javascript"> 
-    function selectProvince(id1,id2) {
+    function selectProvince(id1,id2,id3) {
         switch (id1.value) {
             case 'Jaffna':case 'Kilinochchi':case 'Mannar':case 'Mullaitivu':case 'Vavuniya': id2.value='Northern'; break;
             case 'Puttalam':case 'Kurunegala': id2.value='North Western'; break;
@@ -15,7 +15,33 @@
             case 'Hambantota':case 'Matara':case 'Galle': id2.value='Southern'; break;
             default: id2.value=''; break;
         }
+        // var JaffnaMOH = ['Select a MOH Area','Chankanai','Chavakachcheri','Jaffna','Karaveddy','Kayts','Kopay','Nallur','Point Pedro','Sandilipay','Tellippalai','Uduvil'];
+        // var MannarMOH = ['Select a MOH Area','Mannar','Murunkan','Musali','Adampan','Madhu'];
+        // switch (id1.value) {
+        //     case 'Jaffna':
+        //         id3.options.length = 0;
+        //         for (i = 0; i < JaffnaMOH.length; i++) {
+        //             createOption(id3, JaffnaMOH[i], JaffnaMOH[i]);
+        //         }
+        //         break;
+        //     case 'Mannar':
+        //         id3.options.length = 0;
+        //         for (i = 0; i < MannarMOH.length; i++) {
+        //             createOption(id3, MannarMOH[i], MannarMOH[i]);
+        //         }
+        //         break;
+        //     default: 
+        //         id3.options.length = 0; 
+        //         break;
+        // }
+        // document.getElementById('mOHArea').options[0].disabled = true;
     }
+    // function createOption(id1, text, value) {
+    //     var opt = document.createElement('option');
+    //     opt.value = value;
+    //     opt.text = text;
+    //     id1.options.add(opt);
+    // }
 </script>
 
 <div class="container" style="margin-top: 3%">
@@ -95,9 +121,26 @@
 
                         <div class="form-group row">
                             <label for="mOHArea" class="col-md-4 col-form-label text-md-right">{{ __('MOH Area') }}</label>
-
                             <div class="col-md-6">
-                                <input id="mOHArea" type="text" class="form-control{{ $errors->has('mOHArea') ? ' is-invalid' : '' }}" name="mOHArea" value="{{ old('mOHArea') }}" required>
+                                <select id="mOHArea" name="mOHArea" class="form-control{{ $errors->has('mOHArea') ? ' is-invalid' : '' }}" value="{{ old('mOHArea') }}" required autofocus>
+                                    <option value="" disabled selected>Select a MOH Area</option>
+                                    <option value="Adampan">Adampan</option>
+                                    <option value="Chankanai">Chankanai</option>
+                                    <option value="Chavakachcheri">Chavakachcheri</option>
+                                    <option value="Jaffna">Jaffna</option>
+                                    <option value="Karaveddy">Karaveddy</option>
+                                    <option value="Kayts">Kayts</option>
+                                    <option value="Kopay">Kopay</option>
+                                    <option value="Madhu">Madhu</option>
+                                    <option value="Mannar">Mannar</option>
+                                    <option value="Murunkan">Murunkan</option>
+                                    <option value="Musali">Musali</option>
+                                    <option value="Nallur">Nallur</option>
+                                    <option value="Point Pedro">Point Pedro</option>
+                                    <option value="Sandilipay">Sandilipay</option>
+                                    <option value="Tellippalai">Tellippalai</option>
+                                    <option value="Uduvil">Uduvil</option>                              
+                                </select>
 
                                 <!-- @if ($errors->has('mOHArea'))
                                     <span class="invalid-feedback">
@@ -141,32 +184,32 @@
                             <label for="district" class="col-md-4 col-form-label text-md-right"></label>
 
                             <div class="col-md-6">
-                                <select id="district" name="district" class="form-control{{ $errors->has('district') ? ' is-invalid' : '' }}" value="{{ old('district') }}" required autofocus onchange="selectProvince(this,province)">
+                                <select id="district" name="district" class="form-control{{ $errors->has('district') ? ' is-invalid' : '' }}" value="{{ old('district') }}" required autofocus onchange="selectProvince(this,province,mOHArea)">
                                     <option value="" disabled selected>Select a district</option>
-                                    <option value="Ampara">Ampara</option>
+                                    <!-- <option value="Ampara">Ampara</option>
                                     <option value="Anuradhapura">Anuradhapura</option>
                                     <option value="Badulla">Badulla</option>
                                     <option value="Batticaloa">Batticaloa</option>
                                     <option value="Colombo">Colombo</option>
                                     <option value="Galle">Galle</option>
                                     <option value="Gampaha">Gampaha</option>
-                                    <option value="Hambantota">Hambantota</option>
+                                    <option value="Hambantota">Hambantota</option> -->
                                     <option value="Jaffna">Jaffna</option>
-                                    <option value="Kalutara">Kalutara</option>
+                                    <!-- <option value="Kalutara">Kalutara</option>
                                     <option value="Kandy">Kandy</option>
-                                    <option value="Kegalle">Kegalle</option>
+                                    <option value="Kegalle">Kegalle</option> -->
                                     <option value="Kilinochchi">Kilinochchi</option>
-                                    <option value="Kurunegala">Kurunegala</option>
+                                    <!-- <option value="Kurunegala">Kurunegala</option> -->
                                     <option value="Mannar">Mannar</option>
-                                    <option value="Matale">Matale</option>
+                                    <!-- <option value="Matale">Matale</option>
                                     <option value="Matara">Matara</option>
-                                    <option value="Monaragala">Monaragala</option>
+                                    <option value="Monaragala">Monaragala</option> -->
                                     <option value="Mullaitivu">Mullaitivu</option>
-                                    <option value="Nuwara Eliya">Nuwara Eliya</option>
+                                    <!-- <option value="Nuwara Eliya">Nuwara Eliya</option>
                                     <option value="Polonnaruwa">Polonnaruwa</option>
                                     <option value="Puttalam">Puttalam</option>
                                     <option value="Ratnapura">Ratnapura</option>
-                                    <option value="Trincomalee">Trincomalee</option>
+                                    <option value="Trincomalee">Trincomalee</option> -->
                                     <option value="Vavuniya">Vavuniya</option>
                                 </select>
                                 <label for="district" class="col-form-label-sm text-md-left">District</label>
@@ -194,6 +237,22 @@
                             </div>
                         </div>
 
+                        <!-- <div class="form-group row">
+                            <label for="mOHArea" class="col-md-4 col-form-label text-md-right"></label>
+
+                            <div class="col-md-6">
+                                <select id="mOHArea" name="mOHArea" class="form-control{{ $errors->has('mOHArea') ? ' is-invalid' : '' }}" value="{{ old('mOHArea') }}" required autofocus>
+                                    <option value="" disabled selected>Select a MOH Area</option>
+                                </select>
+                                <label for="mOHArea" class="col-form-label-sm text-md-left">MOH Area</label> -->
+
+                                <!-- @if ($errors->has('mOHArea'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('mOHArea') }}</strong>
+                                    </span>
+                                @endif -->
+                            <!-- </div>
+                        </div> -->
 
                         <div class="form-group row">
                             <label for="phoneOffice" class="col-md-4 col-form-label text-md-right">{{ __('Contact No-Office') }}</label>

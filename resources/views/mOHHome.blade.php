@@ -7,11 +7,20 @@
             <div class="card">
                 <div class="card-header" style="padding-top: 2%; padding-bottom: 1%"><h5 style="font-weight: bold">New Forms</h5></div>
                 <div class="card-body" style="padding-top: 2%; padding-bottom: 1%">
-                    <p style="float: left;">Weekly Return of Communicable Diseases (WRCD) form</p>
-                    <a href="{{ url('/form/h399') }}" style="text-decoration: none; float: right;"><button>H399</button></a>
-                    <br/>
-                    <p style="float: left;">Communicable Disease Report - Part II</p>
-                    <a href="{{ url('/form/h411a') }}" style="text-decoration: none; float: right;"><button>H411a</button></a>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td>Weekly Return of Communicable Diseases (WRCD) form</td>
+                                    <td><a href="{{ url('/form/h399') }}" style="text-decoration: none;"><button>H399</button></a></td>                                    
+                                </tr>
+                                <tr>
+                                    <td>Communicable Disease Report - Part II</td>
+                                    <td><a href="{{ url('/form/h411a') }}" style="text-decoration: none;"><button>H411a</button></a></td>                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>                    
                 </div>
             </div>
         </div>
@@ -41,7 +50,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>                                
+                    </div>
                 </div>
             </div>
         </div>

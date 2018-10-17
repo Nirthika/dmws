@@ -23,7 +23,7 @@
                         </div>
                     @endif
                     <br/>
-                    <form method="POST" action="/home">
+                    <form method="POST" action="/h411a">
                         @csrf
                         <div class="table-responsive">
                             <table class="table table-borderless">
@@ -87,20 +87,7 @@
                                             <div class="form-group row">
                                                 <label for="mOHArea" class="col-sm-4 col-form-label">MOH Area</label>
                                                 <div class="col-sm-7">
-                                                    <select id="mOHArea" name="mOHArea" class="form-control{{ $errors->has('mOHArea') ? ' is-invalid' : '' }}" value="{{ old('mOHArea') }}" required autofocus>
-                                                        <option value="" disabled selected>Select a MOH Area</option>
-                                                        <option value="Chankanai">Chankanai</option>
-                                                        <option value="Chavakachcheri">Chavakachcheri</option>
-                                                        <option value="Jaffna">Jaffna</option>
-                                                        <option value="Karaveddy">Karaveddy</option>
-                                                        <option value="Kayta">Kayta</option>
-                                                        <option value="Kopay">Kopay</option>
-                                                        <option value="Nallur">Nallur</option>
-                                                        <option value="Point Pedro">Point Pedro</option>
-                                                        <option value="Sandilipay">Sandilipay</option>
-                                                        <option value="Tellippalai">Tellippalai</option>
-                                                        <option value="Uduvil">Uduvil</option>
-                                                    </select>
+                                                    <input type="text" class="form-control{{ $errors->has('mOHArea') ? ' is-invalid' : '' }}" id="mOHArea" name="mOHArea" value="{{ $mOHArea }}" readonly autofocus>
                                                 </div>
                                             </div>
                                         </td>
@@ -108,7 +95,7 @@
                                             <div class="form-group row">
                                                 <label for="notificationDate" class="col-sm-4 col-form-label">Date of Notification</label>
                                                 <div class="col-sm-7">
-                                                    <input type="date" class="form-control{{ $errors->has('notificationDate') ? ' is-invalid' : '' }}" id="notificationDate" name="notificationDate" value="{{ old('notificationDate') }}" required autofocus>
+                                                    <input type="date" class="form-control{{ $errors->has('notificationDate') ? ' is-invalid' : '' }}" id="notificationDate" name="notificationDate" value="{{ old('notificationDate') }}" required autofocus onchange="setMinConfirmationDate()">
                                                 </div>
                                             </div>
                                         </td>
@@ -118,7 +105,7 @@
                                             <div class="form-group row">
                                                 <label for="mOHRegNo" class="col-sm-4 col-form-label">MOH Registration No</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control{{ $errors->has('mOHRegNo') ? ' is-invalid' : '' }}" id="mOHRegNo" name="mOHRegNo" value="{{ old('mOHRegNo') }}" required autofocus>
+                                                    <input type="text" class="form-control{{ $errors->has('mOHRegNo') ? ' is-invalid' : '' }}" id="mOHRegNo" name="mOHRegNo" value="{{ $mOHRegNo }}" readonly autofocus>
                                                 </div>
                                             </div>
                                         </td>
@@ -166,6 +153,23 @@
                                                 <label for="birthDate" class="col-sm-4 col-form-label">Date of Birth</label>
                                                 <div class="col-sm-7">
                                                     <input type="date" class="form-control{{ $errors->has('birthDate') ? ' is-invalid' : '' }}" id="birthDate" name="birthDate" value="{{ old('birthDate') }}" autofocus onchange="getAge()">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="yearOnly" class="col-sm-4 col-form-label"></label>
+                                                <div class="col-md-7">
+                                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                                        <input type="checkbox" id="yearOnly" class="custom-control-input{{ $errors->has('yearOnly') ? ' is-invalid' : '' }}" name="yearOnly" value="{{ old('yearOnly') }}" autofocus onclick="checkDOB()">
+                                                        <label for="yearOnly" class="custom-control-label">Year Only</label>
+                                                    </div>
+                                                </div>        
+                                            </div>
+
+                                            <div class="form-group row" id="yearOfBirth" style="display:none">
+                                                <label for="birthYear" class="col-sm-4 col-form-label">Year of Birth</label>
+                                                <div class="col-sm-7">
+                                                    <input type="number" class="form-control{{ $errors->has('birthYear') ? ' is-invalid' : '' }}" id="birthYear" name="birthYear" value="{{ old('birthYear') }}" autofocus onkeyup="getAge()" onclick="getAge()">
                                                 </div>
                                             </div>
                                         </td>
@@ -246,39 +250,39 @@
                                                 <label for="sourceOfNotify" class="col-sm-4 col-form-label">Source of Notification</label>
                                                 <div class="col-sm-7">
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" id="hospital" name="sourceOfNotify" class="custom-control-input{{ $errors->has('hospital') ? ' is-invalid' : '' }}" value="Hospital" required autofocus>
+                                                        <input type="radio" id="hospital" name="sourceOfNotify" class="custom-control-input{{ $errors->has('hospital') ? ' is-invalid' : '' }}" value="Hospital" required autofocus onclick="specifyOtherSource()">
                                                         <label class="custom-control-label" for="hospital">Hospital</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" id="dispensary" name="sourceOfNotify" class="custom-control-input{{ $errors->has('dispensary') ? ' is-invalid' : '' }}" value="Dispensary" required autofocus>
+                                                        <input type="radio" id="dispensary" name="sourceOfNotify" class="custom-control-input{{ $errors->has('dispensary') ? ' is-invalid' : '' }}" value="Dispensary" required autofocus onclick="specifyOtherSource()">
                                                         <label class="custom-control-label" for="dispensary">Dispensary</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" id="pHI" name="sourceOfNotify" class="custom-control-input{{ $errors->has('pHI') ? ' is-invalid' : '' }}" value="P.H.I" required autofocus>
+                                                        <input type="radio" id="pHI" name="sourceOfNotify" class="custom-control-input{{ $errors->has('pHI') ? ' is-invalid' : '' }}" value="P.H.I" required autofocus onclick="specifyOtherSource()">
                                                         <label class="custom-control-label" for="pHI">P.H.I</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" id="gramaSevaka" name="sourceOfNotify" class="custom-control-input{{ $errors->has('gramaSevaka') ? ' is-invalid' : '' }}" value="Grama Sevaka" required autofocus>
+                                                        <input type="radio" id="gramaSevaka" name="sourceOfNotify" class="custom-control-input{{ $errors->has('gramaSevaka') ? ' is-invalid' : '' }}" value="Grama Sevaka" required autofocus onclick="specifyOtherSource()">
                                                         <label class="custom-control-label" for="gramaSevaka">Grama Sevaka</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" id="schoolTeacher" name="sourceOfNotify" class="custom-control-input{{ $errors->has('schoolTeacher') ? ' is-invalid' : '' }}" value="School Teacher" required autofocus>
+                                                        <input type="radio" id="schoolTeacher" name="sourceOfNotify" class="custom-control-input{{ $errors->has('schoolTeacher') ? ' is-invalid' : '' }}" value="School Teacher" required autofocus onclick="specifyOtherSource()">
                                                         <label class="custom-control-label" for="schoolTeacher">School Teacher</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" id="privatePractitioner" name="sourceOfNotify" class="custom-control-input{{ $errors->has('privatePractitioner') ? ' is-invalid' : '' }}" value="Private Practitioner" required autofocus>
+                                                        <input type="radio" id="privatePractitioner" name="sourceOfNotify" class="custom-control-input{{ $errors->has('privatePractitioner') ? ' is-invalid' : '' }}" value="Private Practitioner" required autofocus onclick="specifyOtherSource()">
                                                         <label class="custom-control-label" for="privatePractitioner">Private Practitioner</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" id="ayurvedicPhysician" name="sourceOfNotify" class="custom-control-input{{ $errors->has('ayurvedicPhysician') ? ' is-invalid' : '' }}" value="Ayurvedic Physician" required autofocus>
+                                                        <input type="radio" id="ayurvedicPhysician" name="sourceOfNotify" class="custom-control-input{{ $errors->has('ayurvedicPhysician') ? ' is-invalid' : '' }}" value="Ayurvedic Physician" required autofocus onclick="specifyOtherSource()">
                                                         <label class="custom-control-label" for="ayurvedicPhysician">Ayurvedic Physician</label>
                                                     </div> 
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" id="estateSuperintendent" name="sourceOfNotify" class="custom-control-input{{ $errors->has('estateSuperintendent') ? ' is-invalid' : '' }}" value="Estate Superintendent" required autofocus>
+                                                        <input type="radio" id="estateSuperintendent" name="sourceOfNotify" class="custom-control-input{{ $errors->has('estateSuperintendent') ? ' is-invalid' : '' }}" value="Estate Superintendent" required autofocus onclick="specifyOtherSource()">
                                                         <label class="custom-control-label" for="estateSuperintendent">Estate Superintendent</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" id="otherSource" name="sourceOfNotify" class="custom-control-input{{ $errors->has('otherSource') ? ' is-invalid' : '' }}" value="Other Source" required autofocus>
+                                                        <input type="radio" id="otherSource" name="sourceOfNotify" class="custom-control-input{{ $errors->has('otherSource') ? ' is-invalid' : '' }}" value="Other Source" required autofocus onclick="specifyOtherSource()">
                                                         <label class="custom-control-label" for="otherSource">Other Source</label>
                                                     </div>     
                                                 </div>
@@ -325,7 +329,12 @@
                                     </tr>
                                     <tr>
                                         <td style="border-right: 1px solid #dee2e6; padding-top: 0%; padding-bottom: 0%;">
-                                            
+                                            <div class="form-group row" id="specifySource" style="display:none">
+                                                <label for="specify" class="col-sm-4 col-form-label">Specify</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control{{ $errors->has('specify') ? ' is-invalid' : '' }}" id="specify" name="specify" value="{{ old('specify') }}" autofocus>
+                                                </div>
+                                            </div>
                                         </td>
                                         <td style="padding-top: 0%; padding-bottom: 0%;">
                                             <div class="form-group row mb-0">

@@ -48,6 +48,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 	});
 
 	Route::get('/form/h544', 'H544Controller@getDesignation');
+	Route::get('/form/h411a', 'H411aController@getMOHAreaAndRegNo');
 	Route::get('/officers', 'DoctorController@getAllDoctors');
 });
 
@@ -57,6 +58,7 @@ Route::resource('pHI','PHIController');
 Route::resource('rDHS','RDHSController');
 Route::resource('doctor','DoctorController');
 Route::resource('h544','H544Controller');
+Route::resource('h411a','H411aController');
 
 
 

@@ -247,7 +247,7 @@
                                             <div class="form-group row" id="yearOfBirth" style="display:none">
                                                 <label for="birthYear" class="col-sm-4 col-form-label">Year of Birth</label>
                                                 <div class="col-sm-7">
-                                                    <input type="number" class="form-control{{ $errors->has('birthYear') ? ' is-invalid' : '' }}" id="birthYear" name="birthYear" value="{{ old('birthYear') }}" autofocus onkeyup="getAge()">
+                                                    <input type="number" class="form-control{{ $errors->has('birthYear') ? ' is-invalid' : '' }}" id="birthYear" name="birthYear" value="{{ old('birthYear') }}" autofocus onkeyup="getAge()" onclick="getAge()">
                                                 </div>
                                             </div>
                                         </td>

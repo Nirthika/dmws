@@ -17,7 +17,7 @@
                             <div class="card">
                                 <img class="card-img-top" src="<?= asset('uploads/avatars/default.jpg') ?>" alt="Card image cap" style="background-color: #e6f2ff;">
                                 <div class="card-body" style="padding: 0.5rem;">                                    
-                                    <h5 class="card-title" style="font-weight: bold;">{{ $doctor->firstName }}</h5>
+                                    <h5 class="card-title" style="font-weight: bold;">{{ $doctor->lastName }}</h5>
                                     <p class="card-text">{{ $doctor->hospital1 }}</p>
                                 </div>
                                 <!-- <div class="card-footer" style="padding: 0.3rem 1.0rem;">

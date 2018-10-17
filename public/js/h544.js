@@ -35,6 +35,7 @@ function checkDisease(radioid){
 }
 function setMinAdmissionDate() {
 	var dateOnset = new Date(document.getElementById('onsetDate').value);
+	document.getElementById('admissionDate').value = "";
 	admissionDate.min = dateOnset.toISOString().split("T")[0];
 }
 function checkDOB(){
@@ -46,8 +47,9 @@ function checkDOB(){
         document.getElementById('dateOfBirth').style.display = 'none';
         document.getElementById("birthDate").value="";
         document.getElementById("age").value=0;
-        document.getElementById('yearOfBirth').required = true;
         document.getElementById('dateOfBirth').style.display = false;
+        document.getElementById('birthDate').required = false;
+        document.getElementById('yearOfBirth').required = true;
     }
     else {  
         document.getElementById('dateOfBirth').style.display = '';
@@ -55,6 +57,7 @@ function checkDOB(){
         document.getElementById("birthYear").value="";
         document.getElementById("age").value=0;
         document.getElementById('dateOfBirth').style.display = true;
+        document.getElementById('birthDate').required = true;
         document.getElementById('yearOfBirth').required = false;
     }   
 }
@@ -198,7 +201,7 @@ function configure1(id1,id2,id3,id4,id5,id6) {
 		default: id4.value=''; break;
 	}
 	switch (id4.value) {
-		case 'Jaffna':case 'Mannar': id5.value='Northern'; break;
+		case 'Jaffna':case 'Kilinochchi':case 'Mannar':case 'Mullaitivu':case 'Vavuniya': id5.value='Northern'; break;
 		default: id5.value=''; break;
 	}
 	var JaffnaMOH = ['Select a MOH Area','Chankanai','Chavakachcheri','Jaffna','Karaveddy','Kayts','Kopay','Nallur','Point Pedro','Sandilipay','Tellippalai','Uduvil'];
