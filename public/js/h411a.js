@@ -1,3 +1,12 @@
+window.onload = myAlert;
+function myAlert(){
+	var inp = document.getElementsByTagName('input');
+	for (var i = inp.length-1; i>=0; i--) {
+		if ('radio'===inp[i].type || 'checkbox'===inp[i].type) inp[i].checked = false;
+	}	
+    document.getElementById("birthYear").value='';
+    document.getElementById("age").value=0;
+}
 $(function(){
 	notificationDate.max = new Date().toISOString().split("T")[0];
 	confirmationDate.max = new Date().toISOString().split("T")[0];
@@ -35,7 +44,7 @@ function getAge() {
 		if(birthYear2>year || birthYear2<=0 || birthYear2 == "") {
 	        document.getElementById("birthYear").value='';
 	        age = 0;
-	    } else age = year - birthYear2;		
+	    } else age = year - birthYear2;
 	}
 	else{
 		if (birthDate == "" || birthDate == 0) age = 0;

@@ -69,8 +69,8 @@ class RegisterController extends Controller
         $filename = 'default.jpg';
         if (isset($data['avatar'])) {
             $ava = $data['avatar'];
-            $filename = time() . '.' . $ava->getClientOriginalExtension();
-            Image::make($ava)->save( public_path('/uploads/avatars/' . $filename ) );
+            $filename = time() . '.' . $ava->getClientOriginalExtension();           
+            Image::make($ava)->resize(200, 250)->save( public_path('/uploads/avatars/' . $filename ) );
         }
         return User::create([
             'userType' => $data['userType'],

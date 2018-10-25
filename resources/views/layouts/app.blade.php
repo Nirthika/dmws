@@ -12,8 +12,8 @@
     <!-- <title>{{ config('app.name', 'Laravel') }}</title> -->
     <!-- <title> @yield('title') </title> -->
     <title>Dengue Monitoring and Warning System</title>
-    <link rel="shortcut icon" href="images/logoNoBackground.png"/>
-
+    <link rel="shortcut icon" href="{!! asset('images/logoNoBackground.png') !!}"/>
+    
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 

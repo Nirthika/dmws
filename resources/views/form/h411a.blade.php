@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<script type="text/javascript">
-
-</script>
 <script src="{{ asset('js/h411a.js') }}"></script>
 
 <div class="container" style="margin-top: 3%">
@@ -12,7 +9,7 @@
             <div class="card">
                 <div class="card-header">
                     <h6>DEPARTMENT OF HEALTH</h6><br/>
-                    <h5>COMMUNICABLE DISEASE REPORT - PAET II</h5>
+                    <h5>COMMUNICABLE DISEASE REPORT - PART II</h5>
                 </div>
                 <div class="card-body" style="padding: 1%;">
                     @if (count($errors)>0)

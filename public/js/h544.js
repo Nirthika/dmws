@@ -1,3 +1,29 @@
+window.onload = myAlert;
+function myAlert(){
+	var inp = document.getElementsByTagName('input');
+	for (var i = inp.length-1; i>=0; i--) {
+		if ('radio'===inp[i].type || 'checkbox'===inp[i].type) inp[i].checked = false;
+	}
+	selectOption(govHospital, '');
+	selectOption(pvtHospital, '');
+	selectOption(diseaseGroupA, '');
+	selectOption(diseaseGroupB, '');
+	selectOption(resGSDivName, '');
+    selectOption(resGSDiv, '');
+    selectOption(resMOHArea, '');
+    resMOHArea.options.length = 1;
+    selectOption(resPHIRange, '');
+    resPHIRange.options.length = 1;
+    selectOption(curGSDivName, '');
+    selectOption(curGSDiv, '');
+    selectOption(curMOHArea, '');
+    curMOHArea.options.length = 1;
+    selectOption(curPHIRange, '');
+    curPHIRange.options.length = 1;
+
+    document.getElementById("birthYear").value='';
+    document.getElementById("age").value=0;
+}
 $(function(){
 	onsetDate.max = new Date().toISOString().split("T")[0];
 	admissionDate.max = new Date().toISOString().split("T")[0];
@@ -125,64 +151,64 @@ function testRequired() {
 }
 function configure1(id1,id2,id3,id4,id5,id6) {
 	switch (id1.value) {
-		case 'Nadankulam':createOption(id2, 'J/61', 'J/61');break;
-		case 'Colompuththurai East':createOption(id2, 'J/62', 'J/62');break;
-		case 'Colompuththurai West':createOption(id2, 'J/63', 'J/63');break;
-		case 'Passaiyoor East':createOption(id2, 'J/64', 'J/64');break;
-		case 'Passaiyoor West':createOption(id2, 'J/65', 'J/65');break;
-		case 'Eachchamodai':createOption(id2, 'J/66', 'J/66');break;
-		case 'Thirunagar':createOption(id2, 'J/67', 'J/67');break;
-		case 'Reclamation East':createOption(id2, 'J/68', 'J/68');break;
-		case 'Reclamation West':createOption(id2, 'J/69', 'J/69');break;
-		case 'Gurunagar East':createOption(id2, 'J/70', 'J/70');break;
-		case 'Gurunagar West':createOption(id2, 'J/71', 'J/71');break;
-		case 'Small bazaar':createOption(id2, 'J/72', 'J/72');break;
-		case 'Jaffna town West':createOption(id2, 'J/73', 'J/73');break;
-		case 'Jaffna town East':createOption(id2, 'J/74', 'J/74');break;
-		case 'Chundukuli South':createOption(id2, 'J/75', 'J/75');break;
-		case 'Chundukuli North':createOption(id2, 'J/76', 'J/76');break;
-		case 'Maruthady':createOption(id2, 'J/77', 'J/77');break;
-		case 'Athiyady':createOption(id2, 'J/78', 'J/78');break;
-		case 'Sirampaiyady':createOption(id2, 'J/79', 'J/79');break;
-		case 'Grand Bazaar':createOption(id2, 'J/80', 'J/80');break;
-		case 'Fort':createOption(id2, 'J/81', 'J/81');break;
-		case 'Vannarpannai':createOption(id2, 'J/82', 'J/82');break;
-		case 'Kodday':createOption(id2, 'J/83', 'J/83');break;
-		case 'Navanthurai South':createOption(id2, 'J/84', 'J/84');break;
-		case 'Navanthurai North':createOption(id2, 'J/85', 'J/85');break;
-		case 'Moor Street South':createOption(id2, 'J/86', 'J/86');break;
-		case 'Moor Street North':createOption(id2, 'J/87', 'J/87');break;
-		case 'New Moor Street':createOption(id2, 'J/88', 'J/88');break;
-		case 'Ariyalai North West':createOption(id2, 'J/91', 'J/91');break;
-		case 'Ariyalai Center West':createOption(id2, 'J/92', 'J/92');break;
-		case 'Ariyalai South West':createOption(id2, 'J/93', 'J/93');break;
-		case 'Ariyalai Center North':createOption(id2, 'J/94', 'J/94');break;
-		case 'Ariyalai Center':createOption(id2, 'J/95', 'J/95');break;
-		case 'Ariyalai Center South':createOption(id2, 'J/96', 'J/96');break;
-		case 'Iyanar kovilady':createOption(id2, 'J/97', 'J/97');break;
-		case 'Vannarpannai North':createOption(id2, 'J/98', 'J/98');break;
-		case 'Vannarpannai N.W':createOption(id2, 'J/99', 'J/99');break;
-		case 'Vannarpannai N.E':createOption(id2, 'J/100', 'J/100');break;
-		case 'Neeraviyady':createOption(id2, 'J/101', 'J/101');break;
-		case 'Kandarmadam N.W':createOption(id2, 'J/102', 'J/102');break;
-		case 'Kandarmadam N.E':createOption(id2, 'J/103', 'J/103');break;
-		case 'Kandarmadam S.W':createOption(id2, 'J/104', 'J/104');break;
-		case 'Kandarmadam S.E':createOption(id2, 'J/105', 'J/105');break;
-		case 'Nallur North':createOption(id2, 'J/106', 'J/106');break;
-		case 'Nallur Rajathany':createOption(id2, 'J/107', 'J/107');break;
-		case 'Nallur South':createOption(id2, 'J/108', 'J/108');break;
-		case 'Sangiliyan thoppu':createOption(id2, 'J/109', 'J/109');break;
-		case 'Vellankulam':createOption(id2, 'MN/1', 'MN/1');break;
-		case 'Thevanpiddy':createOption(id2, 'MN/2', 'MN/2');break;
-		case 'Paliaru':createOption(id2, 'MN/3', 'MN/3');break;
-		case 'Illupaikadavai':createOption(id2, 'MN/4', 'MN/4');break;
-		case 'Anthoniyarpuram':createOption(id2, 'MN/5', 'MN/5');break;
-		case 'Madhu':createOption(id2, 'MN/37', 'MN/37');break;
-		case 'Periyapandivirichchan West':createOption(id2, 'MN/38', 'MN/38');break;
-		case 'Periyapandivirichchan East':createOption(id2, 'MN/39', 'MN/39');break;
-		case 'Palampiddy':createOption(id2, 'MN/40', 'MN/40');break;
-		case 'Keerisuddan':createOption(id2, 'MN/41', 'MN/41');break;
-		default:createOption(id2, 'Select a GS Div', '');break;
+		case 'Nadankulam':selectOption(id2, 'J/61');break;
+		case 'Colompuththurai East':selectOption(id2, 'J/62');break;
+		case 'Colompuththurai West':selectOption(id2, 'J/63');break;
+		case 'Passaiyoor East':selectOption(id2, 'J/64');break;
+		case 'Passaiyoor West':selectOption(id2, 'J/65');break;
+		case 'Eachchamodai':selectOption(id2, 'J/66');break;
+		case 'Thirunagar':selectOption(id2, 'J/67');break;
+		case 'Reclamation East':selectOption(id2, 'J/68');break;
+		case 'Reclamation West':selectOption(id2, 'J/69');break;
+		case 'Gurunagar East':selectOption(id2, 'J/70');break;
+		case 'Gurunagar West':selectOption(id2, 'J/71');break;
+		case 'Small bazaar':selectOption(id2, 'J/72');break;
+		case 'Jaffna town West':selectOption(id2, 'J/73');break;
+		case 'Jaffna town East':selectOption(id2, 'J/74');break;
+		case 'Chundukuli South':selectOption(id2, 'J/75');break;
+		case 'Chundukuli North':selectOption(id2, 'J/76');break;
+		case 'Maruthady':selectOption(id2, 'J/77');break;
+		case 'Athiyady':selectOption(id2, 'J/78');break;
+		case 'Sirampaiyady':selectOption(id2, 'J/79');break;
+		case 'Grand Bazaar':selectOption(id2, 'J/80');break;
+		case 'Fort':selectOption(id2, 'J/81');break;
+		case 'Vannarpannai':selectOption(id2, 'J/82');break;
+		case 'Kodday':selectOption(id2, 'J/83');break;
+		case 'Navanthurai South':selectOption(id2, 'J/84');break;
+		case 'Navanthurai North':selectOption(id2, 'J/85');break;
+		case 'Moor Street South':selectOption(id2, 'J/86');break;
+		case 'Moor Street North':selectOption(id2, 'J/87');break;
+		case 'New Moor Street':selectOption(id2, 'J/88');break;
+		case 'Ariyalai North West':selectOption(id2, 'J/91');break;
+		case 'Ariyalai Center West':selectOption(id2, 'J/92');break;
+		case 'Ariyalai South West':selectOption(id2, 'J/93');break;
+		case 'Ariyalai Center North':selectOption(id2, 'J/94');break;
+		case 'Ariyalai Center':selectOption(id2, 'J/95');break;
+		case 'Ariyalai Center South':selectOption(id2, 'J/96');break;
+		case 'Iyanar kovilady':selectOption(id2, 'J/97');break;
+		case 'Vannarpannai North':selectOption(id2, 'J/98');break;
+		case 'Vannarpannai N.W':selectOption(id2, 'J/99');break;
+		case 'Vannarpannai N.E':selectOption(id2, 'J/100');break;
+		case 'Neeraviyady':selectOption(id2, 'J/101');break;
+		case 'Kandarmadam N.W':selectOption(id2, 'J/102');break;
+		case 'Kandarmadam N.E':selectOption(id2, 'J/103');break;
+		case 'Kandarmadam S.W':selectOption(id2, 'J/104');break;
+		case 'Kandarmadam S.E':selectOption(id2, 'J/105');break;
+		case 'Nallur North':selectOption(id2, 'J/106');break;
+		case 'Nallur Rajathany':selectOption(id2, 'J/107');break;
+		case 'Nallur South':selectOption(id2, 'J/108');break;
+		case 'Sangiliyan thoppu':selectOption(id2, 'J/109');break;
+		case 'Vellankulam':selectOption(id2, 'MN/1');break;
+		case 'Thevanpiddy':selectOption(id2, 'MN/2');break;
+		case 'Paliaru':selectOption(id2, 'MN/3');break;
+		case 'Illupaikadavai':selectOption(id2, 'MN/4');break;
+		case 'Anthoniyarpuram':selectOption(id2, 'MN/5');break;
+		case 'Madhu':selectOption(id2, 'MN/37');break;
+		case 'Periyapandivirichchan West':selectOption(id2, 'MN/38');break;
+		case 'Periyapandivirichchan East':selectOption(id2, 'MN/39');break;
+		case 'Palampiddy':selectOption(id2, 'MN/40');break;
+		case 'Keerisuddan':selectOption(id2, 'MN/41');break;
+		default:selectOption(id2, '');break;
 	} 		
 	switch (id1.value) {
 		case 'Nadankulam':case 'Colompuththurai East':case 'Colompuththurai West':case 'Passaiyoor East':case 'Passaiyoor West':case 'Eachchamodai':case 'Thirunagar':case 'Reclamation East':case 'Reclamation West':case 'Gurunagar East':case 'Gurunagar West':case 'Small bazaar':case 'Jaffna town West':case 'Jaffna town East':case 'Chundukuli South':case 'Chundukuli North':case 'Maruthady':case 'Athiyady':case 'Sirampaiyady':case 'Grand Bazaar':case 'Fort':case 'Vannarpannai':case 'Kodday':case 'Navanthurai South':case 'Navanthurai North':case 'Moor Street South':case 'Moor Street North':case 'New Moor Street':
@@ -228,64 +254,64 @@ function configure1(id1,id2,id3,id4,id5,id6) {
 }
 function configure2(id1,id2,id3,id4,id5,id6) {
 	switch (id1.value) {
-		case 'J/61':createOption(id2, 'Nadankulam', 'Nadankulam');break;
-		case 'J/62':createOption(id2, 'Colompuththurai East', 'Colompuththurai East');break;
-		case 'J/63':createOption(id2, 'Colompuththurai West', 'Colompuththurai West');break;
-		case 'J/64':createOption(id2, 'Passaiyoor East', 'Passaiyoor East');break;
-		case 'J/65':createOption(id2, 'Passaiyoor West', 'Passaiyoor West');break;
-		case 'J/66':createOption(id2, 'Eachchamodai', 'Eachchamodai');break;
-		case 'J/67':createOption(id2, 'Thirunagar', 'Thirunagar');break;
-		case 'J/68':createOption(id2, 'Reclamation East', 'Reclamation East');break;
-		case 'J/69':createOption(id2, 'Reclamation West', 'Reclamation West');break;
-		case 'J/70':createOption(id2, 'Gurunagar East', 'Gurunagar East');break;
-		case 'J/71':createOption(id2, 'Gurunagar West', 'Gurunagar West');break;
-		case 'J/72':createOption(id2, 'Small bazaar', 'Small bazaar');break;
-		case 'J/73':createOption(id2, 'Jaffna town West', 'Jaffna town West');break;
-		case 'J/74':createOption(id2, 'Jaffna town East', 'Jaffna town East');break;
-		case 'J/75':createOption(id2, 'Chundukuli South', 'Chundukuli South');break;
-		case 'J/76':createOption(id2, 'Chundukuli North', 'Chundukuli North');break;
-		case 'J/77':createOption(id2, 'Maruthady', 'Maruthady');break;
-		case 'J/78':createOption(id2, 'Athiyady', 'Athiyady');break;
-		case 'J/79':createOption(id2, 'Sirampaiyady', 'Sirampaiyady');break;
-		case 'J/80':createOption(id2, 'Grand Bazaar', 'Grand Bazaar');break;
-		case 'J/81':createOption(id2, 'Fort', 'Fort');break;
-		case 'J/82':createOption(id2, 'Vannarpannai', 'Vannarpannai');break;
-		case 'J/83':createOption(id2, 'Kodday', 'Kodday');break;
-		case 'J/84':createOption(id2, 'Navanthurai South', 'Navanthurai South');break;
-		case 'J/85':createOption(id2, 'Navanthurai North', 'Navanthurai North');break;
-		case 'J/86':createOption(id2, 'Moor Street South', 'Moor Street South');break;
-		case 'J/87':createOption(id2, 'Moor Street North', 'Moor Street North');break;
-		case 'J/88':createOption(id2, 'New Moor Street', 'New Moor Street');break;
-		case 'J/91':createOption(id2, 'Ariyalai North West', 'Ariyalai North West');break;
-		case 'J/92':createOption(id2, 'Ariyalai Center West', 'Ariyalai Center West');break;
-		case 'J/93':createOption(id2, 'Ariyalai South West', 'Ariyalai South West');break;
-		case 'J/94':createOption(id2, 'Ariyalai Center North', 'Ariyalai Center North');break;
-		case 'J/95':createOption(id2, 'Ariyalai Center', 'Ariyalai Center');break;
-		case 'J/96':createOption(id2, 'Ariyalai Center South', 'Ariyalai Center South');break;
-		case 'J/97':createOption(id2, 'Iyanar kovilady', 'Iyanar kovilady');break;
-		case 'J/98':createOption(id2, 'Vannarpannai North', 'Vannarpannai North');break;
-		case 'J/99':createOption(id2, 'Vannarpannai N.W', 'Vannarpannai N.W');break;
-		case 'J/100':createOption(id2, 'Vannarpannai N.E', 'Vannarpannai N.E');break;
-		case 'J/101':createOption(id2, 'Neeraviyady', 'Neeraviyady');break;
-		case 'J/102':createOption(id2, 'Kandarmadam N.W', 'Kandarmadam N.W');break;
-		case 'J/103':createOption(id2, 'Kandarmadam N.E', 'Kandarmadam N.E');break;
-		case 'J/104':createOption(id2, 'Kandarmadam S.W', 'Kandarmadam S.W');break;
-		case 'J/105':createOption(id2, 'Kandarmadam S.E', 'Kandarmadam S.E');break;
-		case 'J/106':createOption(id2, 'Nallur North', 'Nallur North');break;
-		case 'J/107':createOption(id2, 'Nallur Rajathany', 'Nallur Rajathany');break;
-		case 'J/108':createOption(id2, 'Nallur South', 'Nallur South');break;
-		case 'J/109':createOption(id2, 'Sangiliyan thoppu', 'Sangiliyan thoppu');break;
-		case 'MN/1':createOption(id2, 'Vellankulam', 'Vellankulam');break;
-		case 'MN/2':createOption(id2, 'Thevanpiddy', 'Thevanpiddy');break;
-		case 'MN/3':createOption(id2, 'Paliaru', 'Paliaru');break;
-		case 'MN/4':createOption(id2, 'Illupaikadavai', 'Illupaikadavai');break;
-		case 'MN/5':createOption(id2, 'Anthoniyarpuram', 'Anthoniyarpuram');break;
-		case 'MN/37':createOption(id2, 'Madhu', 'Madhu');break;
-		case 'MN/38':createOption(id2, 'Periyapandivirichchan West', 'Periyapandivirichchan West');break;
-		case 'MN/39':createOption(id2, 'Periyapandivirichchan East', 'Periyapandivirichchan East');break;
-		case 'MN/40':createOption(id2, 'Palampiddy', 'Palampiddy');break;
-		case 'MN/41':createOption(id2, 'Keerisuddan', 'Keerisuddan');break;
-		default:createOption(id2, 'Select a GS Div Name', '');break;
+		case 'J/61':selectOption(id2, 'Nadankulam');break;
+		case 'J/62':selectOption(id2, 'Colompuththurai East');break;
+		case 'J/63':selectOption(id2, 'Colompuththurai West');break;
+		case 'J/64':selectOption(id2, 'Passaiyoor East');break;
+		case 'J/65':selectOption(id2, 'Passaiyoor West');break;
+		case 'J/66':selectOption(id2, 'Eachchamodai');break;
+		case 'J/67':selectOption(id2, 'Thirunagar');break;
+		case 'J/68':selectOption(id2, 'Reclamation East');break;
+		case 'J/69':selectOption(id2, 'Reclamation West');break;
+		case 'J/70':selectOption(id2, 'Gurunagar East');break;
+		case 'J/71':selectOption(id2, 'Gurunagar West');break;
+		case 'J/72':selectOption(id2, 'Small bazaar');break;
+		case 'J/73':selectOption(id2, 'Jaffna town West');break;
+		case 'J/74':selectOption(id2, 'Jaffna town East');break;
+		case 'J/75':selectOption(id2, 'Chundukuli South');break;
+		case 'J/76':selectOption(id2, 'Chundukuli North');break;
+		case 'J/77':selectOption(id2, 'Maruthady');break;
+		case 'J/78':selectOption(id2, 'Athiyady');break;
+		case 'J/79':selectOption(id2, 'Sirampaiyady');break;
+		case 'J/80':selectOption(id2, 'Grand Bazaar');break;
+		case 'J/81':selectOption(id2, 'Fort');break;
+		case 'J/82':selectOption(id2, 'Vannarpannai');break;
+		case 'J/83':selectOption(id2, 'Kodday');break;
+		case 'J/84':selectOption(id2, 'Navanthurai South');break;
+		case 'J/85':selectOption(id2, 'Navanthurai North');break;
+		case 'J/86':selectOption(id2, 'Moor Street South');break;
+		case 'J/87':selectOption(id2, 'Moor Street North');break;
+		case 'J/88':selectOption(id2, 'New Moor Street');break;
+		case 'J/91':selectOption(id2, 'Ariyalai North West');break;
+		case 'J/92':selectOption(id2, 'Ariyalai Center West');break;
+		case 'J/93':selectOption(id2, 'Ariyalai South West');break;
+		case 'J/94':selectOption(id2, 'Ariyalai Center North');break;
+		case 'J/95':selectOption(id2, 'Ariyalai Center');break;
+		case 'J/96':selectOption(id2, 'Ariyalai Center South');break;
+		case 'J/97':selectOption(id2, 'Iyanar kovilady');break;
+		case 'J/98':selectOption(id2, 'Vannarpannai North');break;
+		case 'J/99':selectOption(id2, 'Vannarpannai N.W');break;
+		case 'J/100':selectOption(id2, 'Vannarpannai N.E');break;
+		case 'J/101':selectOption(id2, 'Neeraviyady');break;
+		case 'J/102':selectOption(id2, 'Kandarmadam N.W');break;
+		case 'J/103':selectOption(id2, 'Kandarmadam N.E');break;
+		case 'J/104':selectOption(id2, 'Kandarmadam S.W');break;
+		case 'J/105':selectOption(id2, 'Kandarmadam S.E');break;
+		case 'J/106':selectOption(id2, 'Nallur North');break;
+		case 'J/107':selectOption(id2, 'Nallur Rajathany');break;
+		case 'J/108':selectOption(id2, 'Nallur South');break;
+		case 'J/109':selectOption(id2, 'Sangiliyan thoppu');break;
+		case 'MN/1':selectOption(id2, 'Vellankulam');break;
+		case 'MN/2':selectOption(id2, 'Thevanpiddy');break;
+		case 'MN/3':selectOption(id2, 'Paliaru');break;
+		case 'MN/4':selectOption(id2, 'Illupaikadavai');break;
+		case 'MN/5':selectOption(id2, 'Anthoniyarpuram');break;
+		case 'MN/37':selectOption(id2, 'Madhu');break;
+		case 'MN/38':selectOption(id2, 'Periyapandivirichchan West');break;
+		case 'MN/39':selectOption(id2, 'Periyapandivirichchan East');break;
+		case 'MN/40':selectOption(id2, 'Palampiddy');break;
+		case 'MN/41':selectOption(id2, 'Keerisuddan');break;
+		default:selectOption(id2, '');break;
 	}
 	switch (id2.value) {
 		case 'Nadankulam':case 'Colompuththurai East':case 'Colompuththurai West':case 'Passaiyoor East':case 'Passaiyoor West':case 'Eachchamodai':case 'Thirunagar':case 'Reclamation East':case 'Reclamation West':case 'Gurunagar East':case 'Gurunagar West':case 'Small bazaar':case 'Jaffna town West':case 'Jaffna town East':case 'Chundukuli South':case 'Chundukuli North':case 'Maruthady':case 'Athiyady':case 'Sirampaiyady':case 'Grand Bazaar':case 'Fort':case 'Vannarpannai':case 'Kodday':case 'Navanthurai South':case 'Navanthurai North':case 'Moor Street South':case 'Moor Street North':case 'New Moor Street':
@@ -425,10 +451,10 @@ function fillCurAdd(curGSDivName,resGSDivName,curGSDiv,resGSDiv,curMOHArea,resMO
 	    document.getElementById('curProvince').value = document.getElementById('resProvince').value;
 	    document.getElementById('curLandmark').value = document.getElementById('resLandmark').value;
 
-	    createOption(curGSDivName, resGSDivName.value, resGSDivName.value);
-	    createOption(curGSDiv, resGSDiv.value, resGSDiv.value);
-	    createOption(curMOHArea, resMOHArea.value, resMOHArea.value);
-	    createOption(curPHIRange, resPHIRange.value, resPHIRange.value);
+	    selectOption(curGSDivName, resGSDivName.value, resGSDivName.value);
+	    selectOption(curGSDiv, resGSDiv.value, resGSDiv.value);
+	    selectOption(curMOHArea, resMOHArea.value, resMOHArea.value);
+	    selectOption(curPHIRange, resPHIRange.value, resPHIRange.value);
 
 	    document.getElementById('curAddLine1').disabled = true;
 	    document.getElementById('curAddLine2').disabled = true;
@@ -445,11 +471,11 @@ function fillCurAdd(curGSDivName,resGSDivName,curGSDiv,resGSDiv,curMOHArea,resMO
 	    document.getElementById('curProvince').value = '';
 	    document.getElementById('curLandmark').value = '';
 
-	    createOption(curGSDivName, 'Select a GS Div Name', '');
-	    createOption(curGSDiv, 'Select a GS Div', '');
-	    createOption(curMOHArea, 'Select a MOH Area', '');
+	    selectOption(curGSDivName, '');
+	    selectOption(curGSDiv, '');
+	    selectOption(curMOHArea, '');
 	    curMOHArea.options.length = 1;
-	    createOption(curPHIRange, 'Select a PHI Range', '');
+	    selectOption(curPHIRange, '');
 	    curPHIRange.options.length = 1;
 
 	    document.getElementById('curAddLine1').disabled = false;
@@ -470,17 +496,13 @@ function fillSame(curGSDivName,resGSDivName,curGSDiv,resGSDiv,curMOHArea,resMOHA
 	    document.getElementById('curProvince').value = document.getElementById('resProvince').value;
 	    document.getElementById('curLandmark').value = document.getElementById('resLandmark').value;
 
-	    createOption(curGSDivName, resGSDivName.value, resGSDivName.value);
-	    createOption(curGSDiv, resGSDiv.value, resGSDiv.value);
-	    createOption(curMOHArea, resMOHArea.value, resMOHArea.value);
-	    createOption(curPHIRange, resPHIRange.value, resPHIRange.value);
+	    selectOption(curGSDivName, resGSDivName.value);
+	    selectOption(curGSDiv, resGSDiv.value);
+	    selectOption(curMOHArea, resMOHArea.value);
+	    selectOption(curPHIRange, resPHIRange.value);
 	}
 }
-function createOption(id1, text, value) {
-	var opt = document.createElement('option');
-	opt.value = value;
-	opt.text = text;
-	id1.options.add(opt);
+function selectOption(id1, value) {
 	id1.value=value;
 }
 function createOptionMohPhi(id1, text, value) {

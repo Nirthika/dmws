@@ -5,10 +5,49 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
+use App\User;
+use App\Doctor;
+use App\MOH;
+use App\RDHS;
+use App\PHI;
+use App\EU;
 use Image;
 
 class UserController extends Controller
 {
+    
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getOfficersDetails()
+    {
+        $doctorData = Doctor::where('users.status', 'yes')
+                    ->join('users', 'users.id', '=', 'doctors.userId')
+                    ->select('users.*', 'doctors.*')
+                    ->get();
+        $mOHData = MOH::where('users.status', 'yes')
+                    ->join('users', 'users.id', '=', 'mOHs.userId')
+                    ->select('users.*', 'mOHs.*')
+                    ->get();
+        $pHIData = PHI::where('users.status', 'yes')
+                    ->join('users', 'users.id', '=', 'pHIs.userId')
+                    ->select('users.*', 'pHIs.*')
+                    ->get();
+        $rDHSData = RDHS::where('users.status', 'yes')
+                    ->join('users', 'users.id', '=', 'rDHSes.userId')
+                    ->select('users.*', 'rDHSes.*')
+                    ->get();
+        $eUData = EU::where('users.status', 'yes')
+                    ->join('users', 'users.id', '=', 'eUs.userId')
+                    ->select('users.*', 'eUs.*')
+                    ->get();
+
+        return view('officers', compact('doctorData', 'mOHData', 'pHIData', 'rDHSData', 'eUData'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -86,7 +125,7 @@ class UserController extends Controller
         if($request->hasFile('avatar')){
             $avatar = $request->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->save( public_path('/uploads/avatars/' . $filename ) );
+            Image::make($avatar)->resize(200, 250)->save( public_path('/uploads/avatars/' . $filename ) );
 
             $user = Auth::user();
             $user->avatar = $filename;

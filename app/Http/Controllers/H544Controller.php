@@ -55,6 +55,8 @@ class H544Controller extends Controller
             'firstName' => 'required|regex:/^[A-Za-z\s-_]+$/|max:50',
             'lastName' => 'required|regex:/^[A-Za-z\s-_]+$/|max:50',
             'nickName' => 'nullable|regex:/^[A-Za-z\s-_]+$/|max:50', 
+            'birthDate'  => 'required_without:birthYear',
+            'birthYear'  => 'required_without:birthDate',
             'areaCode' => 'required|digits:3',
             'phoneNo' => 'required|digits:7',
             'phoneMobile' => 'required|digits:10',

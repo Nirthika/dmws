@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Doctor;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -105,17 +104,6 @@ class DoctorController extends Controller
             
             return redirect("doctorHome");
         }
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getAllDoctors()
-    {
-        $data=Doctor::all();
-        return view('officers', compact('data'));
     }
 
     /**

@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<script type="text/javascript">
-
-</script>
 <script src="{{ asset('js/h544.js') }}"></script>
 
 <div class="container" style="margin-top: 3%">
@@ -137,7 +134,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
+                                     <tr>
                                         <td style="border-right: 1px solid #dee2e6; padding-top: 0%; padding-bottom: 0%;">
                                             <div class="form-group row">
                                                 <label for="patientName" class="col-sm-4 col-form-label">Name of Patient</label>
@@ -353,14 +350,14 @@
                                                 </div>        
                                             </div>
                                         </td>
-                                    </tr>
+                                    </tr> 
                                     <tr>
                                         <td style="border-right: 1px solid #dee2e6; padding-top: 0%; padding-bottom: 0%;"> 
                                             <div class="form-group row">
                                                 <label for="resAddLine1" class="col-sm-4 col-form-label">Residential Address</label>
                                                 <div class="col-sm-7">
                                                     <input type="text" class="form-control{{ $errors->has('resAddLine1') ? ' is-invalid' : '' }}" id="resAddLine1" name="resAddLine1" value="{{ old('resAddLine1') }}" required autofocus onkeyup="fillSame(curGSDivName,resGSDivName,curGSDiv,resGSDiv,curMOHArea,resMOHArea,curPHIRange,resPHIRange)">
-                                                    <small id="resAddLine1" class="form-text text-muted">Address Line 1</small>
+                                                    <small class="form-text text-muted">Address Line 1</small>
                                                 </div>
                                             </div>
                                         </td>
@@ -369,7 +366,7 @@
                                                 <label for="curAddLine1" class="col-sm-4 col-form-label"></label>
                                                 <div class="col-sm-7">
                                                     <input type="text" class="form-control{{ $errors->has('curAddLine1') ? ' is-invalid' : '' }}" id="curAddLine1" name="curAddLine1" value="{{ old('curAddLine1') }}" required autofocus>
-                                                    <small id="curAddLine1" class="form-text text-muted">Address Line 1</small>
+                                                    <small class="form-text text-muted">Address Line 1</small>
                                                 </div>       
                                             </div>
                                         </td>
@@ -380,7 +377,7 @@
                                                 <label for="resAddLine2" class="col-sm-4 col-form-label"></label>
                                                 <div class="col-sm-7">
                                                     <input type="text" class="form-control{{ $errors->has('resAddLine2') ? ' is-invalid' : '' }}" id="resAddLine2" name="resAddLine2" value="{{ old('resAddLine2') }}" autofocus onkeyup="fillSame(curGSDivName,resGSDivName,curGSDiv,resGSDiv,curMOHArea,resMOHArea,curPHIRange,resPHIRange)">
-                                                    <small id="resAddLine2" class="form-text text-muted">Address Line 2</small>
+                                                    <small class="form-text text-muted">Address Line 2</small>
                                                 </div>
                                             </div>
                                         </td>
@@ -389,7 +386,7 @@
                                                 <label for="curAddLine2" class="col-sm-4 col-form-label"></label>
                                                 <div class="col-sm-7">
                                                     <input type="text" class="form-control{{ $errors->has('curAddLine2') ? ' is-invalid' : '' }}" id="curAddLine2" name="curAddLine2" value="{{ old('curAddLine2') }}" autofocus>
-                                                    <small id="curAddLine2" class="form-text text-muted">Address Line 2</small>
+                                                    <small class="form-text text-muted">Address Line 2</small>
                                                 </div>       
                                             </div>
                                         </td>
@@ -401,6 +398,7 @@
                                                 <div class="col-sm-7">
                                                     <select id="resGSDivName" name="resGSDivName" class="form-control{{ $errors->has('resGSDivName') ? ' is-invalid' : '' }}" value="{{ old('resGSDivName') }}" required autofocus onchange="configure1(this,resGSDiv,resDSDiv,resDistrict,resProvince,resMOHArea); fillSame(curGSDivName,resGSDivName,curGSDiv,resGSDiv,curMOHArea,resMOHArea,curPHIRange,resPHIRange);">
                                                         <option value="" disabled selected>Select a GS Div Name</option>
+                                                        <option value="Anthoniyarpuram">Anthoniyarpuram</option>
                                                         <option value="Ariyalai Center">Ariyalai Center</option>
                                                         <option value="Ariyalai Center North">Ariyalai Center North</option>
                                                         <option value="Ariyalai Center South">Ariyalai Center South</option>
@@ -417,6 +415,7 @@
                                                         <option value="Grand Bazaar">Grand Bazaar</option>
                                                         <option value="Gurunagar East">Gurunagar East</option>
                                                         <option value="Gurunagar West">Gurunagar West</option>
+                                                        <option value="Illupaikadavai">Illupaikadavai</option>
                                                         <option value="Iyanar kovilady">Iyanar kovilady</option>
                                                         <option value="Jaffna town East">Jaffna town East</option>
                                                         <option value="Jaffna town West">Jaffna town West</option>
@@ -424,7 +423,9 @@
                                                         <option value="Kandarmadam N.W">Kandarmadam N.W</option>
                                                         <option value="Kandarmadam S.E">Kandarmadam S.E</option>
                                                         <option value="Kandarmadam S.W">Kandarmadam S.W</option>
+                                                        <option value="Keerisuddan">Keerisuddan</option>
                                                         <option value="Kodday">Kodday</option>
+                                                        <option value="Madhu">Madhu</option>
                                                         <option value="Maruthady">Maruthady</option>
                                                         <option value="Moor Street North">Moor Street North</option>
                                                         <option value="Moor Street South">Moor Street South</option>
@@ -436,30 +437,26 @@
                                                         <option value="Navanthurai South">Navanthurai South</option>
                                                         <option value="Neeraviyady">Neeraviyady</option>
                                                         <option value="New Moor Street">New Moor Street</option>
+                                                        <option value="Palampiddy">Palampiddy</option>
+                                                        <option value="Paliaru">Paliaru</option>
                                                         <option value="Passaiyoor East">Passaiyoor East</option>
                                                         <option value="Passaiyoor West">Passaiyoor West</option>
+                                                        <option value="Periyapandivirichchan East">Periyapandivirichchan East</option>
+                                                        <option value="Periyapandivirichchan West">Periyapandivirichchan West</option>
                                                         <option value="Reclamation East">Reclamation East</option>
                                                         <option value="Reclamation West">Reclamation West</option>
                                                         <option value="Sangiliyan thoppu">Sangiliyan thoppu</option>
                                                         <option value="Sirampaiyady">Sirampaiyady</option>
                                                         <option value="Small bazaar">Small bazaar</option>
+                                                        <option value="Thevanpiddy">Thevanpiddy</option>
                                                         <option value="Thirunagar">Thirunagar</option>
                                                         <option value="Vannarpannai">Vannarpannai</option>
                                                         <option value="Vannarpannai N.E">Vannarpannai N.E</option>
                                                         <option value="Vannarpannai N.W">Vannarpannai N.W</option>
                                                         <option value="Vannarpannai North">Vannarpannai North</option>
                                                         <option value="Vellankulam">Vellankulam</option>
-                                                        <option value="Thevanpiddy">Thevanpiddy</option>
-                                                        <option value="Paliaru">Paliaru</option>
-                                                        <option value="Illupaikadavai">Illupaikadavai</option>
-                                                        <option value="Anthoniyarpuram">Anthoniyarpuram</option>
-                                                        <option value="Madhu">Madhu</option>
-                                                        <option value="Periyapandivirichchan West">Periyapandivirichchan West</option>
-                                                        <option value="Periyapandivirichchan East">Periyapandivirichchan East</option>
-                                                        <option value="Palampiddy">Palampiddy</option>
-                                                        <option value="Keerisuddan">Keerisuddan</option>
                                                     </select>
-                                                    <small id="resGSDivName" class="form-text text-muted">GS Div Name</small>
+                                                    <small class="form-text text-muted">GS Div Name</small>
                                                 </div>
                                             </div>
                                         </td>
@@ -469,6 +466,7 @@
                                                 <div class="col-sm-7">
                                                     <select id="curGSDivName" name="curGSDivName" class="form-control{{ $errors->has('curGSDivName') ? ' is-invalid' : '' }}" value="{{ old('curGSDivName') }}" required autofocus onchange="configure1(this,curGSDiv,curDSDiv,curDistrict,curProvince,curMOHArea)">
                                                         <option value="" disabled selected>Select a GS Div Name</option>
+                                                        <option value="Anthoniyarpuram">Anthoniyarpuram</option>
                                                         <option value="Ariyalai Center">Ariyalai Center</option>
                                                         <option value="Ariyalai Center North">Ariyalai Center North</option>
                                                         <option value="Ariyalai Center South">Ariyalai Center South</option>
@@ -485,6 +483,7 @@
                                                         <option value="Grand Bazaar">Grand Bazaar</option>
                                                         <option value="Gurunagar East">Gurunagar East</option>
                                                         <option value="Gurunagar West">Gurunagar West</option>
+                                                        <option value="Illupaikadavai">Illupaikadavai</option>
                                                         <option value="Iyanar kovilady">Iyanar kovilady</option>
                                                         <option value="Jaffna town East">Jaffna town East</option>
                                                         <option value="Jaffna town West">Jaffna town West</option>
@@ -492,7 +491,9 @@
                                                         <option value="Kandarmadam N.W">Kandarmadam N.W</option>
                                                         <option value="Kandarmadam S.E">Kandarmadam S.E</option>
                                                         <option value="Kandarmadam S.W">Kandarmadam S.W</option>
+                                                        <option value="Keerisuddan">Keerisuddan</option>
                                                         <option value="Kodday">Kodday</option>
+                                                        <option value="Madhu">Madhu</option>
                                                         <option value="Maruthady">Maruthady</option>
                                                         <option value="Moor Street North">Moor Street North</option>
                                                         <option value="Moor Street South">Moor Street South</option>
@@ -504,30 +505,26 @@
                                                         <option value="Navanthurai South">Navanthurai South</option>
                                                         <option value="Neeraviyady">Neeraviyady</option>
                                                         <option value="New Moor Street">New Moor Street</option>
+                                                        <option value="Palampiddy">Palampiddy</option>
+                                                        <option value="Paliaru">Paliaru</option>
                                                         <option value="Passaiyoor East">Passaiyoor East</option>
                                                         <option value="Passaiyoor West">Passaiyoor West</option>
+                                                        <option value="Periyapandivirichchan East">Periyapandivirichchan East</option>
+                                                        <option value="Periyapandivirichchan West">Periyapandivirichchan West</option>
                                                         <option value="Reclamation East">Reclamation East</option>
                                                         <option value="Reclamation West">Reclamation West</option>
                                                         <option value="Sangiliyan thoppu">Sangiliyan thoppu</option>
                                                         <option value="Sirampaiyady">Sirampaiyady</option>
                                                         <option value="Small bazaar">Small bazaar</option>
+                                                        <option value="Thevanpiddy">Thevanpiddy</option>
                                                         <option value="Thirunagar">Thirunagar</option>
                                                         <option value="Vannarpannai">Vannarpannai</option>
                                                         <option value="Vannarpannai N.E">Vannarpannai N.E</option>
                                                         <option value="Vannarpannai N.W">Vannarpannai N.W</option>
                                                         <option value="Vannarpannai North">Vannarpannai North</option>
                                                         <option value="Vellankulam">Vellankulam</option>
-                                                        <option value="Thevanpiddy">Thevanpiddy</option>
-                                                        <option value="Paliaru">Paliaru</option>
-                                                        <option value="Illupaikadavai">Illupaikadavai</option>
-                                                        <option value="Anthoniyarpuram">Anthoniyarpuram</option>
-                                                        <option value="Madhu">Madhu</option>
-                                                        <option value="Periyapandivirichchan West">Periyapandivirichchan West</option>
-                                                        <option value="Periyapandivirichchan East">Periyapandivirichchan East</option>
-                                                        <option value="Palampiddy">Palampiddy</option>
-                                                        <option value="Keerisuddan">Keerisuddan</option>
                                                     </select>
-                                                    <small id="curGSDivName" class="form-text text-muted">GS Div Name</small>
+                                                    <small class="form-text text-muted">GS Div Name</small>
                                                 </div>
                                             </div>
                                         </td>
@@ -597,7 +594,7 @@
                                                         <option value="MN/40"> MN/40 </option>
                                                         <option value="MN/41"> MN/41 </option>
                                                     </select>
-                                                    <small id="resGSDiv" class="form-text text-muted">GS Division</small>
+                                                    <small class="form-text text-muted">GS Division</small>
                                                 </div>
                                             </div>
                                         </td>
@@ -665,7 +662,7 @@
                                                         <option value="MN/40"> MN/40 </option>
                                                         <option value="MN/41"> MN/41 </option>
                                                     </select>
-                                                    <small id="curGSDiv" class="form-text text-muted">GS Division</small>
+                                                    <small class="form-text text-muted">GS Division</small>
                                                 </div>
                                             </div>
                                         </td>
@@ -676,7 +673,7 @@
                                                 <label for="resDSDiv" class="col-sm-4 col-form-label"></label>
                                                 <div class="col-sm-7">
                                                     <input type="text" class="form-control{{ $errors->has('resDSDiv') ? ' is-invalid' : '' }}" id="resDSDiv" name="resDSDiv" value="{{ old('resDSDiv') }}" readonly required autofocus>
-                                                    <small id="resDSDiv" class="form-text text-muted">DS Division</small>
+                                                    <small class="form-text text-muted">DS Division</small>
                                                 </div>
                                             </div>
                                         </td>
@@ -685,7 +682,7 @@
                                                 <label for="curDSDiv" class="col-sm-4 col-form-label"></label>
                                                 <div class="col-sm-7">
                                                     <input type="text" class="form-control{{ $errors->has('curDSDiv') ? ' is-invalid' : '' }}" id="curDSDiv" name="curDSDiv" value="{{ old('curDSDiv') }}" readonly required autofocus>
-                                                    <small id="curDSDiv" class="form-text text-muted">DS Division</small>
+                                                    <small class="form-text text-muted">DS Division</small>
                                                 </div>
                                             </div>
                                         </td>
@@ -696,7 +693,7 @@
                                                 <label for="resDistrict" class="col-sm-4 col-form-label"></label>
                                                 <div class="col-sm-7">
                                                     <input type="text" class="form-control{{ $errors->has('resDistrict') ? ' is-invalid' : '' }}" id="resDistrict" name="resDistrict" value="{{ old('resDistrict') }}" readonly required autofocus>
-                                                    <small id="resDistrict" class="form-text text-muted">District</small>
+                                                    <small class="form-text text-muted">District</small>
                                                 </div>
                                             </div>
                                         </td>
@@ -705,7 +702,7 @@
                                                 <label for="curDistrict" class="col-sm-4 col-form-label"></label>
                                                 <div class="col-sm-7">
                                                     <input type="text" class="form-control{{ $errors->has('curDistrict') ? ' is-invalid' : '' }}" id="curDistrict" name="curDistrict" value="{{ old('curDistrict') }}" readonly required autofocus>
-                                                    <small id="curDistrict" class="form-text text-muted">District</small>
+                                                    <small class="form-text text-muted">District</small>
                                                 </div>
                                             </div>
                                         </td>
@@ -725,7 +722,7 @@
                                                 <label for="curProvince" class="col-sm-4 col-form-label"></label>
                                                 <div class="col-sm-7">
                                                     <input type="text" class="form-control{{ $errors->has('curProvince') ? ' is-invalid' : '' }}" id="curProvince" name="curProvince" value="{{ old('curProvince') }}" readonly required autofocus>
-                                                    <small id="curProvince" class="form-text text-muted">Province</small>
+                                                    <small class="form-text text-muted">Province</small>
                                                 </div>
                                             </div>
                                         </td>
@@ -738,7 +735,7 @@
                                                     <select id="resMOHArea" name="resMOHArea" class="form-control{{ $errors->has('resMOHArea') ? ' is-invalid' : '' }}" value="{{ old('resMOHArea') }}" required autofocus onchange="configurePHI(this,document.getElementById('resPHIRange')); fillSame(curGSDivName,resGSDivName,curGSDiv,resGSDiv,curMOHArea,resMOHArea,curPHIRange,resPHIRange);">
                                                         <option value="" disabled selected>Select a MOH Area</option>  
                                                     </select>
-                                                    <small id="resMOHArea" class="form-text text-muted">MOH Area</small>
+                                                    <small class="form-text text-muted">MOH Area</small>
                                                 </div>
                                             </div>
                                         </td>
@@ -749,7 +746,7 @@
                                                     <select id="curMOHArea" name="curMOHArea" class="form-control{{ $errors->has('curMOHArea') ? ' is-invalid' : '' }}" value="{{ old('curMOHArea') }}" required autofocus onchange="configurePHI(this,document.getElementById('curPHIRange'))">
                                                         <option value="" disabled selected>Select a MOH Area</option>
                                                     </select>
-                                                    <small id="curMOHArea" class="form-text text-muted">MOH Area</small>
+                                                    <small class="form-text text-muted">MOH Area</small>
                                                 </div>
                                             </div>
                                         </td>
@@ -762,7 +759,7 @@
                                                     <select id="resPHIRange" name="resPHIRange" class="form-control{{ $errors->has('resPHIRange') ? ' is-invalid' : '' }}" value="{{ old('resPHIRange') }}" required autofocus onchange="fillSame(curGSDivName,resGSDivName,curGSDiv,resGSDiv,curMOHArea,resMOHArea,curPHIRange,resPHIRange)">
                                                         <option value="" disabled selected>Select a PHI Range</option>
                                                     </select>
-                                                    <small id="resPHIRange" class="form-text text-muted">PHI Range</small>
+                                                    <small class="form-text text-muted">PHI Range</small>
                                                 </div>
                                             </div>
                                         </td>
@@ -773,7 +770,7 @@
                                                     <select id="curPHIRange" name="curPHIRange" class="form-control{{ $errors->has('curPHIRange') ? ' is-invalid' : '' }}" value="{{ old('curPHIRange') }}" required autofocus>
                                                         <option value="" disabled selected>Select a PHI Range</option>
                                                     </select>
-                                                    <small id="curPHIRange" class="form-text text-muted">PHI Range</small>
+                                                    <small class="form-text text-muted">PHI Range</small>
                                                 </div>
                                             </div>
                                         </td>

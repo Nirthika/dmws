@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\RDHS;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -98,24 +97,8 @@ class RDHSController extends Controller
      */
     public function show($id)
     {
-        // $data=RDHS::all();
-        // print_r($data);
-        // die;
         $data=RDHS::find($id);
         return view('rDHSHome', compact('data'));
-    }
-
-    public function myExample($userId)
-    {
-        // $data=RDHS::all();
-        // print_r($data);
-        // die;
-        $uId = RDHS::get()->userId;
-        print_r($uId);
-        die;
-
-        // $data=RDHS::find($userId);
-        // return view('rDHSHome', compact('data'));
     }
 
     /**

@@ -53,6 +53,8 @@ class H411aController extends Controller
     {
         return Validator::make($data, [
             'occupation' => 'required|regex:/^[A-Za-z\s-_]+$/|max:50',
+            'birthDate'  => 'required_without:birthYear',
+            'birthYear'  => 'required_without:birthDate',
         ]);
     }
 
