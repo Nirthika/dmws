@@ -96,6 +96,7 @@ class H544Controller extends Controller
             $patient->firstName=$request->firstName;
             $patient->lastName=$request->lastName;
             $patient->nickName=$request->nickName;
+            $patient->nICNum=$request->nICNum;
             $patient->gender=$request->gender;
             $patient->visitArea=$request->visitArea; 
             $patient->birthYear=$request->birthYear;

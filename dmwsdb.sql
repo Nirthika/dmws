@@ -33,18 +33,18 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `status`, `userType`, `avatar`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'T Kumanan', 'mtkumanan@yahoo.com', '$2y$12$ybpe2QK87LagtZHquUDcvuZMNBtwWBpGKxYIA7Ts34P6gV34baily', 'yes', 'Doctor', 'default.jpg', '', '', ''),
-(2, 'S Ghetheeswaran', 'ghethees@gmail.com', '$2y$12$7RD1ZpFg/knWsLjFp2KDR.8iWKCVnk5b8PTm/06GvfT6h/vatdGfu', 'no', 'Doctor', 'default.jpg', '', '', ''),
-(3, 'A Raveendran', 'raveen@gmail.com', '$2y$12$r8rreG5eEgn0vKTdQVIMxOni0IrgX8WszYtOV/CDfPYZQBIzAgykS', 'yes', 'MOH', 'default.jpg', '', '', ''),
-(4, 'S Balendran', 'balen@gmail.com', '$2y$12$dYmkxG.mARGnWjyy8vSyyO6eug3tCq7eEe.YtRYKwfxlbiNqueitC', 'no', 'MOH', 'default.jpg', '', '', ''),
-(5, 'U Indrajith', 'indrajith@gmail.com', '$2y$12$lML42/xB9v1ELsYa.9JnbOk/wxxM5vep/pls2YRkrYNW2usrv82QW', 'yes', 'PHI', 'default.jpg', '', '', ''),
-(7, 'G Haran', 'haran@gmail.com', '$2y$12$3fnMD9/k4s9p1AmfHxRZvuMTTF6q.kU5CSrIcPjMXRFoyxlWC8JX.', 'no', 'PHI', 'default.jpg', '', '', ''),
-(8, 'M Naven', 'naven@gmail.com', '$2y$12$9bCKxO3Kh1fR00jBQTxEK.NM5UwFAwnpKCZtNO.ROt3Bais48IW8e', 'yes', 'RDHS', 'default.jpg', '', '', ''),
-(9, 'J Suren', 'suren@gmail.com', '$2y$12$yVweuA4ocGzMxg3nfF2jgOuYOL2IGPRPnp6YqHP07ph13LtIO4pPu', 'no', 'RDHS', 'default.jpg', '', '', ''),
-(10, 'R Pavan', 'pavan@gmail.com', '$2y$12$p7DylnJuDrxsSy4M2/7qbuObIxRJY7gbgCA3Ya0sgYZNablASXXn2', 'yes', 'EU', 'default.jpg', '', '', ''),
-(11, 'V Sri', 'sri@gmail.com', '$2y$12$yzlEK1Dv9apR1wVvEBj/7OQOYfdhP0v/cK7WcYGBNlFxjBhvpTXFi', 'no', 'EU', 'default.jpg', '', '', ''),
-(12, 'T Peranantharajah', 'peranantharajah@gmail.com', '$2y$12$oV775socXzmOJ3b5r0L8feSS2dmKkQOZfJSNElt3QxQBGWobU1yCa', 'yes', 'Doctor', 'default.jpg', '', '', ''),
-(13, 'S Sivansuthan', 'suthan@gmail.com', '$2y$12$SLgdtrEQbMjnn4fDKoQ9LeqM93hjuq8HdF/KFMhM8wbUcP.Tq4KSC', 'no', 'Doctor', 'default.jpg', '', '', '');
+(1, 'Kumanan', 'mtkumanan@yahoo.com', '$2y$12$ybpe2QK87LagtZHquUDcvuZMNBtwWBpGKxYIA7Ts34P6gV34baily', 'yes', 'Doctor', '1540277098.jpg', '', '', ''),
+(2, 'Ghetheeswaran', 'ghethees@gmail.com', '$2y$12$7RD1ZpFg/knWsLjFp2KDR.8iWKCVnk5b8PTm/06GvfT6h/vatdGfu', 'no', 'Doctor', 'default.jpg', '', '', ''),
+(3, 'Raveendran', 'raveen@gmail.com', '$2y$12$r8rreG5eEgn0vKTdQVIMxOni0IrgX8WszYtOV/CDfPYZQBIzAgykS', 'yes', 'MOH', '1540277005.jpg', '', '', ''),
+(4, 'Balendran', 'balen@gmail.com', '$2y$12$dYmkxG.mARGnWjyy8vSyyO6eug3tCq7eEe.YtRYKwfxlbiNqueitC', 'no', 'MOH', 'default.jpg', '', '', ''),
+(5, 'Indrajith', 'indrajith@gmail.com', '$2y$12$lML42/xB9v1ELsYa.9JnbOk/wxxM5vep/pls2YRkrYNW2usrv82QW', 'yes', 'PHI', '1540277331.png', '', '', ''),
+(7, 'Haran', 'haran@gmail.com', '$2y$12$3fnMD9/k4s9p1AmfHxRZvuMTTF6q.kU5CSrIcPjMXRFoyxlWC8JX.', 'no', 'PHI', 'default.jpg', '', '', ''),
+(8, 'Naven', 'naven@gmail.com', '$2y$12$9bCKxO3Kh1fR00jBQTxEK.NM5UwFAwnpKCZtNO.ROt3Bais48IW8e', 'yes', 'RDHS', '1540277198.jpg', '', '', ''),
+(9, 'Suren', 'suren@gmail.com', '$2y$12$yVweuA4ocGzMxg3nfF2jgOuYOL2IGPRPnp6YqHP07ph13LtIO4pPu', 'no', 'RDHS', 'default.jpg', '', '', ''),
+(10, 'Pavan', 'pavan@gmail.com', '$2y$12$p7DylnJuDrxsSy4M2/7qbuObIxRJY7gbgCA3Ya0sgYZNablASXXn2', 'yes', 'EU', '1540277577.png', '', '', ''),
+(11, 'Sri', 'sri@gmail.com', '$2y$12$yzlEK1Dv9apR1wVvEBj/7OQOYfdhP0v/cK7WcYGBNlFxjBhvpTXFi', 'no', 'EU', 'default.jpg', '', '', ''),
+(12, 'Peranantharajah', 'peranantharajah@gmail.com', '$2y$12$oV775socXzmOJ3b5r0L8feSS2dmKkQOZfJSNElt3QxQBGWobU1yCa', 'yes', 'Doctor', '1540277714.jpg', '', '', ''),
+(13, 'Sivansuthan', 'suthan@gmail.com', '$2y$12$SLgdtrEQbMjnn4fDKoQ9LeqM93hjuq8HdF/KFMhM8wbUcP.Tq4KSC', 'no', 'Doctor', 'default.jpg', '', '', '');
 
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
@@ -226,6 +226,7 @@ CREATE TABLE `patients` (
   `firstName` text NOT NULL,
   `lastName` text NOT NULL,
   `nickName` text,
+  `nICNum` text NOT NULL,
   `gender` text NOT NULL,
   `birthDate` date DEFAULT NULL,
   `birthYear` int(4) DEFAULT NULL,
@@ -265,10 +266,10 @@ CREATE TABLE `patients` (
   CONSTRAINT pa_user_id FOREIGN KEY (userId) REFERENCES users(id) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `patients` (`paId`, `userId`, `insName`, `firstName`, `lastName`, `nickName`, `gender`, `birthDate`, `birthYear`, `age`, `nextOfKinFirstName`, `nextOfKinLastName`, `childGuardian`, `childGuardianFirstName`, `childGuardianLastName`, `ethnicGroup`, `resAddLine1`, `resAddLine2`, `resGSDivName`, `resGSDiv`, `resDSDiv`, `resDistrict`, `resProvince`, `resMOHArea`, `resPHIRange`, `resLandmark`, `curAddLine1`, `curAddLine2`, `curGSDivName`, `curGSDiv`, `curDSDiv`, `curDistrict`, `curProvince`, `curMOHArea`, `curPHIRange`, `curLandmark`, `contactNoMobile`, `contactNoHome`, `visitArea`) VALUES
-(1, 1, 'Nagaa Medical Centre', 'Singh', 'Mahi', '', 'Male', '0000-00-00', 0, 18, 'Priyanka', 'Dhoni', '', '', '', '', '23 Navalar Road', '-', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '23 Navalar Road', '-', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '', '0212219947',''),
-(2, 1, 'Renny Dental and Optical Service', 'Dhoni', 'Rajendran', '', 'Male', '2014-01-16', 0, 3, 'Priyanka', 'Dhoni', '', '', '', '', '23 Navalar Road', '-', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '23 Navalar Road', '-', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '', '0212219947',''),
-(3, 1, 'Nagaa Medical Centre', 'Shadshi', 'Sai', 'Shan', 'Female', '2015-01-06', 0, 2, '', '', 'Mother', 'Shan', 'Sri', '', '67, Palam Road', 'Kandarmadam', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '67, Palam Road', 'Kandarmadam', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '077 177 1134', '', '');
+INSERT INTO `patients` (`paId`, `userId`, `insName`, `firstName`, `lastName`, `nickName`, `nICNum`, `gender`, `birthDate`, `birthYear`, `age`, `nextOfKinFirstName`, `nextOfKinLastName`, `childGuardian`, `childGuardianFirstName`, `childGuardianLastName`, `ethnicGroup`, `resAddLine1`, `resAddLine2`, `resGSDivName`, `resGSDiv`, `resDSDiv`, `resDistrict`, `resProvince`, `resMOHArea`, `resPHIRange`, `resLandmark`, `curAddLine1`, `curAddLine2`, `curGSDivName`, `curGSDiv`, `curDSDiv`, `curDistrict`, `curProvince`, `curMOHArea`, `curPHIRange`, `curLandmark`, `contactNoMobile`, `contactNoHome`, `visitArea`) VALUES
+(1, 1, 'Nagaa Medical Centre', 'Singh', 'Mahi', '', '851382783V', 'Male', '0000-00-00', 0, 18, 'Priyanka', 'Dhoni', '', '', '', '', '23 Navalar Road', '-', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '23 Navalar Road', '-', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '', '0212219947',''),
+(2, 1, 'Renny Dental and Optical Service', 'Dhoni', 'Rajendran', '', '878382783V', 'Male', '2014-01-16', 0, 3, 'Priyanka', 'Dhoni', '', '', '', '', '23 Navalar Road', '-', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '23 Navalar Road', '-', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '', '0212219947',''),
+(3, 1, 'Nagaa Medical Centre', 'Shadshi', 'Sai', 'Shan', '845468783V', 'Female', '2015-01-06', 0, 2, '', '', 'Mother', 'Shan', 'Sri', '', '67, Palam Road', 'Kandarmadam', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '67, Palam Road', 'Kandarmadam', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '077 177 1134', '', '');
 
 CREATE TABLE `notifications` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

@@ -23,7 +23,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 	Route::get('/home', 'HomeController@index')->name('home');
 
 	Route::get('profile', 'UserController@index');
-	Route::post('profile', 'UserController@updateAvatar');
+	Route::post('/profile/{id}', 'UserController@update');
 
 	Route::get('/eUHome', 'EUController@index');
 	Route::get('/mOHHome', 'MOHController@index');
@@ -50,6 +50,8 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 	Route::get('/form/h544', 'H544Controller@getDesignation');
 	Route::get('/form/h411a', 'H411aController@getMOHAreaAndRegNo');
 	Route::get('/officers', 'UserController@getOfficersDetails');
+	
+	Route::get('/myHome', 'HomeController@goToMyHome');
 });
 
 Route::resource('eU','EUController');
@@ -59,12 +61,3 @@ Route::resource('rDHS','RDHSController');
 Route::resource('doctor','DoctorController');
 Route::resource('h544','H544Controller');
 Route::resource('h411a','H411aController');
-
-
-
-// Route::get('/rDHS/{rDH}', 'RDHSController@myExample');
-
-
-// Route::get('/EU', 'EUController@showEURegistrationForm')->name('EU');
-// Route::post('/EU', 'EUController@create')->name('EU');
-		

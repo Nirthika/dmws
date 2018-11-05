@@ -224,9 +224,7 @@
                             <div class="col-md-6">
                                 <select id="insName" name="insName" class="form-control{{ $errors->has('insName') ? ' is-invalid' : '' }}" value="{{ old('insName') }}" required autofocus>
                                     <option value="" disabled selected>Select a institute</option>
-                                    <option value="Govenment">Govenment</option>
                                     <option value="Jaffna Teaching Hospital">Jaffna Teaching Hospital</option>
-                                    <option value="Private">Private</option>
                                     <option value="New Yarl Hospital">New Yarl Hospital</option>
                                     <option value="Northern Central Hospitals (pvt)">Northern Central Hospitals (pvt)</option>
                                     <option value="Rakavo Hospital">Rakavo Hospital</option>

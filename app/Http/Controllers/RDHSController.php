@@ -97,8 +97,7 @@ class RDHSController extends Controller
      */
     public function show($id)
     {
-        $data=RDHS::find($id);
-        return view('rDHSHome', compact('data'));
+        //
     }
 
     /**

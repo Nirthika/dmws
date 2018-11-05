@@ -47,11 +47,17 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
+                            <li><a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a></li>
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                             <li><a class="nav-link" href="#aboutUs">{{ __('About') }}</a></li>
                             <li><a class="nav-link" href="#contactUs">{{ __('Contact') }}</a></li>
                         @else
+                            <li>
+                                <a class="nav-link" href="{{ url('/') }}">
+                                <img src="/images/home.png" style="width:30px; height:32px; position:relative; border-radius:50%;">
+                                </a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:30px; height:32px; position:relative; border-radius:50%;">
@@ -59,6 +65,7 @@
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 5rem;">
+                                    <a class="dropdown-item" href="{{ url('/myHome') }}"><i class="fa fa-home"></i>&emsp;{{ __('My Home') }}</a>
                                     <a class="dropdown-item" href="{{ url('/profile') }}"><i class="fa fa-user"></i>&emsp;{{ __('Profile') }}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

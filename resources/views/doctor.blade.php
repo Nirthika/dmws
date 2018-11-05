@@ -19,18 +19,22 @@
     function hospital1(){
         var checkBox = document.getElementById("otherNew");
         if (checkBox.checked != true){
-            document.getElementById('hos11').style.display = 'block';
-            document.getElementById('hosLabel11').style.display = 'block';
-            document.getElementById('hos12').style.display = 'none';
-            document.getElementById('hosLabel12').style.display = 'none';
-            document.getElementById('hosLabel11').required = true;
+            document.getElementById('idHospital11').style.display = '';
+            document.getElementById('idHospital12').style.display = 'none';
+            document.getElementById('hospital12').value = '';
         }
         else {  
-            document.getElementById('hos11').style.display = 'none';
-            document.getElementById('hosLabel11').style.display = 'none';
-            document.getElementById('hos12').style.display = 'block';
-            document.getElementById('hosLabel12').style.display = 'block';
-            document.getElementById('hosLabel12').required = true;
+            document.getElementById('idHospital11').style.display = 'none';
+            document.getElementById('idHospital12').style.display = '';
+            hospital11.value = '';
+            document.getElementById('idHospital2').style.display = 'none';
+            hospital2.value = '';
+            document.getElementById('idHospital3').style.display = 'none';
+            hospital3.value = '';
+            document.getElementById('idHospital4').style.display = 'none';
+            hospital4.value = '';
+            document.getElementById('idHospital5').style.display = 'none';
+            hospital5.value = '';
         }
     }
     function isRequiredHospital_11Or12() {
@@ -265,11 +269,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label id="hosLabel11" for="hospital11" class="col-md-4 col-form-label text-md-right">{{ __('Hospital 1') }}</label>
+                        <div class="form-group row" id="idHospital11">
+                            <label for="hospital11" class="col-md-4 col-form-label text-md-right">{{ __('Hospital 1') }}</label>
 
-                            <div class="col-md-6" id="hos11">
-                                <select id="hospital11" name="hospital11" class="form-control{{ $errors->has('hospital11') ? ' is-invalid' : '' }}" value="{{ old('hospital11') }}" autofocus>
+                            <div class="col-md-6">
+                                <select id="hospital11" name="hospital11" class="form-control{{ $errors->has('hospital11') ? ' is-invalid' : '' }}" value="{{ old('hospital11') }}" autofocus onchange="document.getElementById('idHospital2').style.display = '';">
                                     <option value="" disabled selected>Select a hostipal</option>
                                     <option value="Jaffna Teaching Hospital">Jaffna Teaching Hospital</option>
                                     <option value="New Yarl Hospital">New Yarl Hospital</option>
@@ -303,10 +307,10 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label id="hosLabel12" for="hospital12" class="col-md-4 col-form-label text-md-right" style = "display:none">{{ __('Hospital 1') }}</label>
+                        <div class="form-group row" id="idHospital12" style="display: none;">
+                            <label for="hospital12" class="col-md-4 col-form-label text-md-right">{{ __('Hospital 1') }}</label>
 
-                            <div class="col-md-6" id="hos12" style = "display:none">
+                            <div class="col-md-6">
                                 <input id="hospital12" type="text" class="form-control{{ $errors->has('hospital12') ? ' is-invalid' : '' }}" name="hospital12" value="{{ old('hospital12') }}" autofocus>
 
                                 <!-- @if ($errors->has('hospital12'))
@@ -332,11 +336,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row" id="idHospital2" style="display: none;">
                             <label for="hospital2" class="col-md-4 col-form-label text-md-right">{{ __('Hospital 2') }}</label>
 
                             <div class="col-md-6">
-                                <select id="hospital2" name="hospital2" class="form-control{{ $errors->has('hospital2') ? ' is-invalid' : '' }}" value="{{ old('hospital2') }}" autofocus>
+                                <select id="hospital2" name="hospital2" class="form-control{{ $errors->has('hospital2') ? ' is-invalid' : '' }}" value="{{ old('hospital2') }}" autofocus onchange="document.getElementById('idHospital3').style.display = '';">
                                     <option value="" disabled selected>Select a hospital</option>
                                     <option value="Jaffna Teaching Hospital">Jaffna Teaching Hospital</option>
                                     <option value="New Yarl Hospital">New Yarl Hospital</option>
@@ -370,11 +374,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row" id="idHospital3" style="display: none;">
                             <label for="hospital3" class="col-md-4 col-form-label text-md-right">{{ __('Hospital 3') }}</label>
 
                             <div class="col-md-6">
-                                <select id="hospital3" name="hospital3" class="form-control{{ $errors->has('hospital3') ? ' is-invalid' : '' }}" value="{{ old('hospital3') }}" autofocus>
+                                <select id="hospital3" name="hospital3" class="form-control{{ $errors->has('hospital3') ? ' is-invalid' : '' }}" value="{{ old('hospital3') }}" autofocus onchange="document.getElementById('idHospital4').style.display = '';">
                                     <option value="" disabled selected>Select a hospital</option>
                                     <option value="Jaffna Teaching Hospital">Jaffna Teaching Hospital</option>
                                     <option value="New Yarl Hospital">New Yarl Hospital</option>
@@ -408,11 +412,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row" id="idHospital4" style="display: none;">
                             <label for="hospital4" class="col-md-4 col-form-label text-md-right">{{ __('Hospital 4') }}</label>
 
                             <div class="col-md-6">
-                                <select id="hospital4" name="hospital4" class="form-control{{ $errors->has('hospital4') ? ' is-invalid' : '' }}" value="{{ old('hospital4') }}" autofocus>
+                                <select id="hospital4" name="hospital4" class="form-control{{ $errors->has('hospital4') ? ' is-invalid' : '' }}" value="{{ old('hospital4') }}" autofocus onchange="document.getElementById('idHospital5').style.display = '';">
                                     <option value="" disabled selected>Select a hospital</option>
                                     <option value="Jaffna Teaching Hospital">Jaffna Teaching Hospital</option>
                                     <option value="New Yarl Hospital">New Yarl Hospital</option>
@@ -446,7 +450,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row" id="idHospital5" style="display: none;">
                             <label for="hospital5" class="col-md-4 col-form-label text-md-right">{{ __('Hospital 5') }}</label>
 
                             <div class="col-md-6">

@@ -176,6 +176,14 @@
                                                     <input type="text" class="form-control{{ $errors->has('nickName') ? ' is-invalid' : '' }}" id="nickName" name="nickName" value="{{ old('nickName') }}" autofocus>
                                                 </div>
                                             </div>
+
+                                            <div class="form-group row">
+                                                <label for="nICNum" class="col-sm-4 col-form-label">Patient /
+                                                Guardian NIC Number</label>
+                                                <div class="col-sm-7">
+                                                    <input type="tel" class="form-control{{ $errors->has('nICNum') ? ' is-invalid' : '' }}" id="nICNum" name="nICNum" value="{{ old('nICNum') }}" maxlength="12" required autofocus>
+                                                </div>
+                                            </div>
                                         </td>
                                         <td style="padding-top: 0%; padding-bottom: 0%;">
                                             <div class="form-group row">
@@ -396,7 +404,7 @@
                                             <div class="form-group row">
                                                 <label for="resGSDivName" class="col-sm-4 col-form-label"></label>
                                                 <div class="col-sm-7">
-                                                    <select id="resGSDivName" name="resGSDivName" class="form-control{{ $errors->has('resGSDivName') ? ' is-invalid' : '' }}" value="{{ old('resGSDivName') }}" required autofocus onchange="configure1(this,resGSDiv,resDSDiv,resDistrict,resProvince,resMOHArea); fillSame(curGSDivName,resGSDivName,curGSDiv,resGSDiv,curMOHArea,resMOHArea,curPHIRange,resPHIRange);">
+                                                    <select id="resGSDivName" name="resGSDivName" class="form-control{{ $errors->has('resGSDivName') ? ' is-invalid' : '' }}" value="{{ old('resGSDivName') }}" required autofocus onchange="configure1(this,resGSDiv,resDSDiv,resDistrict,resProvince,resMOHArea,resPHIRange); fillSame(curGSDivName,resGSDivName,curGSDiv,resGSDiv,curMOHArea,resMOHArea,curPHIRange,resPHIRange);">
                                                         <option value="" disabled selected>Select a GS Div Name</option>
                                                         <option value="Anthoniyarpuram">Anthoniyarpuram</option>
                                                         <option value="Ariyalai Center">Ariyalai Center</option>
@@ -464,7 +472,7 @@
                                             <div class="form-group row">
                                                 <label for="curGSDivName" class="col-sm-4 col-form-label"></label>
                                                 <div class="col-sm-7">
-                                                    <select id="curGSDivName" name="curGSDivName" class="form-control{{ $errors->has('curGSDivName') ? ' is-invalid' : '' }}" value="{{ old('curGSDivName') }}" required autofocus onchange="configure1(this,curGSDiv,curDSDiv,curDistrict,curProvince,curMOHArea)">
+                                                    <select id="curGSDivName" name="curGSDivName" class="form-control{{ $errors->has('curGSDivName') ? ' is-invalid' : '' }}" value="{{ old('curGSDivName') }}" required autofocus onchange="configure1(this,curGSDiv,curDSDiv,curDistrict,curProvince,curMOHArea,curPHIRange)">
                                                         <option value="" disabled selected>Select a GS Div Name</option>
                                                         <option value="Anthoniyarpuram">Anthoniyarpuram</option>
                                                         <option value="Ariyalai Center">Ariyalai Center</option>
@@ -534,7 +542,7 @@
                                             <div class="form-group row">
                                                 <label for="resGSDiv" class="col-sm-4 col-form-label"></label>
                                                 <div class="col-sm-7">
-                                                    <select id="resGSDiv" name="resGSDiv" class="form-control{{ $errors->has('resGSDiv') ? ' is-invalid' : '' }}" value="{{ old('resGSDiv') }}" required autofocus onchange="configure2(this,resGSDivName,resDSDiv,resDistrict,resProvince,resMOHArea); fillSame(curGSDivName,resGSDivName,curGSDiv,resGSDiv,curMOHArea,resMOHArea,curPHIRange,resPHIRange);">
+                                                    <select id="resGSDiv" name="resGSDiv" class="form-control{{ $errors->has('resGSDiv') ? ' is-invalid' : '' }}" value="{{ old('resGSDiv') }}" required autofocus onchange="configure2(this,resGSDivName,resDSDiv,resDistrict,resProvince,resMOHArea,resPHIRange); fillSame(curGSDivName,resGSDivName,curGSDiv,resGSDiv,curMOHArea,resMOHArea,curPHIRange,resPHIRange);">
                                                         <option value="" disabled selected>Select a GS Div</option>
                                                         <option value="J/61"> J/61 </option>
                                                         <option value="J/62"> J/62 </option>
@@ -602,7 +610,7 @@
                                             <div class="form-group row">
                                                 <label for="curGSDiv" class="col-sm-4 col-form-label"></label>
                                                 <div class="col-sm-7">
-                                                    <select id="curGSDiv" name="curGSDiv" class="form-control{{ $errors->has('curGSDiv') ? ' is-invalid' : '' }}" value="{{ old('curGSDiv') }}" required autofocus onchange="configure2(this,curGSDivName,curDSDiv,curDistrict,curProvince,curMOHArea)">
+                                                    <select id="curGSDiv" name="curGSDiv" class="form-control{{ $errors->has('curGSDiv') ? ' is-invalid' : '' }}" value="{{ old('curGSDiv') }}" required autofocus onchange="configure2(this,curGSDivName,curDSDiv,curDistrict,curProvince,curMOHArea,curPHIRange)">
                                                         <option value="" disabled selected>Select a GS Div</option>
                                                         <option value="J/61"> J/61 </option>
                                                         <option value="J/62"> J/62 </option>
@@ -806,7 +814,7 @@
                                             <div class="form-group row">
                                                 <label for="phoneHome" class="col-sm-4 col-form-label">Patient's Phone No (Home)</label>
                                                 <div class="col-sm-3">
-                                                    <input id="areaCode" type="tel" class="form-control{{ $errors->has('areaCode') ? ' is-invalid' : '' }}"  name="areaCode" value="{{ old('areaCode') }}" required autofocus placeholder="###"  maxlength="3">
+                                                    <input id="areaCode" type="tel" class="form-control{{ $errors->has('areaCode') ? ' is-invalid' : '' }}"  name="areaCode" value="{{ old('areaCode') }}" required autofocus placeholder="###" maxlength="3">
                                                     <small id="areaCode" class="form-text text-muted">Area Code</small>
                                                 </div>
                                                 <div class="col-sm-4">
