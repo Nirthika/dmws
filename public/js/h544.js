@@ -1,29 +1,3 @@
-window.onload = myAlert;
-function myAlert(){
-	var inp = document.getElementsByTagName('input');
-	for (var i = inp.length-1; i>=0; i--) {
-		if ('radio'===inp[i].type || 'checkbox'===inp[i].type) inp[i].checked = false;
-	}
-    govHospital.value = '';
-    pvtHospital.value = '';
-    diseaseGroupA.value = '';
-    diseaseGroupB.value = '';
-    resGSDivName.value = '';
-    resGSDiv.value = '';
-    resMOHArea.value = '';
-    resMOHArea.options.length = 1;
-    resPHIRange.value = '';
-    resPHIRange.options.length = 1;
-    curGSDivName.value = '';
-    curGSDiv.value = '';
-    curMOHArea.value = '';
-    curMOHArea.options.length = 1;
-    curPHIRange.value = '';
-    curPHIRange.options.length = 1;
-
-    document.getElementById("birthYear").value='';
-    document.getElementById("age").value=0;
-}
 $(function(){
 	onsetDate.max = new Date().toISOString().split("T")[0];
 	admissionDate.max = new Date().toISOString().split("T")[0];
@@ -73,7 +47,6 @@ function checkDOB(){
         document.getElementById('dateOfBirth').style.display = 'none';
         document.getElementById("birthDate").value="";
         document.getElementById("age").value=0;
-        document.getElementById('dateOfBirth').style.display = false;
         document.getElementById('birthDate').required = false;
         document.getElementById('yearOfBirth').required = true;
     }
@@ -82,13 +55,13 @@ function checkDOB(){
         document.getElementById('yearOfBirth').style.display = 'none';
         document.getElementById("birthYear").value="";
         document.getElementById("age").value=0;
-        document.getElementById('dateOfBirth').style.display = true;
         document.getElementById('birthDate').required = true;
         document.getElementById('yearOfBirth').required = false;
     }   
 }
 function getAge() {
     var birthDate = new Date(document.getElementById("birthDate").value);
+    var birthYear1 = birthDate.getFullYear();
     var birthYear2 = document.getElementById("birthYear").value;
     var year = (new Date()).getFullYear();
 	var age = 0;
@@ -100,8 +73,11 @@ function getAge() {
 	    } else age = year - birthYear2;		
 	}
 	else{
-		if (birthDate == "" || birthDate == 0) age = 0;
-		else age = year - birthDate.getFullYear();
+		if (birthDate == "" || birthDate == 0 || birthYear1>year || birthYear1<=0) {
+			document.getElementById("birthDate").value='';
+			age = 0;
+		}
+		else age = year - birthYear1;
 	}
 	document.getElementById("age").value=age;
 	if (age<18){		
@@ -132,24 +108,29 @@ function getAge() {
 function checkTest(radioid){
 	if(radioid == 1){    
 		document.getElementById('labTest').style.display = '';
-		document.getElementById('ns1').required = true;
+		document.getElementById('igmNegative').required = true;
     }
     else if(radioid == 2){  
         document.getElementById('labTest').style.display = 'none';
-        document.getElementById("ns1").checked = false;
-        document.getElementById("igm").checked = false;
-        document.getElementById("igg").checked = false;
-        document.getElementById('ns1').required = false;
+        document.getElementById("ns1Positive").checked = false;
+        document.getElementById("ns1Negative").checked = false;
+        document.getElementById("igmPositive").checked = false;
+        document.getElementById("igmNegative").checked = false;
+        document.getElementById("iggPositive").checked = false;
+        document.getElementById("iggNegative").checked = false;
+        document.getElementById('igmNegative').required = false;
     }   
 }
 function testRequired() {
-	if(document.getElementById("ns1").checked || document.getElementById("igm").checked || document.getElementById("igg").checked){
-    	document.getElementById('ns1').required = false;
+	if(document.getElementById("ns1Positive").checked || document.getElementById("ns1Negative").checked ||
+		document.getElementById("igmPositive").checked || document.getElementById("igmNegative").checked ||
+		document.getElementById("iggPositive").checked || document.getElementById("iggNegative").checked){
+    	document.getElementById('igmNegative').required = false;
     }else{
-    	document.getElementById('ns1').required = true;
+    	document.getElementById('igmNegative').required = true;
     }
 }
-function configure1(id1,id2,id3,id4,id5,id6,id7) {
+function configure1(id1,id2,id3,id4,id5,id6,id7) {	
 	switch (id1.value) {
 		case 'Nadankulam':id2.value = 'J/61';break;
 		case 'Colompuththurai East':id2.value = 'J/62';break;

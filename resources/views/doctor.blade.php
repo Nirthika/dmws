@@ -295,7 +295,6 @@
                                     <option value="Renny Dental &amp; Optical Service">Renny Dental &amp; Optical Service</option>
                                     <option value="Dental Surgery">Dental Surgery</option>
                                     <option value="Life Care Medi Cilinic">Life Care Medi Cilinic</option>
-                                    <option value="Renny Dental &amp; Optical Service">Renny Dental &amp; Optical Service</option>
                                     <option value="Suharni Hospital">Suharni Hospital</option>
                                 </select>
                                 
@@ -362,7 +361,6 @@
                                     <option value="Renny Dental &amp; Optical Service">Renny Dental &amp; Optical Service</option>
                                     <option value="Dental Surgery">Dental Surgery</option>
                                     <option value="Life Care Medi Cilinic">Life Care Medi Cilinic</option>
-                                    <option value="Renny Dental &amp; Optical Service">Renny Dental &amp; Optical Service</option>
                                     <option value="Suharni Hospital">Suharni Hospital</option>
                                 </select>
                                 
@@ -400,7 +398,6 @@
                                     <option value="Renny Dental &amp; Optical Service">Renny Dental &amp; Optical Service</option>
                                     <option value="Dental Surgery">Dental Surgery</option>
                                     <option value="Life Care Medi Cilinic">Life Care Medi Cilinic</option>
-                                    <option value="Renny Dental &amp; Optical Service">Renny Dental &amp; Optical Service</option>
                                     <option value="Suharni Hospital">Suharni Hospital</option>
                                 </select>
                                 
@@ -438,7 +435,6 @@
                                     <option value="Renny Dental &amp; Optical Service">Renny Dental &amp; Optical Service</option>
                                     <option value="Dental Surgery">Dental Surgery</option>
                                     <option value="Life Care Medi Cilinic">Life Care Medi Cilinic</option>
-                                    <option value="Renny Dental &amp; Optical Service">Renny Dental &amp; Optical Service</option>
                                     <option value="Suharni Hospital">Suharni Hospital</option>
                                 </select>
                                 
@@ -476,7 +472,6 @@
                                     <option value="Renny Dental &amp; Optical Service">Renny Dental &amp; Optical Service</option>
                                     <option value="Dental Surgery">Dental Surgery</option>
                                     <option value="Life Care Medi Cilinic">Life Care Medi Cilinic</option>
-                                    <option value="Renny Dental &amp; Optical Service">Renny Dental &amp; Optical Service</option>
                                     <option value="Suharni Hospital">Suharni Hospital</option>
                                 </select>
                                 

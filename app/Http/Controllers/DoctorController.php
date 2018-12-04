@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Doctor;
+use Auth;
 use App\User;
+use App\Doctor;
+use App\Patient;
+use App\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
-use Auth;
+use Illuminate\Support\Facades\Validator;
 
 class DoctorController extends Controller
 {
@@ -19,7 +21,19 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        return view('doctorHome');
+        $draftNotifications = Notification::where('notifications.userId', Auth::user()->id)
+                    ->where('notifications.status', 'draft')
+                    ->join('patients', 'patients.paId', '=', 'notifications.paId')
+                    ->select('patients.*', 'notifications.*')
+                    ->get();
+
+        $sentNotifications = Notification::where('notifications.userId', Auth::user()->id)
+                    ->where('notifications.status', 'sent')
+                    ->join('patients', 'patients.paId', '=', 'notifications.paId')
+                    ->select('patients.*', 'notifications.*')
+                    ->get();
+
+        return view('doctorHome', compact('draftNotifications', 'sentNotifications'));
     }
 
     /**

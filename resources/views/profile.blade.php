@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
 <script type="text/javascript"> 
     function selectProvince(id1,id2) {
         switch (id1.value) {

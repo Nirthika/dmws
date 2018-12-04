@@ -32,7 +32,7 @@
             <div class="container" style="padding-left: 2%; padding-right: 4%;">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="<?= asset('images/logo.png') ?>" alt="logo" height="8%" width="30%">
-                </a>
+                </a>                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -58,8 +58,8 @@
                                 <img src="/images/home.png" style="width:30px; height:32px; position:relative; border-radius:50%;">
                                 </a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <li class="nav-item dropdown" data-animations="fadeInDown fadeInRight fadeInUp fadeInLeft">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown" v-pre>
                                     <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:30px; height:32px; position:relative; border-radius:50%;">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>

@@ -1,7 +1,43 @@
 @extends('layouts.app')
 
 @section('content')
+<script type="text/javascript">
+    window.onload = myAlert;
+    function myAlert(){
+        var inp = document.getElementsByTagName('input');
+        for (var i = inp.length-1; i>=0; i--) {
+            if ('radio'===inp[i].type || 'checkbox'===inp[i].type) inp[i].checked = false;
+        }
+        govHospital.value = '';
+        pvtHospital.value = '';
+        diseaseGroupA.value = '';
+        diseaseGroupB.value = '';
+        resGSDivName.value = '';
+        resGSDiv.value = '';
+        resMOHArea.value = '';
+        resMOHArea.options.length = 1;
+        resPHIRange.value = '';
+        resPHIRange.options.length = 1;
+        curGSDivName.value = '';
+        curGSDiv.value = '';
+        curMOHArea.value = '';
+        curMOHArea.options.length = 1;
+        curPHIRange.value = '';
+        curPHIRange.options.length = 1;
+
+        document.getElementById("birthYear").value='';
+        document.getElementById("birthDate").value='';
+        document.getElementById("age").value=0;
+    }
+</script>
 <script src="{{ asset('js/h544.js') }}"></script>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../doctorHome" style="text-decoration: none;">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">H544</li>
+    </ol>
+</nav>
 
 <div class="container" style="margin-top: 3%">
     <div class="row justify-content-center">
@@ -70,8 +106,7 @@
                                                         <option value="Care &amp; Cure">Care &amp; Cure</option>
                                                         <option value="Renny Dental &amp; Optical Service">Renny Dental &amp; Optical Service</option>
                                                         <option value="Dental Surgery">Dental Surgery</option>
-                                                        <option value="Life Care Medi Cilinic">Life Care Medi Cilinic</option>
-                                                        <option value="Renny Dental &amp; Optical Service">Renny Dental &amp; Optical Service</option>
+                                                        <option value="Life Care Medi Cilinic">Life Care Medi Cilinic</option>                             
                                                         <option value="Suharni Hospital">Suharni Hospital</option>
                                                     </select>
                                                 </div>
@@ -217,7 +252,7 @@
                                             <div class="form-group row">
                                                 <label for="regOrBHTNo" class="col-sm-4 col-form-label">Registration/BHT No</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control{{ $errors->has('regOrBHTNo') ? ' is-invalid' : '' }}" id="regOrBHTNo" name="regOrBHTNo" value="{{ old('regOrBHTNo') }}" autofocus>
+                                                    <input type="text" class="form-control{{ $errors->has('regOrBHTNo') ? ' is-invalid' : '' }}" id="regOrBHTNo" name="regOrBHTNo" value="{{ old('regOrBHTNo') }}" required autofocus>
                                                 </div>
                                             </div>
                                         </td>
@@ -313,11 +348,11 @@
                                                 <label for="labResults" class="col-sm-4 col-form-label">Laboratory Results</label>
                                                 <div class="col-sm-7">
                                                     <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" id="available" name="labResults" class="custom-control-input{{ $errors->has('available') ? ' is-invalid' : '' }}" value="Available" required autofocus onclick="checkTest(1)">
+                                                        <input type="radio" id="available" name="labResults" class="custom-control-input{{ $errors->has('available') ? ' is-invalid' : '' }}" value="yes" required autofocus onclick="checkTest(1)">
                                                         <label class="custom-control-label" for="available">Available</label>
                                                     </div>
                                                     <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" id="notAvailable" name="labResults" class="custom-control-input{{ $errors->has('notAvailable') ? ' is-invalid' : '' }}" value="Not available" required autofocus onclick="checkTest(2)">
+                                                        <input type="radio" id="notAvailable" name="labResults" class="custom-control-input{{ $errors->has('notAvailable') ? ' is-invalid' : '' }}" value="no" required autofocus onclick="checkTest(2)">
                                                         <label class="custom-control-label" for="notAvailable">Not available</label>
                                                     </div>   
                                                 </div>
@@ -327,20 +362,40 @@
                                             <div class="form-group row" id="labTest" style="display: none;">
                                                 <label for="labTest" class="col-sm-4 col-form-label"></label>
                                                 <div class="col-md-8">
-                                                    <div class="custom-control custom-checkbox custom-control-inline">
-                                                        <input type="checkbox" id="ns1" class="custom-control-input{{ $errors->has('ns1') ? ' is-invalid' : '' }}" name="ns1" value="{{ old('ns1') }}" autofocus onclick="testRequired()">
-                                                        <label for="ns1" class="custom-control-label">NS-1 Positive</label>
+                                                    <div class="row" style="border: 1px solid #dee2e6; width: 99%">
+                                                        <div class="col-md-4" style="padding-left: 0.5%; padding-right: 0%; border-right: 1px solid #dee2e6;">
+                                                            <div class="custom-control custom-radio">
+                                                                <input type="radio" id="ns1Positive" name="ns1" class="custom-control-input{{ $errors->has('ns1Positive') ? ' is-invalid' : '' }}" value="positive" autofocus onclick="testRequired()">
+                                                                <label class="custom-control-label" for="ns1Positive">NS-1 Positive</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input type="radio" id="ns1Negative" name="ns1" class="custom-control-input{{ $errors->has('ns1Negative') ? ' is-invalid' : '' }}" value="negative" autofocus onclick="testRequired()">
+                                                                <label class="custom-control-label" for="ns1Negative">NS-1 Negative</label>
+                                                            </div>                                                     
+                                                        </div>
+                                                        <div class="col-md-4" style="padding-left: 1%; padding-right: 0%; border-right: 1px solid #dee2e6;">
+                                                            <div class="custom-control custom-radio">
+                                                                <input type="radio" id="igmPositive" name="igm" class="custom-control-input{{ $errors->has('igmPositive') ? ' is-invalid' : '' }}" value="positive" autofocus onclick="testRequired()">
+                                                                <label class="custom-control-label" for="igmPositive">IgM Positive</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input type="radio" id="igmNegative" name="igm" class="custom-control-input{{ $errors->has('igmNegative') ? ' is-invalid' : '' }}" value="negative" autofocus onclick="testRequired()">
+                                                                <label class="custom-control-label" for="igmNegative">IgM Negative</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4" style="padding-left: 1%; padding-right: 0%;">
+                                                            <div class="custom-control custom-radio">
+                                                                <input type="radio" id="iggPositive" name="igg" class="custom-control-input{{ $errors->has('iggPositive') ? ' is-invalid' : '' }}" value="positive" autofocus onclick="testRequired()">
+                                                                <label class="custom-control-label" for="iggPositive">IgG Positive</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input type="radio" id="iggNegative" name="igg" class="custom-control-input{{ $errors->has('iggNegative') ? ' is-invalid' : '' }}" value="negative" autofocus onclick="testRequired()">
+                                                                <label class="custom-control-label" for="iggNegative">IgG Negative</label>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="custom-control custom-checkbox custom-control-inline">
-                                                        <input type="checkbox" id="igm" class="custom-control-input{{ $errors->has('igm') ? ' is-invalid' : '' }}" name="igm" value="{{ old('igm') }}" autofocus onclick="testRequired()">
-                                                        <label for="igm" class="custom-control-label">IgM Positive</label>
-                                                    </div>
-                                                    <div class="custom-control custom-checkbox custom-control-inline">
-                                                        <input type="checkbox" id="igg" class="custom-control-input{{ $errors->has('igg') ? ' is-invalid' : '' }}" name="igg" value="{{ old('igg') }}" autofocus onclick="testRequired()">
-                                                        <label for="igg" class="custom-control-label">IgG Positive</label>
-                                                    </div>
-                                                    <small id="labTestAlert" class="form-text text-muted">Please Select Atleast One Test</small>
-                                                </div>                                                        
+                                                <small id="labTestAlert" class="form-text text-muted">Please Select Atleast One Test</small>                                            
+                                                </div> 
                                             </div>
                                         </td>
                                     </tr>
@@ -836,8 +891,10 @@
                                         <td style="padding-top: 0%; padding-bottom: 0%;">
                                             <div class="form-group row mb-0">
                                                 <div class="offset-md-8">
-                                                    <input class="btn btn-primary" type="button" name="save" value="Save">&ensp;&ensp;
-                                                    <button type="submit" name="submit" class="btn btn-primary">Send</button>
+                                                    <!-- <input class="btn btn-primary" type="button" name="save" value="Save"> -->
+                                                    <button type="submit" name="save" class="btn btn-primary">Save</button>
+                                                    &ensp;&ensp;
+                                                    <button type="submit" name="send" class="btn btn-primary">Send</button>
                                                 </div>
                                             </div>
                                         </td>

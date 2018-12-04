@@ -222,6 +222,7 @@ INSERT INTO `rDHSes` (`userId`, `insName`, `firstName`, `lastName`, `gender`, `r
 CREATE TABLE `patients` (
   `paId` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(10) UNSIGNED NOT NULL,
+  `institute` varchar(35) NOT NULL,
   `insName` varchar(35) NOT NULL,
   `firstName` text NOT NULL,
   `lastName` text NOT NULL,
@@ -247,6 +248,7 @@ CREATE TABLE `patients` (
   `resMOHArea` text NOT NULL,
   `resPHIRange` text NOT NULL,
   `resLandmark` text NOT NULL,
+  `sameAddress` text,
   `curAddLine1` text NOT NULL,
   `curAddLine2` text,
   `curGSDivName` text,
@@ -266,37 +268,43 @@ CREATE TABLE `patients` (
   CONSTRAINT pa_user_id FOREIGN KEY (userId) REFERENCES users(id) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `patients` (`paId`, `userId`, `insName`, `firstName`, `lastName`, `nickName`, `nICNum`, `gender`, `birthDate`, `birthYear`, `age`, `nextOfKinFirstName`, `nextOfKinLastName`, `childGuardian`, `childGuardianFirstName`, `childGuardianLastName`, `ethnicGroup`, `resAddLine1`, `resAddLine2`, `resGSDivName`, `resGSDiv`, `resDSDiv`, `resDistrict`, `resProvince`, `resMOHArea`, `resPHIRange`, `resLandmark`, `curAddLine1`, `curAddLine2`, `curGSDivName`, `curGSDiv`, `curDSDiv`, `curDistrict`, `curProvince`, `curMOHArea`, `curPHIRange`, `curLandmark`, `contactNoMobile`, `contactNoHome`, `visitArea`) VALUES
-(1, 1, 'Nagaa Medical Centre', 'Singh', 'Mahi', '', '851382783V', 'Male', '0000-00-00', 0, 18, 'Priyanka', 'Dhoni', '', '', '', '', '23 Navalar Road', '-', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '23 Navalar Road', '-', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '', '0212219947',''),
-(2, 1, 'Renny Dental and Optical Service', 'Dhoni', 'Rajendran', '', '878382783V', 'Male', '2014-01-16', 0, 3, 'Priyanka', 'Dhoni', '', '', '', '', '23 Navalar Road', '-', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '23 Navalar Road', '-', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '', '0212219947',''),
-(3, 1, 'Nagaa Medical Centre', 'Shadshi', 'Sai', 'Shan', '845468783V', 'Female', '2015-01-06', 0, 2, '', '', 'Mother', 'Shan', 'Sri', '', '67, Palam Road', 'Kandarmadam', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '67, Palam Road', 'Kandarmadam', '-', '-', 'Jaffna', 'Northern', '', '', '', 'Infront of Navalar Cultural Hall', '077 177 1134', '', '');
+INSERT INTO `patients` (`paId`, `userId`, `institute`, `insName`, `firstName`, `lastName`, `nickName`, `nICNum`, `gender`, `birthDate`, `birthYear`, `age`, `nextOfKinFirstName`, `nextOfKinLastName`, `childGuardian`, `childGuardianFirstName`, `childGuardianLastName`, `ethnicGroup`, `resAddLine1`, `resAddLine2`, `resGSDivName`, `resGSDiv`, `resDSDiv`, `resDistrict`, `resProvince`, `resMOHArea`, `resPHIRange`, `resLandmark`, `sameAddress`, `curAddLine1`, `curAddLine2`, `curGSDivName`, `curGSDiv`, `curDSDiv`, `curDistrict`, `curProvince`, `curMOHArea`, `curPHIRange`, `curLandmark`, `contactNoMobile`, `contactNoHome`, `visitArea`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Private', 'Nagaa Medical Centre', 'Singh', 'Mahi', '', '851382783V', 'Male', '0000-00-00', 2000, 18, 'Priyanka', 'Dhoni', '', '', '', '', '23 Navalar Road', '', 'Gurunagar West', 'J/71', 'Jaffna', 'Jaffna', 'Northern', 'Kopay', 'Puttur', 'Infront of Navalar Cultural Hall', 'yes', '23 Navalar Road', '', 'Gurunagar West', 'J/71', 'Jaffna', 'Jaffna', 'Northern', 'Kopay', 'Puttur', 'Infront of Navalar Cultural Hall', '0771546238', '0212219947', '', NULL, NULL),
+(2, 12, 'Private', 'Renny Dental and Optical Service', 'Dhoni', 'Rajendran', '', '878382783V', 'Male', '2014-01-16', 0, 3, 'Priyanka', 'Dhoni', '', '', '', '', '23 Navalar Road', '', 'Fort', 'J/81', 'Jaffna', 'Jaffna', 'Northern', 'Nallur', 'Nallur', 'Infront of Navalar Cultural Hall', 'yes', '23 Navalar Road', '', 'Fort', 'J/81', 'Jaffna', 'Jaffna', 'Northern', 'Nallur', 'Nallur', 'Infront of Navalar Cultural Hall', '0764851289', '0212219947', '', NULL, NULL),
+(3, 1, 'Private', 'Nagaa Medical Centre', 'Shadshi', 'Sai', 'Shan', '845468783V', 'Female', '2015-01-06', 0, 2, '', '', 'Mother', 'Shan', 'Sri', '', '67, Palam Road', 'Kandarmadam', 'Nallur North', 'J/106', 'Nallur', 'Jaffna', 'Northern', 'Jaffna', 'Bazaar I', 'Infront of Navalar Cultural Hall', 'no', '67, Palam Road', '', 'Kodday', 'J/83', 'Jaffna', 'Jaffna', 'Northern', 'Kayts', 'Velanai', 'Infront of Navalar Cultural Hall', '0771771134', '0212221546', '', NULL, NULL),
+(4, 1, 'Government', 'Jaffna Teaching Hospital', 'Asha', 'Sam', NULL, '200465675675', 'Female', '2010-11-08', NULL, 8, NULL, NULL, 'Mother', 'Thana', 'Siththath', NULL, '3 Vembadi Road', NULL, 'Colompuththurai East', 'J/62', 'Jaffna', 'Jaffna', 'Northern', 'Point Pedro', 'Thondaimanaru', 'School', NULL, '4 Rakka Road', NULL, 'Gurunagar West', 'J/71', 'Jaffna', 'Jaffna', 'Northern', 'Tellippalai', 'Mallakam', 'Library', '0777152436', '0212214551', NULL, '2018-11-27 01:30:54', '2018-11-27 01:30:54');
 
 CREATE TABLE `notifications` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(10) UNSIGNED NOT NULL,
-  `insName` varchar(35) NOT NULL,
   `paId` int(11) NOT NULL,
+  `status` varchar(10) NOT NULL,
+  `institute` varchar(35) NOT NULL,
+  `insName` varchar(35) NOT NULL,
   `diseaseGroup` text NOT NULL,
   `diseaseName` text NOT NULL,
   `onsetDate` date NOT NULL,
   `admissionDate` date NOT NULL,
-  `regOrBHTNo` text,
+  `regOrBHTNo` varchar(20) NOT NULL,
   `ward` text,
+  `labResults` text NOT NULL,
   `ns1` text,
   `igm` text,
-  `igg` text NOT NULL,
+  `igg` text,
   `designation` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `noti_regOrBHTNo_unique` (`regOrBHTNo`),
   CONSTRAINT noti_user_id FOREIGN KEY (userId) REFERENCES users(id) ON UPDATE CASCADE,
   CONSTRAINT noti_pa_id FOREIGN KEY (paId) REFERENCES patients(paId) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-INSERT INTO `notifications` (`id`, `userId`, `insName`, `paId`, `diseaseGroup`, `diseaseName`, `onsetDate`, `admissionDate`, `regOrBHTNo`, `ward`, `ns1`, `igm`, `igg`, `designation`) VALUES
-(29, 1, 'Nagaa Medical Centre', 1, 'Group A', 'Plague', '2017-01-03', '2017-01-13', 'BHT23', '', 'yes', '', '', 'Option 1'),
-(31, 1, 'Renny Dental and Optical Service', 2, 'Group B', 'Severe Acute Respiratory Syndrome (SARS)', '2017-01-02', '2017-01-12', 'JTH70084', '14', 'yes', 'yes', '', 'Option 1'),
-(32, 1, 'Nagaa Medical Centre', 3, 'Group A', 'Plague', '2015-01-13', '2015-01-14', 'BHT10', '', 'yes', 'yes', '', 'Consultant Physician');
+INSERT INTO `notifications` (`id`, `userId`, `paId`, `status`, `institute`, `insName`, `diseaseGroup`, `diseaseName`, `onsetDate`, `admissionDate`, `regOrBHTNo`, `ward`, `labResults`, `ns1`, `igm`, `igg`, `designation`) VALUES
+(1, 1, 1, 'draft', 'Private', 'Nagaa Medical Centre', 'Group A', 'Plague', '2017-01-03', '2017-01-13', 'BHT23', '', 'yes', 'positive', '', 'negative', 'General Physician'),
+(2, 1, 2, 'sent', 'Private', 'Renny Dental and Optical Service', 'Group B', 'Severe Acute Respiratory Syndrome (SARS)', '2017-01-02', '2017-01-12', 'JTH70084', '14', 'no', '', '', '', 'Physician'),
+(3, 1, 3, 'sent', 'Private', 'Nagaa Medical Centre', 'Group A', 'Plague', '2015-01-13', '2015-01-14', 'BHT10', '', 'yes', 'positive', 'negative', '', 'Consultant Physician'),
+(4, 1, 4, 'draft', 'Government', 'Jaffna Teaching Hospital', 'Group B', 'Dengue Fever/ Dengue Haemorragic Fever', '2018-11-07', '2018-11-14', 'BHT11', NULL, 'yes', NULL, NULL, 'positive', 'Consultant Physician');
 
 CREATE TABLE `h411as` (
   `notifyId` int(11) NOT NULL AUTO_INCREMENT,

@@ -190,9 +190,14 @@ class UserController extends Controller
     {
         $user = User::find($id);
         
+        $this->validate($request,[
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
+        ]);
+
         if($request->has('editUserDetails')){
-            if($request->has('name')) $user->name = $request->name;
-            if($request->has('email')) $user->email = $request->email;
+            $user->name = $request->name;
+            $user->email = $request->email;
             if($request->hasFile('avatar')){
                 $avatar = $request->file('avatar');
                 $filename = time() . '.' . $avatar->getClientOriginalExtension();
@@ -222,9 +227,8 @@ class UserController extends Controller
 
         if($request->has('editDetails')){
 
-        }
-        
-        return redirect()->back()->with("success","Changed successfully !");
+        }        
+        return redirect()->back()->with("success","Changed successfully!");
     }
 
     /**

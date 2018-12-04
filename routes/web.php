@@ -31,9 +31,6 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 	Route::get('/rDHSHome', 'RDHSController@index');
 	Route::get('/doctorHome', 'DoctorController@index');
 
-	Route::get('/form/h544', function () {
-	    return view('form/h544');
-	});
 	Route::get('/form/h399', function () {
 	    return view('form/h399');
 	});
@@ -51,13 +48,15 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 	Route::get('/form/h411a', 'H411aController@getMOHAreaAndRegNo');
 	Route::get('/officers', 'UserController@getOfficersDetails');
 	
-	Route::get('/myHome', 'HomeController@goToMyHome');
+	Route::get('/myHome', 'HomeController@goToMyHome');	
+
+	Route::resource('eU','EUController');
+	Route::resource('mOH','MOHController');
+	Route::resource('pHI','PHIController');
+	Route::resource('rDHS','RDHSController');
+	Route::resource('doctor','DoctorController');
+	Route::resource('h544','H544Controller');
+	Route::resource('h411a','H411aController');
 });
 
-Route::resource('eU','EUController');
-Route::resource('mOH','MOHController');
-Route::resource('pHI','PHIController');
-Route::resource('rDHS','RDHSController');
-Route::resource('doctor','DoctorController');
-Route::resource('h544','H544Controller');
-Route::resource('h411a','H411aController');
+
