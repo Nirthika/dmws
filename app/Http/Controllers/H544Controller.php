@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use App\Patient;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Notification;
+use App\Patient;
 use App\Doctor;
 use App\User;
 use Auth;
@@ -44,7 +44,7 @@ class H544Controller extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Get a validator for an incoming request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator

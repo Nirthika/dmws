@@ -14,6 +14,6 @@ class H411a extends Model
      * @var array
      */   
     protected $fillable = [
-        'notifyId', 'rDHSDiv', 'notifiedDisease', 'mOHArea', 'notificationDate', 'mOHRegNo', 'confirmedDisease', 'birthDate', 'birthYear', 'age', 'confirmationDate', 'gender', 'confirmedBy', 'occupation', 'sourceOfNotify', 'natureOfConf', 'officeUseOnly', 'specify',
+        'rDHSDiv', 'notifiedDisease', 'mOHArea', 'notificationDate', 'mOHRegNo', 'confirmedDisease', 'birthDate', 'birthYear', 'age', 'confirmationDate', 'gender', 'confirmedBy', 'occupation', 'sourceOfNotify', 'natureOfConf', 'officeUseOnly', 'specify',
     ];
 }

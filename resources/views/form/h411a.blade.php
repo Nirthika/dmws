@@ -3,6 +3,13 @@
 @section('content')
 <script src="{{ asset('js/h411a.js') }}"></script>
 
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../mOHHome" style="text-decoration: none;">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">H411a</li>
+    </ol>
+</nav>
+
 <div class="container" style="margin-top: 3%">
     <div class="row justify-content-center">
         <div class="col-md-11">
@@ -30,14 +37,7 @@
                                             <div class="form-group row">
                                                 <label for="rDHSDiv" class="col-sm-4 col-form-label">RDHS Division</label>
                                                 <div class="col-sm-7">
-                                                    <select id="rDHSDiv" name="rDHSDiv" class="form-control{{ $errors->has('rDHSDiv') ? ' is-invalid' : '' }}" value="{{ old('rDHSDiv') }}" required autofocus>
-                                                        <option value="" disabled selected>Select a Division</option>
-                                                        <option value="Jaffna">Jaffna</option>
-                                                        <option value="Kilinochchi">Kilinochchi</option>
-                                                        <option value="Mannar">Mannar</option>
-                                                        <option value="Vavuniya">Vavuniya</option>
-                                                        <option value="Mullaitivu">Mullaitivu</option>
-                                                    </select>
+                                                    <input type="text" class="form-control{{ $errors->has('rDHSDiv') ? ' is-invalid' : '' }}" id="rDHSDiv" name="rDHSDiv" value="{{ old('rDHSDiv') }}" required autofocus>
                                                 </div>
                                             </div>
                                         </td>
@@ -54,7 +54,7 @@
                                                         <option value="Dysentery">Dysentery</option>
                                                         <option value="Encephalitis (including Japanese Encephalitis)">Encephalitis (including Japanese Encephalitis)</option>
                                                         <option value="Enteric Fever">Enteric Fever</option>
-                                                        <option value="Food">Food</option>
+                                                        <option value="Food Poisoning">Food Poisoning</option>
                                                         <option value="Human Rabies">Human Rabies</option>
                                                         <option value="Leptospirosis">Leptospirosis</option>
                                                         <option value="Malaria">Malaria</option>
@@ -119,7 +119,7 @@
                                                         <option value="Dysentery">Dysentery</option>
                                                         <option value="Encephalitis (including Japanese Encephalitis)">Encephalitis (including Japanese Encephalitis)</option>
                                                         <option value="Enteric Fever">Enteric Fever</option>
-                                                        <option value="Food">Food</option>
+                                                        <option value="Food Poisoning">Food Poisoning</option>
                                                         <option value="Human Rabies">Human Rabies</option>
                                                         <option value="Leptospirosis">Leptospirosis</option>
                                                         <option value="Malaria">Malaria</option>
@@ -335,9 +335,10 @@
                                         </td>
                                         <td style="padding-top: 0%; padding-bottom: 0%;">
                                             <div class="form-group row mb-0">
-                                                <div class="offset-md-8">
-                                                    <input class="btn btn-primary" type="button" name="save" value="Save">&ensp;&ensp;
-                                                    <button type="submit" name="submit" class="btn btn-primary">Send</button>
+                                                <div class="offset-md-8">                               
+                                                    <button type="submit" name="save" class="btn btn-primary">Save</button>
+                                                    &ensp;&ensp;
+                                                    <button type="submit" name="send" class="btn btn-primary">Send</button>
                                                 </div>
                                             </div>
                                         </td>

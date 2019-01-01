@@ -173,7 +173,7 @@ class UserController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [          
+        return Validator::make($data, [
             'newPassword' => 'required|min:6',
             'confirmPassword' => 'required|same:newPassword',
         ]);
@@ -189,13 +189,13 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        
-        $this->validate($request,[
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
-        ]);
 
         if($request->has('editUserDetails')){
+            $this->validate($request,[
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
+            ]);
+
             $user->name = $request->name;
             $user->email = $request->email;
             if($request->hasFile('avatar')){

@@ -26,9 +26,11 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th scope="row">2</th>
+                                            <th scope="row">1</th>
                                             <td>Jerry Yang David Filo Mark Antony</td>
-                                            <td><a href="{{ url('/form/view/id') }}" style="text-decoration: none;"><button>View</button></a></td>
+                                            <td>
+                                                <a href="" class="btn-link" style="text-decoration: none;">View</a>
+                                            </td>
                                             <td>1997-07-16 &ensp; 19:20+01:00</td>
                                         </tr>
                                     </tbody>

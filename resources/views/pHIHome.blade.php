@@ -17,7 +17,7 @@
                     <div class="card">
                         <div class="card-body" style="padding-top: 2%; padding-bottom: 1%">
                             <p style="float: left;">Communicable Disease Report - Part I</p>
-                            <a href="{{ url('/form/h411') }}" style="text-decoration: none; float: right;"><button>H411</button></a>
+                            <a href="{{ url('/form/h411') }}" style="text-decoration: none; float: right;"><button class="btn btn-primary">H411</button></a>
                         </div>
                     </div>
                 </div>
@@ -31,16 +31,18 @@
                                             <th scope="col">Id</th>
                                             <th scope="col">Form</th>
                                             <th scope="col">Edit</th>
-                                            <th scope="col">Send</th>
+                                            <th scope="col">Date&Time</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <th scope="row">2</th>
                                             <td>Jerry Yang David Filo Mark Antony</td>
-                                            <td><a href="{{ url('/form/edit/id') }}" style="text-decoration: none;"><button>Edit</button></a></td>
-                                            <td><a href="{{ url('/form/send') }}" style="text-decoration: none;"><button>Send</button></a></td>
-                                        </tr>
+                                            <td>
+                                                <a href="" class="btn-link" style="text-decoration: none;">Edit</a>
+                                            </td>
+                                            <td>1997-07-16 &ensp; 19:20+01:00</td>
+                                        </tr> 
                                     </tbody>
                                 </table>
                             </div>                                
@@ -58,14 +60,24 @@
                                             <th scope="col">Form</th>
                                             <th scope="col">View</th>
                                             <th scope="col">Date&Time</th>
+                                            <th scope="col">Delete for Everyone</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th scope="row">1</th>
+                                            <th scope="row">2</th>
                                             <td>Jerry Yang David Filo Mark Antony</td>
-                                            <td><a href="{{ url('/form/view/id') }}" style="text-decoration: none;"><button>View</button></a></td>
+                                            <td>
+                                                <a href="" class="btn-link" style="text-decoration: none;">View</a>
+                                            </td>
                                             <td>1997-07-16 &ensp; 19:20+01:00</td>
+                                            <td>
+                                                <form method="POST" action="">
+                                                    @csrf
+                                                    <input name="_method" type="hidden" value="DELETE">
+                                                    <button class="btn btn-link" type="submit">Delete</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

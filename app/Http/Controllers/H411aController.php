@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use App\MOH;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\H411a;
 use App\User;
+use App\MOH;
 use Auth;
 
 class H411aController extends Controller
@@ -15,10 +15,10 @@ class H411aController extends Controller
     /**
      * Constructor
      */
-    public function __construct(User $user ,MOH $moh)
+    public function __construct(User $user ,MOH $mOH)
     {       
         $this->user = $user;
-        $this->moh = $moh;       
+        $this->mOH = $mOH;       
     }
 
     /**
@@ -28,8 +28,8 @@ class H411aController extends Controller
      */
     public function getMOHAreaAndRegNo()
     {
-        $mOHArea=$this->moh->where('userId',Auth::user()->id)->first()->mOHArea;
-        $mOHRegNo=$this->moh->where('userId',Auth::user()->id)->first()->mOHRegNo;
+        $mOHArea=$this->mOH->where('userId',Auth::user()->id)->first()->mOHArea;
+        $mOHRegNo=$this->mOH->where('userId',Auth::user()->id)->first()->mOHRegNo;
         return view('/form/h411a', compact('mOHArea','mOHRegNo'));
     }
 
@@ -83,15 +83,17 @@ class H411aController extends Controller
         } else {
             $h411a = new H411a;
             $h411a->rDHSDiv=$request->rDHSDiv;
-            $h411a->notifiedDisease=$request->notifiedDisease;
             $h411a->mOHArea=$request->mOHArea;
-            $h411a->notificationDate=$request->notificationDate;
             $h411a->mOHRegNo=$request->mOHRegNo;
+            if ($request->has('save')) $h411a->status='draft';
+            if ($request->has('send')) $h411a->status='sent';
+            $h411a->notifiedDisease=$request->notifiedDisease;
+            $h411a->notificationDate=$request->notificationDate;
             $h411a->confirmedDisease=$request->confirmedDisease;
+            $h411a->confirmationDate=$request->confirmationDate;
             $h411a->birthDate=$request->birthDate;
             $h411a->birthYear=$request->birthYear;
             $h411a->age=$request->age;
-            $h411a->confirmationDate=$request->confirmationDate;
             $h411a->gender=$request->gender;
             $h411a->confirmedBy=$request->confirmedBy;
             $h411a->occupation=$request->occupation;
@@ -105,7 +107,8 @@ class H411aController extends Controller
             }   
             $h411a->save();
 
-            return redirect("home");
+            if ($request->has('save')) return redirect("mOHHome")->with('success', 'Data has been saved successfully!');
+            if ($request->has('send')) return redirect("mOHHome")->with('success', 'Data has been sent successfully!');
         }
     }
 

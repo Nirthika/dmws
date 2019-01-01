@@ -33,19 +33,17 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
 	Route::get('/form/h399', function () {
 	    return view('form/h399');
+	});	
+	Route::get('/informing', function () {
+	    return view('informing');
 	});
-	Route::get('/form/h411', function () {
-	    return view('form/h411');
-	});
-	Route::get('/form/h411a', function () {
-	    return view('form/h411a');
-	});
-	Route::get('/officers', function () {
-	    return view('officers');
+	Route::get('/alerting', function () {
+	    return view('alerting');
 	});
 
 	Route::get('/form/h544', 'H544Controller@getDesignation');
 	Route::get('/form/h411a', 'H411aController@getMOHAreaAndRegNo');
+	Route::get('/form/h411', 'H411Controller@getPHIRangeAndRegNo');
 	Route::get('/officers', 'UserController@getOfficersDetails');
 	
 	Route::get('/myHome', 'HomeController@goToMyHome');	
@@ -57,6 +55,5 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 	Route::resource('doctor','DoctorController');
 	Route::resource('h544','H544Controller');
 	Route::resource('h411a','H411aController');
+	Route::resource('h411','H411Controller');
 });
-
-

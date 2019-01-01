@@ -33,18 +33,18 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `status`, `userType`, `avatar`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Kumanan', 'mtkumanan@yahoo.com', '$2y$12$ybpe2QK87LagtZHquUDcvuZMNBtwWBpGKxYIA7Ts34P6gV34baily', 'yes', 'Doctor', '1540277098.jpg', '', '', ''),
+(1, 'Kumanan', 'doctor@gmail.com', '$2y$10$2tagz5OobtE/lOY5qkhZBuWK1xdM.hDiknTu2zCt4wRi9act4gDxi', 'yes', 'Doctor', '1540277098.jpg', '', '', ''),
 (2, 'Ghetheeswaran', 'ghethees@gmail.com', '$2y$12$7RD1ZpFg/knWsLjFp2KDR.8iWKCVnk5b8PTm/06GvfT6h/vatdGfu', 'no', 'Doctor', 'default.jpg', '', '', ''),
-(3, 'Raveendran', 'raveen@gmail.com', '$2y$12$r8rreG5eEgn0vKTdQVIMxOni0IrgX8WszYtOV/CDfPYZQBIzAgykS', 'yes', 'MOH', '1540277005.jpg', '', '', ''),
+(3, 'Raveendran', 'moh@gmail.com', '$2y$10$Qt/.iVh8EBP02e5BB/aloOO5EuOao3lkF4Fkb.3tPET7vGWMxMlqG', 'yes', 'MOH', '1540277005.jpg', '', '', ''),
 (4, 'Balendran', 'balen@gmail.com', '$2y$12$dYmkxG.mARGnWjyy8vSyyO6eug3tCq7eEe.YtRYKwfxlbiNqueitC', 'no', 'MOH', 'default.jpg', '', '', ''),
-(5, 'Indrajith', 'indrajith@gmail.com', '$2y$12$lML42/xB9v1ELsYa.9JnbOk/wxxM5vep/pls2YRkrYNW2usrv82QW', 'yes', 'PHI', '1540277331.png', '', '', ''),
+(5, 'Shama', 'phi@gmail.com', '$2y$10$pAwCe0evyICnxz9HBaIiAe4v2DcQYUBsg0idVmxmLvJorKveZrEOS', 'yes', 'PHI', '1540277331.png', '', '', ''),
 (7, 'Haran', 'haran@gmail.com', '$2y$12$3fnMD9/k4s9p1AmfHxRZvuMTTF6q.kU5CSrIcPjMXRFoyxlWC8JX.', 'no', 'PHI', 'default.jpg', '', '', ''),
-(8, 'Naven', 'naven@gmail.com', '$2y$12$9bCKxO3Kh1fR00jBQTxEK.NM5UwFAwnpKCZtNO.ROt3Bais48IW8e', 'yes', 'RDHS', '1540277198.jpg', '', '', ''),
+(8, 'Naven', 'rdhs@gmail.com', '$2y$10$lViSisuAKCHGKvyXpiCFJOIqfzldvUbe2tn/HVuRCSMgZyHkin76q', 'yes', 'RDHS', '1540277198.jpg', '', '', ''),
 (9, 'Suren', 'suren@gmail.com', '$2y$12$yVweuA4ocGzMxg3nfF2jgOuYOL2IGPRPnp6YqHP07ph13LtIO4pPu', 'no', 'RDHS', 'default.jpg', '', '', ''),
-(10, 'Pavan', 'pavan@gmail.com', '$2y$12$p7DylnJuDrxsSy4M2/7qbuObIxRJY7gbgCA3Ya0sgYZNablASXXn2', 'yes', 'EU', '1540277577.png', '', '', ''),
+(10, 'Pavan', 'eu@gmail.com', '$2y$10$nvTBeKN3yIdq1iEyUrYAAeg8xH8quHWzE2o6i5c3P7tpVV1hMTFOK', 'yes', 'EU', '1540277577.png', '', '', ''),
 (11, 'Sri', 'sri@gmail.com', '$2y$12$yzlEK1Dv9apR1wVvEBj/7OQOYfdhP0v/cK7WcYGBNlFxjBhvpTXFi', 'no', 'EU', 'default.jpg', '', '', ''),
-(12, 'Peranantharajah', 'peranantharajah@gmail.com', '$2y$12$oV775socXzmOJ3b5r0L8feSS2dmKkQOZfJSNElt3QxQBGWobU1yCa', 'yes', 'Doctor', '1540277714.jpg', '', '', ''),
-(13, 'Sivansuthan', 'suthan@gmail.com', '$2y$12$SLgdtrEQbMjnn4fDKoQ9LeqM93hjuq8HdF/KFMhM8wbUcP.Tq4KSC', 'no', 'Doctor', 'default.jpg', '', '', '');
+(12, 'Peranantharajah', 'peranantharajah@gmail.com', '$2y$10$ebIfQDmd1.yUexj/MpugUuV7LOGsknyxtpKyIubmnQczBSSQ128wq', 'yes', 'Doctor', '1540277714.jpg', '', '', ''),
+(13, 'Sivansuthan', 'suthan@gmail.com', '$2y$10$ozBAtnAgWybMYDGaI6izX.P2Z5Km6FlYdB05IhzVR5cP3vVt9pif6', 'no', 'Doctor', 'default.jpg', '', '', '');
 
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
@@ -100,12 +100,91 @@ INSERT INTO `institutes` (`insName`, `insType`, `addLine1`, `addLine2`, `provinc
 ('Sujeeva Hospital', 'Private', '', NULL, '', '', '', ''),
 ('Sunrise Medi Clinic', 'Private', '', NULL, '', '', '', '');
 
+CREATE TABLE `pHIInMOHs` (
+  `pHIRange` varchar(40) NOT NULL,
+  `mOHArea` text NOT NULL,
+  PRIMARY KEY (`pHIRange`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `pHIInMOHs` (`pHIRange`, `mOHArea`) VALUES
+('Arali', 'Chankanai'),
+('Chankanai', 'Chankanai'),
+('Chulipuram', 'Chankanai'),
+('Moolai', 'Chankanai'),
+('Sithankeny', 'Chankanai'),
+('Vaddukoddai', 'Chankanai'),
+('Eluthumadduval', 'Chavakachcheri'),
+('Kaithady', 'Chavakachcheri'),
+('Kodikamam', 'Chavakachcheri'),
+('Madduvil', 'Chavakachcheri'),
+('Manthuvil', 'Chavakachcheri'),
+('Meesalai', 'Chavakachcheri'),
+('Navatkuli', 'Chavakachcheri'),
+('Sarasalai', 'Chavakachcheri'),
+('UCI', 'Chavakachcheri'),
+('UCII', 'Chavakachcheri'),
+('Varani', 'Chavakachcheri'),
+('Ariyalai', 'Jaffna'),
+('Bazaar I', 'Jaffna'),
+('Bazaar II', 'Jaffna'),
+('Columbuthurai', 'Jaffna'),
+('Gurunagar I', 'Jaffna'),
+('Gurunagar II', 'Jaffna'),
+('Vannar Pannai', 'Jaffna'),
+('Alvai II', 'Karaveddy'),
+('Karanavai', 'Karaveddy'),
+('Nelliyady', 'Karaveddy'),
+('Thunnalai', 'Karaveddy'),
+('Udupiddy', 'Karaveddy'),
+('Allaipiddy', 'Kayts'),
+('Delft', 'Kayts'),
+('Karainagar', 'Kayts'),
+('Kayts', 'Kayts'),
+('Nainathivu', 'Kayts'),
+('Punguduthivu', 'Kayts'),
+('Velanai', 'Kayts'),
+('Atchuvely I', 'Kopay'),
+('Atchuvely II', 'Kopay'),
+('Irupalai', 'Kopay'),
+('Kopay', 'Kopay'),
+('Puttur', 'Kopay'),
+('Siruppiddy', 'Kopay'),
+('Urumpirai', 'Kopay'),
+('Kokuvil I', 'Nallur'),
+('Kokuvil II', 'Nallur'),
+('Kondavil', 'Nallur'),
+('Nallur', 'Nallur'),
+('Ampan', 'Point Pedro'),
+('Chempiyanpattu', 'Point Pedro'),
+('Point Pedro I', 'Point Pedro'),
+('Point Pedro II', 'Point Pedro'),
+('Puloly', 'Point Pedro'),
+('Thondaimanaru', 'Point Pedro'),
+('Uduthurai', 'Point Pedro'),
+('Valvettithurai', 'Point Pedro'),
+('Anaikkodai', 'Sandilipay'),
+('Ilavalai', 'Sandilipay'),
+('Manipay', 'Sandilipay'),
+('Navaly', 'Sandilipay'),
+('Pandertharrippu', 'Sandilipay'),
+('Sandilipay', 'Sandilipay'),
+('Suthumalai', 'Sandilipay'),
+('Alaveddy', 'Tellippalai'),
+('Mallakam', 'Tellippalai'),
+('Tellippalai', 'Tellippalai'),
+('Chunakam I', 'Uduvil'),
+('Chunakam II', 'Uduvil'),
+('Erlalai', 'Uduvil'),
+('Inuvil', 'Uduvil'),
+('Punnalaikadduvan', 'Uduvil'),
+('Uduvil', 'Uduvil');
+
 CREATE TABLE `doctors` (
   `userId` int(10) UNSIGNED NOT NULL,
   `firstName` text NOT NULL,
   `lastName` text NOT NULL,
   `gender` text NOT NULL,
-  `doctorRegNo` varchar(8) NOT NULL,
+  `doctorRegNo` varchar(10) NOT NULL,
   `designation` text NOT NULL,
   `addLine1` text NOT NULL,
   `addLine2` text,
@@ -134,7 +213,7 @@ CREATE TABLE `eUs` (
   `firstName` text NOT NULL,
   `lastName` text NOT NULL,
   `gender` text NOT NULL,
-  `eUDiv` varchar(8) NOT NULL,
+  `eUDiv` varchar(10) NOT NULL,
   `addLine1` text NOT NULL,
   `addLine2` text,
   `district` text NOT NULL,
@@ -157,7 +236,7 @@ CREATE TABLE `mOHs` (
   `firstName` text NOT NULL,
   `lastName` text NOT NULL,
   `gender` text NOT NULL,
-  `mOHRegNo` varchar(8) NOT NULL,
+  `mOHRegNo` varchar(10) NOT NULL,
   `mOHArea` text NOT NULL,
   `addLine1` text NOT NULL,
   `addLine2` text,
@@ -180,7 +259,7 @@ CREATE TABLE `pHIs` (
   `firstName` text NOT NULL,
   `lastName` text NOT NULL,
   `gender` text NOT NULL,
-  `pHIRegNo` varchar(8) NOT NULL,
+  `pHIRegNo` varchar(10) NOT NULL,
   `pHIRange` text NOT NULL,
   `addLine1` text NOT NULL,
   `addLine2` text,
@@ -195,7 +274,7 @@ CREATE TABLE `pHIs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `pHIs` (`userId`, `insName`, `firstName`, `lastName`, `gender`, `pHIRegNo`, `pHIRange`, `addLine1`, `addLine2`, `province`, `district`, `contactNoOffice`, `contactNoMobile`) VALUES
-(5, 'Jaffna Teaching Hospital', 'Udaya', 'Indrajith', 'Male', 'JPHI101', 'Nallur', '2 Udhaya Vasa', 'Browm Rd', 'Northern', 'Jaffna', '7868473645', '021 2227272');
+(5, 'Jaffna Teaching Hospital', 'Sam', 'Shama', 'Female', 'JPHI101', 'Nallur', '2 Udhaya Vasa', 'Browm Rd', 'Northern', 'Jaffna', '7868473645', '021 2227272');
 
 CREATE TABLE `rDHSes` (
   `userId` int(10) UNSIGNED NOT NULL,
@@ -203,7 +282,7 @@ CREATE TABLE `rDHSes` (
   `firstName` text NOT NULL,
   `lastName` text NOT NULL,
   `gender` text NOT NULL,
-  `rDHSDiv` varchar(8) NOT NULL,
+  `rDHSDiv` varchar(10) NOT NULL,
   `addLine1` text NOT NULL,
   `addLine2` text,
   `province` text NOT NULL,
@@ -307,17 +386,18 @@ INSERT INTO `notifications` (`id`, `userId`, `paId`, `status`, `institute`, `ins
 (4, 1, 4, 'draft', 'Government', 'Jaffna Teaching Hospital', 'Group B', 'Dengue Fever/ Dengue Haemorragic Fever', '2018-11-07', '2018-11-14', 'BHT11', NULL, 'yes', NULL, NULL, 'positive', 'Consultant Physician');
 
 CREATE TABLE `h411as` (
-  `notifyId` int(11) NOT NULL AUTO_INCREMENT,
-  `rDHSDiv` varchar(8) NOT NULL,
-  `notifiedDisease` text NOT NULL,
+  `h411aRecordId` int(11) NOT NULL AUTO_INCREMENT,
+  `rDHSDiv` varchar(10) NOT NULL,
   `mOHArea` text NOT NULL,
+  `mOHRegNo` varchar(10) NOT NULL,
+  `status` varchar(10) NOT NULL,
+  `notifiedDisease` text NOT NULL,
   `notificationDate` date NOT NULL,
-  `mOHRegNo` varchar(8) NOT NULL,
   `confirmedDisease` text NOT NULL,
+  `confirmationDate` date NOT NULL,
   `birthDate` date DEFAULT NULL,
   `birthYear` int(4) DEFAULT NULL,
   `age` int(3) NOT NULL,
-  `confirmationDate` date NOT NULL,
   `gender` text NOT NULL,
   `confirmedBy` text NOT NULL,
   `occupation` text NOT NULL,
@@ -327,22 +407,106 @@ CREATE TABLE `h411as` (
   `specify` text,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`notifyId`),
+  PRIMARY KEY (`h411aRecordId`),
   CONSTRAINT h411a_moh_reg_no FOREIGN KEY (mOHRegNo) REFERENCES mOHs(mOHRegNo) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `h411as` (`h411aRecordId`, `rDHSDiv`, `mOHArea`, `mOHRegNo`, `status`, `notifiedDisease`, `notificationDate`, `confirmedDisease`, `confirmationDate`, `birthDate`, `birthYear`, `age`, `gender`, `confirmedBy`, `occupation`, `sourceOfNotify`, `natureOfConf`, `officeUseOnly`, `specify`, `created_at`, `updated_at`) VALUES
+(1, 'JRDHS100', 'Jaffna', 'JMOH101', 'draft', 'Paralysis', '2018-12-06', 'Human Rabies', '2018-12-28', '2012-12-10', NULL, 6, 'Male', 'Apothecary', 'Teacher', 'Ayurvedic Physician', 'Clinical, Bacteriological and Serological', 'Show new symptoms', '', '2018-12-29 00:28:18', '2018-12-29 00:28:18'),
+(2, 'JRDHS101', 'Jaffna', 'JMOH101', 'sent', 'Diphtheria', '2018-12-13', 'Enteric Fever', '2018-12-16', NULL, 1999, 19, 'Female', 'Hospital M.O', 'Student', 'Other Source', 'Clinical and Bacteriological', NULL, 'HOD', '2018-12-29 00:30:26', '2018-12-29 00:30:26');
+
+CREATE TABLE `h411s` (
+  `h411RecordId` int(11) NOT NULL AUTO_INCREMENT,
+  `pHIRegNo` varchar(10) NOT NULL,
+  `pHIRange` text NOT NULL,
+  `mOHNotifyNo` text NOT NULL,
+  `mOHArea` text NOT NULL,
+  `mOHRegNo` varchar(10) NOT NULL,
+  `status` varchar(10) NOT NULL,
+  `diseaseNotified` text NOT NULL,
+  `dateNotified` date NOT NULL,
+  `diseaseConfirmed` text NOT NULL,
+  `dateConfirmed` date NOT NULL,
+  `firstName` text NOT NULL,
+  `lastName` text NOT NULL,
+  `birthDate` date DEFAULT NULL,
+  `birthYear` int(4) DEFAULT NULL,
+  `age` int(3) NOT NULL,
+  `gender` text NOT NULL,
+  `addLine1` text NOT NULL,
+  `addLine2` text,
+  `gSDivName` text NOT NULL,
+  `gSDiv` text NOT NULL,
+  `dSDiv` text NOT NULL,
+  `district` text NOT NULL,
+  `province` text NOT NULL,
+  `addMOHArea` text NOT NULL,
+  `addPHIRange` text NOT NULL,
+  `ethnicGroup` text,
+  `dateOnset` date NOT NULL,
+  `dateHospitalisation` date NOT NULL,
+  `dateDischarge` date NOT NULL,
+  `hospitalName` text NOT NULL,
+  `movement` text,
+  `outcome` text NOT NULL,
+  `whereIsolated` text NOT NULL,
+  `labFinding` text,
+  `firstNameHousehold1` text,
+  `lastNameHousehold1` text,
+  `ageHousehold1` int(3),
+  `dateSeenHousehold1` date,
+  `observationHousehold1` text,
+  `firstNameHousehold2` text,
+  `lastNameHousehold2` text,
+  `ageHousehold2` int(3),
+  `dateSeenHousehold2` date,
+  `observationHousehold2` text,
+  `firstNameOther1` text,
+  `lastNameOther1` text,
+  `ageOther1` int(3),
+  `dateSeenOther1` date,
+  `observationOther1` text,
+  `firstNameOther2` text,
+  `lastNameOther2` text,
+  `ageOther2` int(3),
+  `dateSeenOther2` date,
+  `observationOther2` text,
+  `symptomsDevelopment` text,
+  `treatmentType` text NOT NULL,
+  `complications` text,
+  `infectionSource` text NOT NULL,
+  `sourceReduction` text,
+  `bioControl` text,
+  `habitatModification` text,
+  `otherControl` text,
+  `removeGabage` text,
+  `removeWaterStore` text,
+  `useMosquitoNet` text,
+  `useInsectRepellent` text,
+  `otherPrevent` text,
+  `followUp` text,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`h411RecordId`),
+  CONSTRAINT h411_phi_reg_no FOREIGN KEY (pHIRegNo) REFERENCES pHIs(pHIRegNo) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `h411s` (`h411RecordId`, `pHIRegNo`, `pHIRange`, `mOHNotifyNo`, `mOHArea`, `mOHRegNo`, `status`, `diseaseNotified`, `dateNotified`, `diseaseConfirmed`, `dateConfirmed`, `firstName`, `lastName`, `birthDate`, `birthYear`, `age`, `gender`, `addLine1`, `addLine2`, `gSDivName`, `gSDiv`, `dSDiv`, `district`, `province`, `addMOHArea`, `addPHIRange`, `ethnicGroup`, `dateOnset`, `dateHospitalisation`, `dateDischarge`, `hospitalName`, `movement`, `outcome`, `whereIsolated`, `labFinding`, `firstNameHousehold1`, `lastNameHousehold1`, `ageHousehold1`, `dateSeenHousehold1`, `observationHousehold1`, `firstNameHousehold2`, `lastNameHousehold2`, `ageHousehold2`, `dateSeenHousehold2`, `observationHousehold2`, `firstNameOther1`, `lastNameOther1`, `ageOther1`, `dateSeenOther1`, `observationOther1`, `firstNameOther2`, `lastNameOther2`, `ageOther2`, `dateSeenOther2`, `observationOther2`, `symptomsDevelopment`, `treatmentType`, `complications`, `infectionSource`, `sourceReduction`, `bioControl`, `habitatModification`, `otherControl`, `removeGabage`, `removeWaterStore`, `useMosquitoNet`, `useInsectRepellent`, `otherPrevent`, `followUp`, `created_at`, `updated_at`) VALUES
+(1, 'JPHI101', 'Nallur', '001', 'Nallur', 'JMOH102', 'sent', 'Diphtheria', '2018-12-04', 'Encephalitis (including Japanese Encephalitis)', '2018-12-12', 'Asha', 'Sam', '1990-12-12', NULL, 28, 'Male', 'add1', NULL, 'Maruthady', 'J/77', 'Jaffna', 'Jaffna', 'Northern', 'Point Pedro', 'Uduthurai', 'Indian Tamil', '2018-12-10', '2018-12-12', '2018-12-22', 'Care & Cure', 'Vavuniya', 'Still in ward', 'Hospital', 'Negative', 'Vino', 'Haran', 32, '2018-12-12', 'Normal', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Fine', 'Western', NULL, 'Outside', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-12-29 01:40:08', '2018-12-29 01:40:08'),
+(2, 'JPHI101', 'Nallur', '002', 'Nallur', 'JMOH102', 'draft', 'Chicken Pox', '2018-12-11', 'Measles', '2018-12-19', 'Singh', 'Mahi', '2011-12-12', NULL, 7, 'Female', 'add1', NULL, 'Eachchamodai', 'J/66', 'Jaffna', 'Jaffna', 'Northern', 'Point Pedro', 'Point Pedro I', 'Indian Tamil', '2018-12-12', '2018-12-19', '2018-12-20', 'Northern Central Hospitals (pvt)', NULL, 'Still in ward', 'Hospital', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'No Treatement', NULL, 'Working Place', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-12-29 03:34:04', '2018-12-29 03:34:04');
+
 CREATE TABLE `h399s` (
-  `entryId` varchar(8) NOT NULL,
+  `entryId` varchar(10) NOT NULL,
   `weekEndDate` date NOT NULL,
   `province` text NOT NULL,
   `district` text NOT NULL,
-  `rdhsDiv` varchar(8) NOT NULL,
+  `rdhsDiv` varchar(10) NOT NULL,
   `mohArea` text NOT NULL,
   PRIMARY KEY (`entryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `weeklySummarys` (
-  `entryId` varchar(8) NOT NULL,
+  `entryId` varchar(10) NOT NULL,
   `summary` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
   `polio` int(5) DEFAULT NULL,
@@ -374,7 +538,7 @@ CREATE TABLE `weeklySummarys` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `chankanais` (
-  `entryId` varchar(8) NOT NULL,
+  `entryId` varchar(10) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
   `polio` int(5) DEFAULT NULL,
@@ -406,7 +570,7 @@ CREATE TABLE `chankanais` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `chavakachcheris` (
-  `entryId` varchar(8) NOT NULL,
+  `entryId` varchar(10) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
   `polio` int(5) DEFAULT NULL,
@@ -438,7 +602,7 @@ CREATE TABLE `chavakachcheris` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `jaffnas` (
-  `entryId` varchar(8) NOT NULL,
+  `entryId` varchar(10) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
   `polio` int(5) DEFAULT NULL,
@@ -470,7 +634,7 @@ CREATE TABLE `jaffnas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `karaveddys` (
-  `entryId` varchar(8) NOT NULL,
+  `entryId` varchar(10) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
   `polio` int(5) DEFAULT NULL,
@@ -502,7 +666,7 @@ CREATE TABLE `karaveddys` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `kaytses` (
-  `entryId` varchar(8) NOT NULL,
+  `entryId` varchar(10) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
   `polio` int(5) DEFAULT NULL,
@@ -534,7 +698,7 @@ CREATE TABLE `kaytses` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `kopays` (
-  `entryId` varchar(8) NOT NULL,
+  `entryId` varchar(10) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
   `polio` int(5) DEFAULT NULL,
@@ -566,7 +730,7 @@ CREATE TABLE `kopays` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `nallurs` (
-  `entryId` varchar(8) NOT NULL,
+  `entryId` varchar(10) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
   `polio` int(5) DEFAULT NULL,
@@ -598,7 +762,7 @@ CREATE TABLE `nallurs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `pointpedros` (
-  `entryId` varchar(8) NOT NULL,
+  `entryId` varchar(10) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
   `polio` int(5) DEFAULT NULL,
@@ -630,7 +794,7 @@ CREATE TABLE `pointpedros` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `sandilipays` (
-  `entryId` varchar(8) NOT NULL,
+  `entryId` varchar(10) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
   `polio` int(5) DEFAULT NULL,
@@ -662,7 +826,7 @@ CREATE TABLE `sandilipays` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `tellipalais` (
-  `entryId` varchar(8) NOT NULL,
+  `entryId` varchar(10) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
   `polio` int(5) DEFAULT NULL,
@@ -694,7 +858,7 @@ CREATE TABLE `tellipalais` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `uduvils` (
-  `entryId` varchar(8) NOT NULL,
+  `entryId` varchar(10) NOT NULL,
   `phiArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
   `polio` int(5) DEFAULT NULL,
@@ -726,7 +890,7 @@ CREATE TABLE `uduvils` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `totals` (
-  `entryId` varchar(8) NOT NULL,
+  `entryId` varchar(10) NOT NULL,
   `mohArea` text NOT NULL,
   `cholera` int(5) DEFAULT NULL,
   `polio` int(5) DEFAULT NULL,
@@ -757,45 +921,9 @@ CREATE TABLE `totals` (
   PRIMARY KEY (`entryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `h411s` (
-  `notifyId` varchar(8) NOT NULL,
-  `phiRegNo` varchar(8) NOT NULL,
-  `phiRange` text NOT NULL,
-  `mohNotifyNo` text NOT NULL,
-  `mohArea` text NOT NULL,
-  `mohRegNo` varchar(8) NOT NULL,
-  `diseaseNotified` text NOT NULL,
-  `notifyDate` date NOT NULL,
-  `diseaseConf` text NOT NULL,
-  `confDate` date NOT NULL,
-  `patFname` text NOT NULL,
-  `patLname` text NOT NULL,
-  `addLine1` text NOT NULL,
-  `addLine2` text,
-  `province` text NOT NULL,
-  `district` text NOT NULL,
-  `dsDiv` text NOT NULL,
-  `gsDiv` text NOT NULL,
-  `birthDate` date NOT NULL,
-  `age` int(3) NOT NULL,
-  `gender` text NOT NULL,
-  `ethnicGroup` text,
-  `onsetDate` date NOT NULL,
-  `hospDate` date NOT NULL,
-  `dischDate` date NOT NULL,
-  `hospital` text NOT NULL,
-  `outcome` text NOT NULL,
-  `isolated` text NOT NULL,
-  `patMovement` text NOT NULL,
-  `labFinding` text NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`notifyId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 CREATE TABLE `contactInvesticates` (
-  `notifyId` varchar(8) NOT NULL,
-  `contId` varchar(8) NOT NULL,
+  `notifyId` varchar(10) NOT NULL,
+  `contId` varchar(10) NOT NULL,
   `firstName` text NOT NULL,
   `lastName` text NOT NULL,
   `age` int(3) NOT NULL,
@@ -807,7 +935,7 @@ CREATE TABLE `contactInvesticates` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `patientEventHistorys` (
-  `notifyId` varchar(8) NOT NULL,
+  `notifyId` varchar(10) NOT NULL,
   `symptomDevelop` text,
   `indigenous` text,
   `western` text,

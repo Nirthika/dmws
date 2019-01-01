@@ -17,24 +17,16 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="<?= asset('images/slide1.jpg') ?>" alt="First slide">
+                    <img class="d-block w-100" height="360rem" src="<?= asset('images/slide1.jpg') ?>" alt="First slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="<?= asset('images/slide2.jpg') ?>" alt="Second slide">
+                    <img class="d-block w-100" height="360rem" src="<?= asset('images/slide2.jpg') ?>" alt="Second slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="<?= asset('images/slide3.jpg') ?>" alt="Third slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="<?= asset('images/slide4.jpg') ?>" alt="Forth slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="<?= asset('images/slide5.jpg') ?>" alt="Fifth slide">
+                    <img class="d-block w-100" height="360rem" src="<?= asset('images/slide3.jpg') ?>" alt="Third slide">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" >
@@ -54,7 +46,7 @@
     <section id="feature">
         <div class="card-deck">
             <div class="card">
-                <img class="card-img-top" src="<?= asset('images/2officers.png') ?>" alt="Card image cap" style="background-color: #e6f2ff;">
+                <img class="card-img-top" src="<?= asset('images/1officers.jpg') ?>" alt="Card image cap" style="background-color: #e6f2ff;">
                 <div class="card-body" style="padding: 0.5rem;">
                     <h5 class="card-title" style="font-weight: bold;">Officers</h5>
                     <p class="card-text">Notification officers in dengue surveillance.</p>                        
@@ -64,17 +56,17 @@
                 </div>                   
             </div>
             <div class="card">
-                <img class="card-img-top" src="<?= asset('images/2communication.png') ?>" alt="Card image cap" style="background-color: #e6f2ff;">
+                <img class="card-img-top" src="<?= asset('images/1communication.png') ?>" alt="Card image cap" style="background-color: #e6f2ff;">
                 <div class="card-body" style="padding: 0.5rem;">
                     <h5 class="card-title" style="font-weight: bold;">Informing</h5>
                     <p class="card-text">Information Sharing to relevant authorities.</p>
                 </div>
                 <div class="card-footer" style="padding: 0.3rem 1.0rem;">
-                  <a href="#" class="more">More...</a>
+                  <a href="{{ url('/informing') }}" class="more">More...</a>
                 </div>
             </div>
             <div class="card">
-                <img class="card-img-top" src="<?= asset('images/2monitor.png') ?>" alt="Card image cap" style="background-color: #e6f2ff;">
+                <img class="card-img-top" src="<?= asset('images/1monitor.png') ?>" alt="Card image cap" style="background-color: #e6f2ff;">
                 <div class="card-body" style="padding: 0.5rem;">
                     <h5 class="card-title" style="font-weight: bold;">Monitoring</h5>
                     <p class="card-text">Monitor the dengue transformation.</p>
@@ -84,17 +76,17 @@
                 </div>
             </div>
             <div class="card">
-                <img class="card-img-top" src="<?= asset('images/2alert.png') ?>" alt="Card image cap" style="background-color: #e6f2ff;">
+                <img class="card-img-top" src="<?= asset('images/1alert.png') ?>" alt="Card image cap" style="background-color: #e6f2ff;">
                 <div class="card-body" style="padding: 0.5rem;">
                     <h5 class="card-title" style="font-weight: bold;">Alerting</h5>
                     <p class="card-text">Alert on dengue surveillance.</p>
                 </div>
                 <div class="card-footer" style="padding: 0.3rem 1.0rem;">
-                  <a href="#" class="more">More...</a>
+                  <a href="{{ url('/alerting') }}" class="more">More...</a>
                 </div>
             </div>
             <div class="card">
-                <img class="card-img-top" src="<?= asset('images/2modelling.png') ?>" alt="Card image cap" style="background-color: #e6f2ff;">
+                <img class="card-img-top" src="<?= asset('images/1modelling.png') ?>" alt="Card image cap" style="background-color: #e6f2ff;">
                 <div class="card-body" style="padding: 0.5rem;">
                     <h5 class="card-title" style="font-weight: bold;">Modelling</h5>
                     <p class="card-text">Modelling for dengue surveillance.</p>
@@ -104,7 +96,7 @@
                 </div>
             </div>
             <div class="card">
-                <img class="card-img-top" src="<?= asset('images/2labTest.png') ?>" alt="Card image cap" style="background-color: #e6f2ff;">
+                <img class="card-img-top" src="<?= asset('images/1labTest.png') ?>" alt="Card image cap" style="background-color: #e6f2ff;">
                 <div class="card-body" style="padding: 0.5rem;">
                     <h5 class="card-title" style="font-weight: bold;">Testing</h5>
                     <p class="card-text">Verification details from laboratory.</p>
@@ -125,7 +117,7 @@
             <div class="row">
             <div class="col-md-4">
             <!-- <div class="p-2 bd-highlight"> -->
-                <img src="<?= asset('images/aboutus1.png') ?>" alt="" width="100%">
+                <img src="<?= asset('images/aboutus.png') ?>" alt="" width="100%">
             <!-- </div> -->
             </div>
             <div class="col-md-8" style="margin: auto;">

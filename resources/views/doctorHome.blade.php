@@ -24,7 +24,7 @@
                     <div class="card">
                         <div class="card-body" style="padding-top: 2%; padding-bottom: 1%">
                             <p style="float: left;">Notification of Communicable Disease Form</p>
-                            <a href="{{ url('/form/h544') }}" style="text-decoration: none; float: right;"><button>H544</button></a>
+                            <a href="{{ url('/form/h544') }}" style="text-decoration: none; float: right;"><button class="btn btn-primary">H544</button></a>
                         </div>
                     </div>
                 </div>
@@ -82,8 +82,7 @@
                                                 </td>
                                                 <td>{{ $sent->updated_at }}</td>
                                                 <td>
-                                                    <!-- <a href="{{ url('/h544/'.$sent->id) }}" class="btn-link" style="text-decoration: none;">Delete</a> -->
-                                                    <form method="POST" action="/h544/{{ $sent->id }}">                                                    
+                                                    <form method="POST" action="/h544/{{ $sent->id }}">
                                                         @csrf
                                                         <input name="_method" type="hidden" value="DELETE">
                                                         <button class="btn btn-link" type="submit">Delete</button>

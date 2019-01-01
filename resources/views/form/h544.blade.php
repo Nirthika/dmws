@@ -87,7 +87,6 @@
                                                 <div class="col-sm-7">
                                                     <select id="pvtHospital" name="pvtHospital" class="form-control{{ $errors->has('pvtHospital') ? ' is-invalid' : '' }}" value="{{ old('pvtHospital') }}" autofocus>
                                                         <option value="" disabled selected>Select a hospital</option>
-                                                        <option value="Jaffna Teaching Hospital">Jaffna Teaching Hospital</option>
                                                         <option value="New Yarl Hospital">New Yarl Hospital</option>
                                                         <option value="Northern Central Hospitals (pvt)">Northern Central Hospitals (pvt)</option>
                                                         <option value="Rakavo Hospital">Rakavo Hospital</option>
@@ -409,7 +408,7 @@
                                                     <div class="custom-control custom-checkbox custom-control-inline">
                                                         <input type="checkbox" id="sameAddress" class="custom-control-input{{ $errors->has('sameAddress') ? ' is-invalid' : '' }}" name="sameAddress" value="{{ old('sameAddress') }}" autofocus onclick="fillCurAdd(curGSDivName,resGSDivName,curGSDiv,resGSDiv,curMOHArea,resMOHArea,curPHIRange,resPHIRange)">
                                                         <label for="sameAddress" class="custom-control-label">Same as Residential</label>
-                                                    </div>                                                    
+                                                    </div>
                                                 </div>        
                                             </div>
                                         </td>
@@ -796,7 +795,7 @@
                                                 <label for="resMOHArea" class="col-sm-4 col-form-label"></label>
                                                 <div class="col-sm-7">
                                                     <select id="resMOHArea" name="resMOHArea" class="form-control{{ $errors->has('resMOHArea') ? ' is-invalid' : '' }}" value="{{ old('resMOHArea') }}" required autofocus onchange="configurePHI(this,document.getElementById('resPHIRange')); fillSame(curGSDivName,resGSDivName,curGSDiv,resGSDiv,curMOHArea,resMOHArea,curPHIRange,resPHIRange);">
-                                                        <option value="" disabled selected>Select a MOH Area</option>  
+                                                        <option value="" disabled selected>Select a MOH Area</option>
                                                     </select>
                                                     <small class="form-text text-muted">MOH Area</small>
                                                 </div>
@@ -891,7 +890,6 @@
                                         <td style="padding-top: 0%; padding-bottom: 0%;">
                                             <div class="form-group row mb-0">
                                                 <div class="offset-md-8">
-                                                    <!-- <input class="btn btn-primary" type="button" name="save" value="Save"> -->
                                                     <button type="submit" name="save" class="btn btn-primary">Save</button>
                                                     &ensp;&ensp;
                                                     <button type="submit" name="send" class="btn btn-primary">Send</button>
