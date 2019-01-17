@@ -25,14 +25,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Jerry Yang David Filo Mark Antony</td>
-                                            <td>
-                                                <a href="" class="btn-link" style="text-decoration: none;">View</a>
-                                            </td>
-                                            <td>1997-07-16 &ensp; 19:20+01:00</td>
-                                        </tr>
+                                        @foreach ($receivedH411as as $receive)
+                                            <tr>
+                                                <th scope="row">{{ $receive->h411aRecordId }}</th>
+                                                <td>{{ $receive->confirmedDisease }} &nbsp; {{ $receive->confirmationDate }}</td>
+                                                <td>
+                                                    <a href="{{ url('/h411a/'.$receive->h411aRecordId) }}" class="btn-link" style="text-decoration: none;">View</a>
+                                                </td>
+                                                <td>{{ $receive->updated_at }}</td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>                                

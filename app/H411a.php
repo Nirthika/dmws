@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class H411a extends Model
 {
     protected $table = 'h411as';
+    protected $primaryKey = 'h411aRecordId';
     
     /**
      * The attributes that are mass assignable.

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\PHI;
 use App\User;
+use App\H411;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
-use Auth;
+use Illuminate\Support\Facades\Validator;
 
 class PHIController extends Controller
 {
@@ -19,7 +20,19 @@ class PHIController extends Controller
      */
     public function index()
     {
-        return view('pHIHome');
+        $pHIRegNo = PHI::where('pHIs.userId', Auth::user()->id)->first()->pHIRegNo;
+
+        $draftH411s = H411::where('h411s.pHIRegNo', $pHIRegNo)
+                    ->where('h411s.status', 'draft')
+                    ->select('h411s.*')
+                    ->get();
+
+        $sentH411s = H411::where('h411s.pHIRegNo', $pHIRegNo)
+                    ->where('h411s.status', 'sent')
+                    ->select('h411s.*')
+                    ->get();
+
+        return view('pHIHome', compact('draftH411s', 'sentH411s'));
     }
 
     /**

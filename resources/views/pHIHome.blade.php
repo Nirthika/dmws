@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
 <div class="container" style="margin-top: 2%;">
     <br/>
     <div class="row justify-content-center">
@@ -35,14 +42,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jerry Yang David Filo Mark Antony</td>
-                                            <td>
-                                                <a href="" class="btn-link" style="text-decoration: none;">Edit</a>
-                                            </td>
-                                            <td>1997-07-16 &ensp; 19:20+01:00</td>
-                                        </tr> 
+                                        @foreach ($draftH411s as $draft)
+                                            <tr>
+                                                <th scope="row">{{ $draft->h411RecordId }}</th>
+                                                <td>{{ $draft->firstName }} &nbsp; {{ $draft->lastName }}</td>
+                                                <td>
+                                                    <a href="{{ url('h411/'.$draft->h411RecordId.'/edit') }}" class="btn-link" style="text-decoration: none;">Edit</a>
+                                                </td>
+                                                <td>{{ $draft->updated_at }}</td>
+                                            </tr>
+                                        @endforeach 
                                     </tbody>
                                 </table>
                             </div>                                
@@ -64,21 +73,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jerry Yang David Filo Mark Antony</td>
-                                            <td>
-                                                <a href="" class="btn-link" style="text-decoration: none;">View</a>
-                                            </td>
-                                            <td>1997-07-16 &ensp; 19:20+01:00</td>
-                                            <td>
-                                                <form method="POST" action="">
-                                                    @csrf
-                                                    <input name="_method" type="hidden" value="DELETE">
-                                                    <button class="btn btn-link" type="submit">Delete</button>
-                                                </form>
-                                            </td>
-                                        </tr>
+                                        @foreach ($sentH411s as $sent)
+                                            <tr>
+                                                <th scope="row">{{ $sent->h411RecordId }}</th>
+                                                <td>{{ $sent->firstName }} &nbsp; {{ $sent->lastName }}</td>
+                                                <td>
+                                                    <a href="{{ url('/h411/'.$sent->h411RecordId) }}" class="btn-link" style="text-decoration: none;">View</a>
+                                                </td>
+                                                <td>{{ $sent->updated_at }}</td>
+                                                <td>
+                                                    <form method="POST" action="/h411/{{ $sent->h411RecordId }}">
+                                                        @csrf
+                                                        <input name="_method" type="hidden" value="DELETE">
+                                                        <button class="btn btn-link" type="submit">Delete</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach 
                                     </tbody>
                                 </table>
                             </div>

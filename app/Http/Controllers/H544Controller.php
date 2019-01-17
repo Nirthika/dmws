@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Validator;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Notification;
-use App\Patient;
-use App\Doctor;
-use App\User;
 use Auth;
+use App\User;
+use App\Doctor;
+use App\Patient;
+use App\Notification;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class H544Controller extends Controller
 {
@@ -119,19 +119,20 @@ class H544Controller extends Controller
             $patient->resMOHArea=$request->resMOHArea;     
             $patient->resPHIRange=$request->resPHIRange;     
             $patient->resLandmark=$request->resLandmark;
-            $patient->sameAddress=$request->sameAddress;
             if ($request->has('sameAddress')) {
+                $patient->sameAddress='yes';
                 $patient->curAddLine1=$request->resAddLine1;     
                 $patient->curAddLine2=$request->resAddLine2;     
                 $patient->curGSDivName=$request->resGSDivName;     
                 $patient->curGSDiv=$request->resGSDiv;     
                 $patient->curDSDiv=$request->resDSDiv;     
                 $patient->curDistrict=$request->resDistrict;     
-                $patient->curProvince=$request->resProvince;     
-                $patient->curMOHArea=$request->resMOHArea;     
-                $patient->curPHIRange=$request->resPHIRange;     
+                $patient->curProvince=$request->resProvince;
+                $patient->curMOHArea=$request->resMOHArea;
+                $patient->curPHIRange=$request->resPHIRange;
                 $patient->curLandmark=$request->resLandmark;
             } else {
+                $patient->sameAddress='no';
                 $patient->curAddLine1=$request->curAddLine1;     
                 $patient->curAddLine2=$request->curAddLine2;     
                 $patient->curGSDivName=$request->curGSDivName;     
@@ -151,7 +152,7 @@ class H544Controller extends Controller
             $notification->userId=Auth::user()->id;
             $notification->paId=$patient->id;
             if ($request->has('save')) $notification->status='draft';
-            if ($request->has('send')) $notification->status='sent';
+            else if ($request->has('send')) $notification->status='sent';
             $notification->institute=$request->institute;
             if (($request->institute) == 'Government'){
                 $notification->insName=$request->govHospital;
@@ -169,9 +170,9 @@ class H544Controller extends Controller
             $notification->regOrBHTNo=$request->regOrBHTNo;
             $notification->ward=$request->ward;
             $notification->labResults=$request->labResults;
-            if ($request->has('ns1')) $notification->ns1=$request->ns1;
-            if ($request->has('igm')) $notification->igm=$request->igm;
-            if ($request->has('igg')) $notification->igg=$request->igg;
+            if ($request->has('ns1')) $notification->ns1=$request->ns1; else $notification->ns1=null;
+            if ($request->has('igm')) $notification->igm=$request->igm; else $notification->igm=null;
+            if ($request->has('igg')) $notification->igg=$request->igg; else $notification->igg=null;
             $notification->designation=$request->designation;
             $notification->save();
 
@@ -221,116 +222,112 @@ class H544Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        // return redirect("home");
-        // $paId = Notification::where('notifications.id', $id)
-        //             ->select('notifications.paId')
-        //             ->first()
-        //             ->paId;
+        $paId = Notification::where('notifications.id', $id)->select('notifications.paId')->first()->paId;
 
-        // $patient = Patient::where('patients.paId', $paId);
-        // $notification = Notification::find($id);
+        $patient = Patient::where('patients.paId', $paId)->first();
+        $notification = Notification::find($id);
 
-        // $this->validate($request,[
-        //     'firstName' => 'required|regex:/^[A-Za-z\s-_]+$/|max:50',
-        //     'lastName' => 'required|regex:/^[A-Za-z\s-_]+$/|max:50',
-        //     'nickName' => 'nullable|regex:/^[A-Za-z\s-_]+$/|max:50',
-        //     'regOrBHTNo' => 'required|unique:notifications,regOrBHTNo,'.$notification->id, 
-        //     'birthDate'  => 'required_without:birthYear',
-        //     'birthYear'  => 'required_without:birthDate',
-        //     'areaCode' => 'required|digits:3',
-        //     'phoneNo' => 'required|digits:7',
-        //     'phoneMobile' => 'required|digits:10',
-        // ]);
+        $this->validate($request,[
+            'firstName' => 'required|regex:/^[A-Za-z\s-_]+$/|max:50',
+            'lastName' => 'required|regex:/^[A-Za-z\s-_]+$/|max:50',
+            'nickName' => 'nullable|regex:/^[A-Za-z\s-_]+$/|max:50',
+            'regOrBHTNo' => 'required|unique:notifications,regOrBHTNo,'.$notification->id, 
+            'birthDate'  => 'required_without:birthYear',
+            'birthYear'  => 'required_without:birthDate',
+            'areaCode' => 'required|digits:3',
+            'phoneNo' => 'required|digits:7',
+            'phoneMobile' => 'required|digits:10',
+        ]);
 
-        // $notification->userId=Auth::user()->id;
-        // $notification->paId=$paId;
-        // if ($request->has('save')) $notification->status='draft';
-        // if ($request->has('send')) $notification->status='sent';
-        // $notification->institute=$request->institute;
-        // if (($request->institute) == 'Government'){
-        //     $notification->insName=$request->govHospital;
-        // } else {
-        //     $notification->insName=$request->pvtHospital;
-        // }
-        // $notification->diseaseGroup=$request->diseaseGroup;
-        // if (($request->diseaseGroup) == 'Group A'){
-        //     $notification->diseaseName=$request->diseaseGroupA;
-        // } else {
-        //     $notification->diseaseName=$request->diseaseGroupB;
-        // }
-        // $notification->onsetDate=$request->onsetDate;
-        // $notification->admissionDate=$request->admissionDate;
-        // $notification->regOrBHTNo=$request->regOrBHTNo;
-        // $notification->ward=$request->ward;
-        // $notification->labResults=$request->labResults;
-        // if ($request->has('ns1')) $notification->ns1=$request->ns1;
-        // if ($request->has('igm')) $notification->igm=$request->igm;
-        // if ($request->has('igg')) $notification->igg=$request->igg;
-        // $notification->designation=$request->designation;
-        // $notification->save();
+        $notification->userId=Auth::user()->id;
+        $notification->paId=$paId;
+        if ($request->has('save')) $notification->status='draft';
+        if ($request->has('send')) $notification->status='sent';
+        $notification->institute=$request->institute;
+        if (($request->institute) == 'Government'){
+            $notification->insName=$request->govHospital;
+        } else {
+            $notification->insName=$request->pvtHospital;
+        }
+        $notification->diseaseGroup=$request->diseaseGroup;
+        if (($request->diseaseGroup) == 'Group A'){
+            $notification->diseaseName=$request->diseaseGroupA;
+        } else {
+            $notification->diseaseName=$request->diseaseGroupB;
+        }
+        $notification->onsetDate=$request->onsetDate;
+        $notification->admissionDate=$request->admissionDate;
+        $notification->regOrBHTNo=$request->regOrBHTNo;
+        $notification->ward=$request->ward;
+        $notification->labResults=$request->labResults;
+        if ($request->has('ns1')) $notification->ns1=$request->ns1; else $notification->ns1=null;
+        if ($request->has('igm')) $notification->igm=$request->igm; else $notification->igm=null;
+        if ($request->has('igg')) $notification->igg=$request->igg; else $notification->igg=null;
+        $notification->designation=$request->designation;
+        $notification->save();
 
-        // $patient->userId=Auth::user()->id;
-        // $patient->institute=$request->institute;
-        // if (($request->institute) == 'Government'){
-        //     $patient->insName=$request->govHospital;
-        // } else {
-        //     $patient->insName=$request->pvtHospital;
-        // }
-        // $patient->firstName=$request->firstName;
-        // $patient->lastName=$request->lastName;
-        // $patient->nickName=$request->nickName;
-        // $patient->nICNum=$request->nICNum;
-        // $patient->gender=$request->gender;
-        // $patient->visitArea=$request->visitArea; 
-        // $patient->birthYear=$request->birthYear;
-        // $patient->birthDate=$request->birthDate;
-        // $patient->age=$request->age;
-        // $patient->nextOfKinFirstName=$request->nextOfKinFirstName;     
-        // $patient->nextOfKinLastName=$request->nextOfKinLastName;     
-        // $patient->childGuardian=$request->childGuardian;     
-        // $patient->childGuardianFirstName=$request->childGuardianFirstName;     
-        // $patient->childGuardianLastName=$request->childGuardianLastName;  
-        // $patient->resAddLine1=$request->resAddLine1;     
-        // $patient->resAddLine2=$request->resAddLine2;     
-        // $patient->resGSDivName=$request->resGSDivName;     
-        // $patient->resGSDiv=$request->resGSDiv;     
-        // $patient->resDSDiv=$request->resDSDiv;     
-        // $patient->resDistrict=$request->resDistrict;     
-        // $patient->resProvince=$request->resProvince;     
-        // $patient->resMOHArea=$request->resMOHArea;     
-        // $patient->resPHIRange=$request->resPHIRange;     
-        // $patient->resLandmark=$request->resLandmark;
-        // $patient->sameAddress=$request->sameAddress;
-        // if ($request->has('sameAddress')) {
-        //     $patient->curAddLine1=$request->resAddLine1;     
-        //     $patient->curAddLine2=$request->resAddLine2;     
-        //     $patient->curGSDivName=$request->resGSDivName;     
-        //     $patient->curGSDiv=$request->resGSDiv;     
-        //     $patient->curDSDiv=$request->resDSDiv;     
-        //     $patient->curDistrict=$request->resDistrict;     
-        //     $patient->curProvince=$request->resProvince;     
-        //     $patient->curMOHArea=$request->resMOHArea;     
-        //     $patient->curPHIRange=$request->resPHIRange;     
-        //     $patient->curLandmark=$request->resLandmark;
-        // } else {
-        //     $patient->curAddLine1=$request->curAddLine1;     
-        //     $patient->curAddLine2=$request->curAddLine2;     
-        //     $patient->curGSDivName=$request->curGSDivName;     
-        //     $patient->curGSDiv=$request->curGSDiv;     
-        //     $patient->curDSDiv=$request->curDSDiv;     
-        //     $patient->curDistrict=$request->curDistrict;     
-        //     $patient->curProvince=$request->curProvince;     
-        //     $patient->curMOHArea=$request->curMOHArea;     
-        //     $patient->curPHIRange=$request->curPHIRange;     
-        //     $patient->curLandmark=$request->curLandmark;
-        // }                  
-        // $patient->contactNoMobile=$request->phoneMobile;     
-        // $patient->contactNoHome=$request->areaCode.$request->phoneNo;     
-        // $patient->save();
+        $patient->userId=Auth::user()->id;
+        $patient->institute=$request->institute;
+        if (($request->institute) == 'Government'){
+            $patient->insName=$request->govHospital;
+        } else {
+            $patient->insName=$request->pvtHospital;
+        }
+        $patient->firstName=$request->firstName;
+        $patient->lastName=$request->lastName;
+        $patient->nickName=$request->nickName;
+        $patient->nICNum=$request->nICNum;
+        $patient->gender=$request->gender;
+        $patient->visitArea=$request->visitArea; 
+        $patient->birthYear=$request->birthYear;
+        $patient->birthDate=$request->birthDate;
+        $patient->age=$request->age;
+        $patient->nextOfKinFirstName=$request->nextOfKinFirstName;     
+        $patient->nextOfKinLastName=$request->nextOfKinLastName;     
+        $patient->childGuardian=$request->childGuardian;     
+        $patient->childGuardianFirstName=$request->childGuardianFirstName;     
+        $patient->childGuardianLastName=$request->childGuardianLastName;  
+        $patient->resAddLine1=$request->resAddLine1;     
+        $patient->resAddLine2=$request->resAddLine2;     
+        $patient->resGSDivName=$request->resGSDivName;     
+        $patient->resGSDiv=$request->resGSDiv;     
+        $patient->resDSDiv=$request->resDSDiv;     
+        $patient->resDistrict=$request->resDistrict;     
+        $patient->resProvince=$request->resProvince;     
+        $patient->resMOHArea=$request->resMOHArea;     
+        $patient->resPHIRange=$request->resPHIRange;     
+        $patient->resLandmark=$request->resLandmark;
+        if ($request->has('sameAddress')) {
+            $patient->sameAddress='yes';
+            $patient->curAddLine1=$request->resAddLine1;     
+            $patient->curAddLine2=$request->resAddLine2;     
+            $patient->curGSDivName=$request->resGSDivName;     
+            $patient->curGSDiv=$request->resGSDiv;     
+            $patient->curDSDiv=$request->resDSDiv;     
+            $patient->curDistrict=$request->resDistrict;     
+            $patient->curProvince=$request->resProvince;     
+            $patient->curMOHArea=$request->resMOHArea;     
+            $patient->curPHIRange=$request->resPHIRange;     
+            $patient->curLandmark=$request->resLandmark;
+        } else {
+            $patient->sameAddress='no';
+            $patient->curAddLine1=$request->curAddLine1;     
+            $patient->curAddLine2=$request->curAddLine2;     
+            $patient->curGSDivName=$request->curGSDivName;     
+            $patient->curGSDiv=$request->curGSDiv;     
+            $patient->curDSDiv=$request->curDSDiv;     
+            $patient->curDistrict=$request->curDistrict;     
+            $patient->curProvince=$request->curProvince;     
+            $patient->curMOHArea=$request->curMOHArea;     
+            $patient->curPHIRange=$request->curPHIRange;     
+            $patient->curLandmark=$request->curLandmark;
+        }                  
+        $patient->contactNoMobile=$request->phoneMobile;     
+        $patient->contactNoHome=$request->areaCode.$request->phoneNo;     
+        $patient->save();
 
-        // if ($request->has('save')) return redirect("doctorHome")->with('success', 'Data has been updated successfully!');
-        // if ($request->has('send')) return redirect("doctorHome")->with('success', 'Data has been sent successfully!');
-        return redirect("home")->with('success', 'Check update!');
+        if ($request->has('save')) return redirect("doctorHome")->with('success', 'Data has been updated successfully!');
+        if ($request->has('send')) return redirect("doctorHome")->with('success', 'Data has been sent successfully!');
     }
 
     /**
@@ -341,6 +338,9 @@ class H544Controller extends Controller
      */
     public function destroy($id)
     {
-        return redirect("home")->with('success', 'Check delete!');
+        $notification = Notification::find($id);
+        $notification->delete();
+        $patient = Patient::where('patients.paId', $notification->paId)->delete();
+        return redirect("doctorHome")->with('success', 'Entry has been deleted!');
     }
 }

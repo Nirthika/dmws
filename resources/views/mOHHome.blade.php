@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
 <div class="container" style="margin-top: 2%;">
     <br/>
     <div class="row justify-content-center">
@@ -42,14 +49,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jerry Yang David Filo Mark Antony</td>
-                                            <td>
-                                                <a href="" class="btn-link" style="text-decoration: none;">Edit</a>
-                                            </td>
-                                            <td>1997-07-16 &ensp; 19:20+01:00</td>
-                                        </tr>
+                                        @foreach ($draftH399s as $draft)
+                                            <tr>
+                                                <th scope="row">{{ $draft->h399RecordId }}</th>
+                                                <td>Week End Date &nbsp; {{ $draft->weekEndDate }}</td>
+                                                <td>
+                                                    <a href="{{ url('h399/'.$draft->h399RecordId.'/edit') }}" class="btn-link" style="text-decoration: none;">Edit</a>
+                                                </td>
+                                                <td>{{ $draft->updated_at }}</td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -71,21 +80,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Jerry Yang David Filo Mark Antony</td>
-                                            <td>
-                                                <a href="" class="btn-link" style="text-decoration: none;">View</a>
-                                            </td>
-                                            <td>1997-07-16 &ensp; 19:20+01:00</td>
-                                            <td>
-                                                <form method="POST" action="">
-                                                    @csrf
-                                                    <input name="_method" type="hidden" value="DELETE">
-                                                    <button class="btn btn-link" type="submit">Delete</button>
-                                                </form>
-                                            </td>
-                                        </tr>
+                                        @foreach ($sentH399s as $sent)
+                                            <tr>
+                                                <th scope="row">{{ $sent->h399RecordId }}</th>
+                                                <td>Week End Date &nbsp; {{ $sent->weekEndDate }}</td>
+                                                <td>
+                                                    <a href="{{ url('/h399/'.$sent->h399RecordId) }}" class="btn-link" style="text-decoration: none;">View</a>
+                                                </td>
+                                                <td>{{ $sent->updated_at }}</td>
+                                                <td>
+                                                    <form method="POST" action="/h399/{{ $sent->h399RecordId }}">
+                                                        @csrf
+                                                        <input name="_method" type="hidden" value="DELETE">
+                                                        <button class="btn btn-link" type="submit">Delete</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -106,14 +117,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jerry Yang David Filo Mark Antony</td>
-                                            <td>
-                                                <a href="" class="btn-link" style="text-decoration: none;">Edit</a>
-                                            </td>
-                                            <td>1997-07-16 &ensp; 19:20+01:00</td>
-                                        </tr>
+                                        @foreach ($draftH411as as $draft)
+                                            <tr>
+                                                <th scope="row">{{ $draft->h411aRecordId }}</th>
+                                                <td>{{ $draft->confirmedDisease }} &nbsp; {{ $draft->confirmationDate }}</td>
+                                                <td>
+                                                    <a href="{{ url('h411a/'.$draft->h411aRecordId.'/edit') }}" class="btn-link" style="text-decoration: none;">Edit</a>
+                                                </td>
+                                                <td>{{ $draft->updated_at }}</td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -135,21 +148,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Jerry Yang David Filo Mark Antony</td>
-                                            <td>
-                                                <a href="" class="btn-link" style="text-decoration: none;">View</a>
-                                            </td>
-                                            <td>1997-07-16 &ensp; 19:20+01:00</td>
-                                            <td>
-                                                <form method="POST" action="">
-                                                    @csrf
-                                                    <input name="_method" type="hidden" value="DELETE">
-                                                    <button class="btn btn-link" type="submit">Delete</button>
-                                                </form>
-                                            </td>
-                                        </tr>
+                                        @foreach ($sentH411as as $sent)
+                                            <tr>
+                                                <th scope="row">{{ $sent->h411aRecordId }}</th>
+                                                <td>{{ $sent->confirmedDisease }} &nbsp; {{ $sent->confirmationDate }}</td>
+                                                <td>
+                                                    <a href="{{ url('/h411a/'.$sent->h411aRecordId) }}" class="btn-link" style="text-decoration: none;">View</a>
+                                                </td>
+                                                <td>{{ $sent->updated_at }}</td>
+                                                <td>
+                                                    <form method="POST" action="/h411a/{{ $sent->h411aRecordId }}">
+                                                        @csrf
+                                                        <input name="_method" type="hidden" value="DELETE">
+                                                        <button class="btn btn-link" type="submit">Delete</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -170,14 +185,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Jerry Yang David Filo Mark Antony</td>
-                                            <td>
-                                                <a href="" class="btn-link" style="text-decoration: none;">View</a>
-                                            </td>
-                                            <td>1997-07-16 &ensp; 19:20+01:00</td>
-                                        </tr>
+                                        @foreach ($receivedH544s as $receive)
+                                            @if ($receive->curMOHArea == $mOHArea)
+                                                <tr>
+                                                    <th scope="row">{{ $receive->id }}</th>
+                                                    <td>{{ $receive->firstName }} &nbsp; {{ $receive->lastName }}</td>
+                                                    <td>
+                                                        <a href="{{ url('/h544/'.$receive->id) }}" class="btn-link" style="text-decoration: none;">View</a>
+                                                    </td>
+                                                    <td>{{ $receive->updated_at }}</td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -198,14 +217,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Jerry Yang David Filo Mark Antony</td>
-                                            <td>
-                                                <a href="" class="btn-link" style="text-decoration: none;">View</a>
-                                            </td>
-                                            <td>1997-07-16 &ensp; 19:20+01:00</td>
-                                        </tr>
+                                        @foreach ($receivedH411s as $receive)
+                                            <tr>
+                                                <th scope="row">{{ $receive->h411RecordId }}</th>
+                                                <td>{{ $receive->firstName }} &nbsp; {{ $receive->lastName }}</td>
+                                                <td>
+                                                    <a href="{{ url('/h411/'.$receive->h411RecordId) }}" class="btn-link" style="text-decoration: none;">View</a>
+                                                </td>
+                                                <td>{{ $receive->updated_at }}</td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

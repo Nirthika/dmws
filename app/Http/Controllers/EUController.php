@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\EU;
 use App\User;
+use App\H411a;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Controllers\Controller;
-use Auth;
 
 class EUController extends Controller
 {
@@ -19,7 +20,11 @@ class EUController extends Controller
      */
     public function index()
     {
-        return view('eUHome');
+        $receivedH411as = H411a::where('h411as.status', 'sent')
+                    ->select('h411as.*')
+                    ->get();
+
+        return view('eUHome', compact('receivedH411as'));
     }
 
     /**

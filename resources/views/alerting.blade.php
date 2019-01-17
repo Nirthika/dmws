@@ -2,6 +2,7 @@
 
 @section('content')
 <script>
+  window.onload = magnify;
   function magnify(imgID, zoom) {
     var img, glass, w, h, bw;
     img = document.getElementById(imgID);

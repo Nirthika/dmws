@@ -82,31 +82,33 @@
                                                 <div class="col-sm-7">
                                                     <select id="diseaseNotified" name="diseaseNotified" class="form-control{{ $errors->has('diseaseNotified') ? ' is-invalid' : '' }}" value="{{ old('diseaseNotified') }}" autofocus>
                                                         <option value="" disabled selected>Select a disease</option>
-                                                        <option value="Cholera">Cholera</option>
-                                                        <option value="Plague">Plague</option>
-                                                        <option value="Yellow Fever">Yellow Fever</option>
+                                                        <option value="Acute Poliomyelitis / Acute Flaccid Paralysis">Acute Poliomyelitis / Acute Flaccid Paralysis</option>
                                                         <option value="Chicken Pox">Chicken Pox</option>
-                                                        <option value="Dengue Fever/ Dengue Haemorragic Fever">Dengue Fever/ Dengue Haemorragic Fever</option>
+                                                        <option value="Cholera">Cholera</option>
+                                                        <option value="Dengue Fever / Dengue Haemorrhagic Fever">Dengue Fever / Dengue Haemorrhagic Fever</option>
                                                         <option value="Diphtheria">Diphtheria</option>
                                                         <option value="Dysentery">Dysentery</option>
-                                                        <option value="Encephalitis (including Japanese Encephalitis)">Encephalitis (including Japanese Encephalitis)</option>
+                                                        <option value="Encephalitis">Encephalitis</option>
                                                         <option value="Enteric Fever">Enteric Fever</option>
                                                         <option value="Food Poisoning">Food Poisoning</option>
                                                         <option value="Human Rabies">Human Rabies</option>
+                                                        <option value="Leishmaniasis">Leishmaniasis</option>
+                                                        <option value="Leprosy">Leprosy</option>
                                                         <option value="Leptospirosis">Leptospirosis</option>
                                                         <option value="Malaria">Malaria</option>
                                                         <option value="Measles">Measles</option>
                                                         <option value="Meningitis">Meningitis</option>
                                                         <option value="Mumps">Mumps</option>
-                                                        <option value="Pertussis">Pertussis</option>
-                                                        <option value="Polio Myelitis/Acute Flaccid Paralysis">Polio Myelitis/Acute Flaccid Paralysis</option>
-                                                        <option value="Rubella/Congenital Rubella Syndrome">Rubella/Congenital Rubella Syndrome</option>
-                                                        <option value="Severe Acute Respiratory Syndrome (SARS)">Severe Acute Respiratory Syndrome (SARS)</option>
-                                                        <option value="Simple continued fever of over 7 days or more">Simple continued fever of over 7 days or more</option>
-                                                        <option value="Tetanus/Neonatal tetanus">Tetanus/Neonatal tetanus</option>
+                                                        <option value="Neonatal Tetanus">Neonatal Tetanus</option>
+                                                        <option value="Plague">Plague</option>
+                                                        <option value="Rubella / Congenital Rubella Syndrom">Rubella / Congenital Rubella Syndrom</option>
+                                                        <option value="Simple Continued Fever of over 7 days or more">Simple Continued Fever of over 7 days or more</option>
+                                                        <option value="Tetanus">Tetanus</option>
                                                         <option value="Tuberculosis">Tuberculosis</option>
                                                         <option value="Typhus Fever">Typhus Fever</option>
                                                         <option value="Viral Hepatitis">Viral Hepatitis</option>
+                                                        <option value="Whooping Cough">Whooping Cough</option>
+                                                        <option value="Yellow Fever">Yellow Fever</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -127,31 +129,33 @@
                                                 <div class="col-sm-7">
                                                     <select id="diseaseConfirmed" name="diseaseConfirmed" class="form-control{{ $errors->has('diseaseConfirmed') ? ' is-invalid' : '' }}" value="{{ old('diseaseConfirmed') }}" autofocus>
                                                         <option value="" disabled selected>Select a disease</option>
-                                                        <option value="Cholera">Cholera</option>
-                                                        <option value="Plague">Plague</option>
-                                                        <option value="Yellow Fever">Yellow Fever</option>
+                                                        <option value="Acute Poliomyelitis / Acute Flaccid Paralysis">Acute Poliomyelitis / Acute Flaccid Paralysis</option>
                                                         <option value="Chicken Pox">Chicken Pox</option>
-                                                        <option value="Dengue Fever/ Dengue Haemorragic Fever">Dengue Fever/ Dengue Haemorragic Fever</option>
+                                                        <option value="Cholera">Cholera</option>
+                                                        <option value="Dengue Fever / Dengue Haemorrhagic Fever">Dengue Fever / Dengue Haemorrhagic Fever</option>
                                                         <option value="Diphtheria">Diphtheria</option>
                                                         <option value="Dysentery">Dysentery</option>
-                                                        <option value="Encephalitis (including Japanese Encephalitis)">Encephalitis (including Japanese Encephalitis)</option>
+                                                        <option value="Encephalitis">Encephalitis</option>
                                                         <option value="Enteric Fever">Enteric Fever</option>
                                                         <option value="Food Poisoning">Food Poisoning</option>
                                                         <option value="Human Rabies">Human Rabies</option>
+                                                        <option value="Leishmaniasis">Leishmaniasis</option>
+                                                        <option value="Leprosy">Leprosy</option>
                                                         <option value="Leptospirosis">Leptospirosis</option>
                                                         <option value="Malaria">Malaria</option>
                                                         <option value="Measles">Measles</option>
                                                         <option value="Meningitis">Meningitis</option>
                                                         <option value="Mumps">Mumps</option>
-                                                        <option value="Pertussis">Pertussis</option>
-                                                        <option value="Polio Myelitis/Acute Flaccid Paralysis">Polio Myelitis/Acute Flaccid Paralysis</option>
-                                                        <option value="Rubella/Congenital Rubella Syndrome">Rubella/Congenital Rubella Syndrome</option>
-                                                        <option value="Severe Acute Respiratory Syndrome (SARS)">Severe Acute Respiratory Syndrome (SARS)</option>
-                                                        <option value="Simple continued fever of over 7 days or more">Simple continued fever of over 7 days or more</option>
-                                                        <option value="Tetanus/Neonatal tetanus">Tetanus/Neonatal tetanus</option>
+                                                        <option value="Neonatal Tetanus">Neonatal Tetanus</option>
+                                                        <option value="Plague">Plague</option>
+                                                        <option value="Rubella / Congenital Rubella Syndrom">Rubella / Congenital Rubella Syndrom</option>
+                                                        <option value="Simple Continued Fever of over 7 days or more">Simple Continued Fever of over 7 days or more</option>
+                                                        <option value="Tetanus">Tetanus</option>
                                                         <option value="Tuberculosis">Tuberculosis</option>
                                                         <option value="Typhus Fever">Typhus Fever</option>
                                                         <option value="Viral Hepatitis">Viral Hepatitis</option>
+                                                        <option value="Whooping Cough">Whooping Cough</option>
+                                                        <option value="Yellow Fever">Yellow Fever</option>
                                                     </select>
                                                 </div>
                                             </div>

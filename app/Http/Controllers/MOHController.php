@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\MOH;
 use App\User;
+use App\H399;
+use App\H411;
+use App\H411a;
+use App\Patient;
+use App\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
-use Auth;
+use Illuminate\Support\Facades\Validator;
 
 class MOHController extends Controller
 {
@@ -19,7 +24,41 @@ class MOHController extends Controller
      */
     public function index()
     {
-        return view('mOHHome');
+        $mOHRegNo = MOH::where('mOHs.userId', Auth::user()->id)->first()->mOHRegNo;
+
+        $draftH411as = H411a::where('h411as.mOHRegNo', $mOHRegNo)
+                    ->where('h411as.status', 'draft')
+                    ->select('h411as.*')
+                    ->get();
+
+        $sentH411as = H411a::where('h411as.mOHRegNo', $mOHRegNo)
+                    ->where('h411as.status', 'sent')
+                    ->select('h411as.*')
+                    ->get();
+
+        $mOHArea = MOH::where('mOHs.userId', Auth::user()->id)->first()->mOHArea;
+
+        $draftH399s = H399::where('h399s.mOHArea', $mOHArea)
+                    ->where('h399s.status', 'draft')
+                    ->select('h399s.*')
+                    ->get();
+
+        $sentH399s = H399::where('h399s.mOHArea', $mOHArea)
+                    ->where('h399s.status', 'sent')
+                    ->select('h399s.*')
+                    ->get();
+
+        $receivedH544s = Notification::where('notifications.status', 'sent')
+                    ->join('patients', 'patients.paId', '=', 'notifications.paId')
+                    ->select('patients.*', 'notifications.*')
+                    ->get();
+        
+        $receivedH411s = H411::where('h411s.mOHArea', $mOHArea)
+                    ->where('h411s.status', 'sent')
+                    ->select('h411s.*')
+                    ->get();
+
+        return view('mOHHome', compact('mOHArea', 'draftH411as', 'sentH411as', 'draftH399s', 'sentH399s', 'receivedH544s', 'receivedH411s'));
     }
 
     /**

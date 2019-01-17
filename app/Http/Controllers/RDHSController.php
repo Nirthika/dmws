@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\RDHS;
+use App\H399;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
-use Auth;
+use Illuminate\Support\Facades\Validator;
 
 class RDHSController extends Controller
 {
@@ -18,7 +19,14 @@ class RDHSController extends Controller
      */
     public function index()
     {
-        return view('rDHSHome');
+        $rDHSDiv = RDHS::where('rDHSes.userId', Auth::user()->id)->first()->rDHSDiv;
+
+        $receivedH399s = H399::where('h399s.rDHSDiv', $rDHSDiv)
+                    ->where('h399s.status', 'sent')
+                    ->select('h399s.*')
+                    ->get();
+
+        return view('rDHSHome', compact('receivedH399s'));
     }
 
     /**

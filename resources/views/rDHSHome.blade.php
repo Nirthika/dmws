@@ -7,11 +7,11 @@
         <div class="col-10">
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <a class="nav-item nav-link active" id="nav-receivedH544-tab" data-toggle="tab" href="#nav-receivedH544" role="tab" aria-controls="nav-receivedH544" aria-selected="true">Received H399 Forms</a>
+                    <a class="nav-item nav-link active" id="nav-receivedH399-tab" data-toggle="tab" href="#nav-receivedH399" role="tab" aria-controls="nav-receivedH399" aria-selected="true">Received H399 Forms</a>
                 </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-receivedH544" role="tabpanel" aria-labelledby="nav-receivedH544-tab">
+                <div class="tab-pane fade show active" id="nav-receivedH399" role="tabpanel" aria-labelledby="nav-receivedH399-tab">
                     <div class="card">
                         <div class="card-body" style="padding-top: 2%; padding-bottom: 1%">
                             <div class="table-responsive">
@@ -25,14 +25,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Jerry Yang David Filo Mark Antony</td>
-                                            <td>
-                                                <a href="" class="btn-link" style="text-decoration: none;">View</a>
-                                            </td>
-                                            <td>1997-07-16 &ensp; 19:20+01:00</td>
-                                        </tr>
+                                        @foreach ($receivedH399s as $receive)
+                                            <tr>
+                                                <th scope="row">{{ $receive->h399RecordId }}</th>
+                                                <td>Week End Date &nbsp; {{ $receive->weekEndDate }}</td>
+                                                <td>
+                                                    <a href="{{ url('/h399/'.$receive->h399RecordId) }}" class="btn-link" style="text-decoration: none;">View</a>
+                                                </td>
+                                                <td>{{ $receive->updated_at }}</td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>                                

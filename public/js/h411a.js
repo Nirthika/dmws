@@ -1,12 +1,3 @@
-window.onload = myAlert;
-function myAlert(){
-	var inp = document.getElementsByTagName('input');
-	for (var i = inp.length-1; i>=0; i--) {
-		if ('radio'===inp[i].type || 'checkbox'===inp[i].type) inp[i].checked = false;
-	}	
-    document.getElementById("birthYear").value='';
-    document.getElementById("age").value=0;
-}
 $(function(){
 	notificationDate.max = new Date().toISOString().split("T")[0];
 	confirmationDate.max = new Date().toISOString().split("T")[0];

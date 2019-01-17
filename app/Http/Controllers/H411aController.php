@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Validator;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\H411a;
-use App\User;
-use App\MOH;
 use Auth;
+use App\MOH;
+use App\User;
+use App\H411a;
+use App\MOHInDistrict;
+use App\RDHSDivInDistrict;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class H411aController extends Controller
 {
@@ -30,7 +32,10 @@ class H411aController extends Controller
     {
         $mOHArea=$this->mOH->where('userId',Auth::user()->id)->first()->mOHArea;
         $mOHRegNo=$this->mOH->where('userId',Auth::user()->id)->first()->mOHRegNo;
-        return view('/form/h411a', compact('mOHArea','mOHRegNo'));
+        $district = MOHInDistrict::where('mOHArea',$mOHArea)->first()->district;
+        $rDHSDiv = RDHSDivInDistrict::where('district',$district)->first()->rDHSDiv;
+
+        return view('/form/h411a', compact('mOHArea', 'mOHRegNo', 'rDHSDiv'));
     }
 
     /**
@@ -86,7 +91,7 @@ class H411aController extends Controller
             $h411a->mOHArea=$request->mOHArea;
             $h411a->mOHRegNo=$request->mOHRegNo;
             if ($request->has('save')) $h411a->status='draft';
-            if ($request->has('send')) $h411a->status='sent';
+            else if ($request->has('send')) $h411a->status='sent';
             $h411a->notifiedDisease=$request->notifiedDisease;
             $h411a->notificationDate=$request->notificationDate;
             $h411a->confirmedDisease=$request->confirmedDisease;
@@ -120,7 +125,10 @@ class H411aController extends Controller
      */
     public function show($id)
     {
-        //
+        $h411aData = H411a::where('h411as.h411aRecordId', $id)
+                    ->select('h411as.*')
+                    ->first();
+        return view('/form/h411aEdit', compact('h411aData'));
     }
 
     /**
@@ -131,7 +139,10 @@ class H411aController extends Controller
      */
     public function edit($id)
     {
-        //
+        $h411aData = H411a::where('h411as.h411aRecordId', $id)
+                    ->select('h411as.*')
+                    ->first();
+        return view('/form/h411aEdit', compact('h411aData'));
     }
 
     /**
@@ -143,7 +154,41 @@ class H411aController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) { 
+            return redirect()->back()->withErrors($validator)->withInput();
+        } else {
+            $h411a = H411a::where('h411as.h411aRecordId', $id)->first();
+
+            $h411a->rDHSDiv=$request->rDHSDiv;
+            $h411a->mOHArea=$request->mOHArea;
+            $h411a->mOHRegNo=$request->mOHRegNo;
+            if ($request->has('save')) $h411a->status='draft';
+            else if ($request->has('send')) $h411a->status='sent';
+            $h411a->notifiedDisease=$request->notifiedDisease;
+            $h411a->notificationDate=$request->notificationDate;
+            $h411a->confirmedDisease=$request->confirmedDisease;
+            $h411a->confirmationDate=$request->confirmationDate;
+            $h411a->birthDate=$request->birthDate;
+            $h411a->birthYear=$request->birthYear;
+            $h411a->age=$request->age;
+            $h411a->gender=$request->gender;
+            $h411a->confirmedBy=$request->confirmedBy;
+            $h411a->occupation=$request->occupation;
+            $h411a->sourceOfNotify=$request->sourceOfNotify;
+            $h411a->natureOfConf=$request->natureOfConf;
+            $h411a->officeUseOnly=$request->officeUseOnly;
+            if (($request->sourceOfNotify) == 'Other Source'){
+                $h411a->specify=$request->specify;
+            } else {
+                $h411a->specify="";
+            }   
+            $h411a->save();
+
+            if ($request->has('save')) return redirect("mOHHome")->with('success', 'Data has been updated successfully!');
+            if ($request->has('send')) return redirect("mOHHome")->with('success', 'Data has been sent successfully!');
+        }
     }
 
     /**
@@ -154,6 +199,7 @@ class H411aController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $h411a = H411a::where('h411as.h411aRecordId', $id)->delete();
+        return redirect("mOHHome")->with('success', 'Entry has been deleted!');
     }
 }

@@ -11,13 +11,20 @@
             }
             document.getElementById('total'+$j).value = $total;
         }
+        if("{{ $h399Data->status }}" === "sent"){
+            var form = document.getElementById("h399Edit");
+            var elements = form.elements;
+            for (var i = 0, len = elements.length; i < len; ++i) {
+                elements[i].disabled = true;
+            }
+        }
     }
 </script>
 <script src="{{ asset('js/h399.js') }}"></script>
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="../mOHHome" style="text-decoration: none;">Home</a></li>
+        <li class="breadcrumb-item"><a href="../../mOHHome" style="text-decoration: none;">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">H399</li>
     </ol>
 </nav>
@@ -39,10 +46,11 @@
                         </div>
                     @endif
                     <br/>
-                    <form method="POST" action="/h399">
+                    <form id="h399Edit" method="POST" action="/h399/{{ $h399Data->h399RecordId }}">
                         <h6><i><b>Part I - Cases notified during the week</b></i></h6>
                         <br/>
                         @csrf
+                        <input name="_method" type="hidden" value="PATCH">
                         <table class="table table-borderless">
                             <tbody>
                                 <tr>
@@ -50,7 +58,7 @@
                                         <div class="form-group row">
                                             <label for="weekEndDate" class="col-sm-4 col-form-label">Week Ending</label>
                                             <div class="col-sm-7">
-                                                <input type="date" class="form-control{{ $errors->has('weekEndDate') ? ' is-invalid' : '' }}" id="weekEndDate" name="weekEndDate" value="{{ old('weekEndDate') }}" required autofocus>
+                                                <input type="date" class="form-control{{ $errors->has('weekEndDate') ? ' is-invalid' : '' }}" id="weekEndDate" name="weekEndDate" value="{{ $h399Data->weekEndDate }}" required autofocus>
                                             </div>
                                         </div>
                                     </td>
@@ -62,7 +70,7 @@
                                         <div class="form-group row">
                                             <label for="province" class="col-sm-4 col-form-label">Province</label>
                                             <div class="col-sm-7">
-                                                <input type="text" class="form-control{{ $errors->has('province') ? ' is-invalid' : '' }}" id="province" name="province" value="{{ $province }}" readonly>
+                                                <input type="text" class="form-control{{ $errors->has('province') ? ' is-invalid' : '' }}" id="province" name="province" value="{{ $h399Data->province }}" readonly>
                                             </div>
                                         </div>
                                     </td>
@@ -70,7 +78,7 @@
                                         <div class="form-group row">
                                             <label for="district" class="col-sm-4 col-form-label">District</label>
                                             <div class="col-sm-7">
-                                                <input type="text" class="form-control{{ $errors->has('district') ? ' is-invalid' : '' }}" id="district" name="district" value="{{ $district }}" readonly>
+                                                <input type="text" class="form-control{{ $errors->has('district') ? ' is-invalid' : '' }}" id="district" name="district" value="{{ $h399Data->district }}" readonly>
                                             </div>
                                         </div>
                                     </td>
@@ -80,7 +88,7 @@
                                         <div class="form-group row">
                                             <label for="rDHSDiv" class="col-sm-4 col-form-label">R.D.H.S Division</label>
                                             <div class="col-sm-7">
-                                                <input type="text" class="form-control{{ $errors->has('rDHSDiv') ? ' is-invalid' : '' }}" id="rDHSDiv" name="rDHSDiv" value="{{ $rDHSDiv }}" readonly>
+                                                <input type="text" class="form-control{{ $errors->has('rDHSDiv') ? ' is-invalid' : '' }}" id="rDHSDiv" name="rDHSDiv" value="{{ $h399Data->rDHSDiv }}" readonly>
                                             </div>
                                         </div>
                                     </td>
@@ -88,7 +96,7 @@
                                         <div class="form-group row">
                                             <label for="mOHArea" class="col-sm-4 col-form-label">M.O.H Area</label>
                                             <div class="col-sm-7">
-                                                <input type="text" class="form-control{{ $errors->has('mOHArea') ? ' is-invalid' : '' }}" id="mOHArea" name="mOHArea" value="{{ $mOHArea }}" readonly>
+                                                <input type="text" class="form-control{{ $errors->has('mOHArea') ? ' is-invalid' : '' }}" id="mOHArea" name="mOHArea" value="{{ $h399Data->mOHArea }}" readonly>
                                             </div>
                                         </div>
                                     </td>
@@ -211,69 +219,79 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">Cases awaiting investigation at the end of the week</th>
-                                        @for ($i = 1; $i < 26; $i++)
-                                            <?php $x = 'countR1C'.$i; ?>
-                                            <td style="vertical-align: middle;">
-                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus>
-                                            </td>
-                                        @endfor
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Cases confirmed as a non-notifiable disease during the week</th>
-                                        @for ($i = 1; $i < 26; $i++)
-                                            <?php $x = 'countR2C'.$i; ?>
-                                            <td style="vertical-align: middle;">
-                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus>
-                                            </td>
-                                        @endfor
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Cases confirmed as a notifiable disease during the week</th>
-                                        @for ($i = 1; $i < 26; $i++)
-                                            <?php $x = 'countR3C'.$i; ?>
-                                            <td style="vertical-align: middle;">
-                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus>
-                                            </td>
-                                        @endfor
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Cases decided as belonging to other MOH areas during the week</th>
-                                        @for ($i = 1; $i < 26; $i++)
-                                            <?php $x = 'countR4C'.$i; ?>
-                                            <td style="vertical-align: middle;">
-                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus>
-                                            </td>
-                                        @endfor
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Cases decided as untraceable during the week</th>
-                                        @for ($i = 1; $i < 26; $i++)
-                                            <?php $x = 'countR5C'.$i; ?>
-                                            <td style="vertical-align: middle;">
-                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus>
-                                            </td>
-                                        @endfor
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Cases informed earlier and awaiting investigation at beginning of the week</th>
-                                        @for ($i = 1; $i < 26; $i++)
-                                            <?php $x = 'countR6C'.$i; ?>
-                                            <td style="vertical-align: middle;">
-                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus>
-                                            </td>
-                                        @endfor
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">New cases notified during the week</th>
-                                        @for ($i = 1; $i < 26; $i++)
-                                            <?php $x = 'countR7C'.$i; ?>
-                                            <td style="vertical-align: middle;">
-                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus>
-                                            </td>
-                                        @endfor
-                                    </tr>
+                                    @foreach ($summaryData as $data)
+                                        @if (($data->summary) == 'Cases awaiting investigation at the end of the week') 
+                                            <tr>
+                                                <th scope="row">Cases awaiting investigation at the end of the week</th>
+                                                @for ($i = 1; $i < 26; $i++)
+                                                    <?php $x = 'countR1C'.$i; $disease = trim($diseases[$i-1]); ?>
+                                                    <td style="vertical-align: middle;">
+                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus>
+                                                    </td>
+                                                @endfor
+                                            </tr>
+                                        @elseif (($data->summary) == 'Cases confirmed as a non-notifiable disease during the week') 
+                                            <tr>
+                                                <th scope="row">Cases confirmed as a non-notifiable disease during the week</th>
+                                                @for ($i = 1; $i < 26; $i++)
+                                                    <?php $x = 'countR2C'.$i; $disease = trim($diseases[$i-1]); ?>
+                                                    <td style="vertical-align: middle;">
+                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus>
+                                                    </td>
+                                                @endfor
+                                            </tr>
+                                        @elseif (($data->summary) == 'Cases confirmed as a notifiable disease during the week') 
+                                            <tr>
+                                                <th scope="row">Cases confirmed as a notifiable disease during the week</th>
+                                                @for ($i = 1; $i < 26; $i++)
+                                                    <?php $x = 'countR3C'.$i; $disease = trim($diseases[$i-1]); ?>
+                                                    <td style="vertical-align: middle;">
+                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus>
+                                                    </td>
+                                                @endfor
+                                            </tr>
+                                        @elseif (($data->summary) == 'Cases decided as belonging to other MOH areas during the week') 
+                                            <tr>
+                                                <th scope="row">Cases decided as belonging to other MOH areas during the week</th>
+                                                @for ($i = 1; $i < 26; $i++)
+                                                    <?php $x = 'countR4C'.$i; $disease = trim($diseases[$i-1]); ?>
+                                                    <td style="vertical-align: middle;">
+                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus>
+                                                    </td>
+                                                @endfor
+                                            </tr>
+                                        @elseif (($data->summary) == 'Cases decided as untraceable during the week') 
+                                            <tr>
+                                                <th scope="row">Cases decided as untraceable during the week</th>
+                                                @for ($i = 1; $i < 26; $i++)
+                                                    <?php $x = 'countR5C'.$i; $disease = trim($diseases[$i-1]); ?>
+                                                    <td style="vertical-align: middle;">
+                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus>
+                                                    </td>
+                                                @endfor
+                                            </tr>
+                                        @elseif (($data->summary) == 'Cases informed earlier and awaiting investigation at beginning of the week') 
+                                            <tr>
+                                                <th scope="row">Cases informed earlier and awaiting investigation at beginning of the week</th>
+                                                @for ($i = 1; $i < 26; $i++)
+                                                    <?php $x = 'countR6C'.$i; $disease = trim($diseases[$i-1]); ?>
+                                                    <td style="vertical-align: middle;">
+                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus>
+                                                    </td>
+                                                @endfor
+                                            </tr>
+                                        @elseif (($data->summary) == 'New cases notified during the week') 
+                                            <tr>
+                                                <th scope="row">New cases notified during the week</th>
+                                                @for ($i = 1; $i < 26; $i++)
+                                                    <?php $x = 'countR7C'.$i; $disease = trim($diseases[$i-1]); ?>
+                                                    <td style="vertical-align: middle;">
+                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus>
+                                                    </td>
+                                                @endfor
+                                            </tr>
+                                        @endif
+                                    @endforeach
                                 </tbody>
                             </table>                            
                         </div>
@@ -281,17 +299,18 @@
                         <table style="width: 100%;">
                             <tbody>
                                 <tr>
-                                    <td style="padding-bottom: 0%; width: 50%;">
-                                    </td>
-                                    <td style="padding-top: 0%; padding-bottom: 0%;">
-                                        <div class="form-group row mb-0">
-                                            <div class="offset-md-8">                               
-                                                <button type="submit" name="save" class="btn btn-primary">Save</button>
-                                                &ensp;&ensp;
-                                                <button type="submit" name="send" class="btn btn-primary">Send</button>
+                                    <td style="padding-bottom: 0%; width: 50%;"></td>
+                                    @if($h399Data->status == 'draft')
+                                        <td style="padding-top: 0%; padding-bottom: 0%;">
+                                            <div class="form-group row mb-0">
+                                                <div class="offset-md-8">                               
+                                                    <button type="submit" name="save" class="btn btn-primary">Save</button>
+                                                    &ensp;&ensp;
+                                                    <button type="submit" name="send" class="btn btn-primary">Send</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
+                                        </td>
+                                    @endif
                                 </tr>
                             </tbody>
                         </table>

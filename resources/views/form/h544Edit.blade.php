@@ -4,25 +4,25 @@
 <script type="text/javascript">
     window.onload = myAlert;
     function myAlert(){
-        if (document.getElementById("government").checked == true) {          
+        if (document.getElementById("government").checked) {          
             document.getElementById('govHospitalDiv').style.display = '';        
             document.getElementById('pvtHospitalDiv').style.display = 'none';
             document.getElementById('govHospital').required = true;
             document.getElementById('pvtHospital').required = false;
         }
-        else if(document.getElementById("private").checked == true){  
+        else if(document.getElementById("private").checked){  
             document.getElementById('pvtHospitalDiv').style.display = '';
             document.getElementById('govHospitalDiv').style.display = 'none';
             document.getElementById('pvtHospital').required = true;
             document.getElementById('govHospital').required = false;
         }
-        if (document.getElementById("groupA").checked == true) {
+        if (document.getElementById("groupA").checked) {
             document.getElementById('diseaseGroupADiv').style.display = '';
             document.getElementById('diseaseGroupBDiv').style.display = 'none';
             document.getElementById('diseaseGroupA').required = true;
             document.getElementById('diseaseGroupB').required = false;
         }
-        else if(document.getElementById("groupB").checked == true){  
+        else if(document.getElementById("groupB").checked){  
             document.getElementById('diseaseGroupBDiv').style.display = '';
             document.getElementById('diseaseGroupADiv').style.display = 'none';
             document.getElementById('diseaseGroupB').required = true;
@@ -107,7 +107,8 @@
             document.getElementById("igmPositive").checked || document.getElementById("igmNegative").checked ||
             document.getElementById("iggPositive").checked || document.getElementById("iggNegative").checked){
             document.getElementById('igmNegative').required = false;
-        }else{
+        } 
+        else{
             document.getElementById('igmNegative').required = true;
         }   
         if("{{ $h544Data->status }}" === "sent"){
@@ -187,7 +188,7 @@
                                                 <label for="pvtHospital" class="col-sm-4 col-form-label"></label>
                                                 <div class="col-sm-7">
                                                     <select id="pvtHospital" name="pvtHospital" class="form-control{{ $errors->has('pvtHospital') ? ' is-invalid' : '' }}" autofocus>
-                                                        <option value="" disabled selected>Select a hospital</option> 
+                                                        <option value="" disabled selected>Select a hospital</option>
                                                         <option value="New Yarl Hospital" {{ $h544Data->insName == 'New Yarl Hospital' ? 'selected' : '' }}>New Yarl Hospital</option>
                                                         <option value="Northern Central Hospitals (pvt)" {{ $h544Data->insName == 'Northern Central Hospitals (pvt)' ? 'selected' : '' }}>Northern Central Hospitals (pvt)</option>
                                                         <option value="Rakavo Hospital" {{ $h544Data->insName == 'Rakavo Hospital' ? 'selected' : '' }}>Rakavo Hospital</option>
@@ -248,28 +249,30 @@
                                                     <select id="diseaseGroupB" name="diseaseGroupB" class="form-control{{ $errors->has('diseaseGroupB') ? ' is-invalid' : '' }}" value="{{ old('diseaseGroupB') }}" autofocus>
                                                         @php $or = 'or'; @endphp
                                                         <option value="" disabled selected>Select a disease</option>
+                                                        <option value="Acute Poliomyelitis / Acute Flaccid Paralysis" {{ $h544Data->diseaseName == 'Acute Poliomyelitis / Acute Flaccid Paralysis' ? 'selected' : '' }}>Acute Poliomyelitis / Acute Flaccid Paralysis</option>
                                                         <option value="Chicken Pox" {{ $h544Data->diseaseName == 'Chicken Pox' ? 'selected' : '' }}>Chicken Pox</option>
-                                                        <option value="Dengue Fever/ Dengue Haemorragic Fever" {{ $h544Data->diseaseName == 'Dengue Fever/ Dengue Haemorragic Fever' ? 'selected' : '' }}>Dengue Fever/ Dengue Haemorragic Fever</option>
+                                                        <option value="Dengue Fever / Dengue Haemorrhagic Fever" {{ $h544Data->diseaseName == 'Dengue Fever / Dengue Haemorrhagic Fever' ? 'selected' : '' }}>Dengue Fever / Dengue Haemorrhagic Fever</option>
                                                         <option value="Diphtheria" {{ $h544Data->diseaseName == 'Diphtheria' ? 'selected' : '' }}>Diphtheria</option>
                                                         <option value="Dysentery" {{ $h544Data->diseaseName == 'Dysentery' ? 'selected' : '' }}>Dysentery</option>
-                                                        <option value="Encephalitis (including Japanese Encephalitis)" {{ $h544Data->diseaseName == 'Encephalitis (including Japanese Encephalitis)' ? 'selected' : '' }}>Encephalitis (including Japanese Encephalitis)</option>
+                                                        <option value="Encephalitis" {{ $h544Data->diseaseName == 'Encephalitis' ? 'selected' : '' }}>Encephalitis</option>
                                                         <option value="Enteric Fever" {{ $h544Data->diseaseName == 'Enteric Fever' ? 'selected' : '' }}>Enteric Fever</option>
                                                         <option value="Food Poisoning" {{ $h544Data->diseaseName == 'Food Poisoning' ? 'selected' : '' }}>Food Poisoning</option>
                                                         <option value="Human Rabies" {{ $h544Data->diseaseName == 'Human Rabies' ? 'selected' : '' }}>Human Rabies</option>
+                                                        <option value="Leishmaniasis" {{ $h544Data->diseaseName == 'Leishmaniasis' ? 'selected' : '' }}>Leishmaniasis</option>
+                                                        <option value="Leprosy" {{ $h544Data->diseaseName == 'Leprosy' ? 'selected' : '' }}>Leprosy</option>
                                                         <option value="Leptospirosis" {{ $h544Data->diseaseName == 'Leptospirosis' ? 'selected' : '' }}>Leptospirosis</option>
                                                         <option value="Malaria" {{ $h544Data->diseaseName == 'Malaria' ? 'selected' : '' }}>Malaria</option>
                                                         <option value="Measles" {{ $h544Data->diseaseName == 'Measles' ? 'selected' : '' }}>Measles</option>
                                                         <option value="Meningitis" {{ $h544Data->diseaseName == 'Meningitis' ? 'selected' : '' }}>Meningitis</option>
                                                         <option value="Mumps" {{ $h544Data->diseaseName == 'Mumps' ? 'selected' : '' }}>Mumps</option>
-                                                        <option value="Pertussis" {{ $h544Data->diseaseName == 'Pertussis' ? 'selected' : '' }}>Pertussis</option>
-                                                        <option value="Polio Myelitis/Acute Flaccid Paralysis" {{ $h544Data->diseaseName == 'Polio Myelitis/Acute Flaccid Paralysis' ? 'selected' : '' }}>Polio Myelitis/Acute Flaccid Paralysis</option>
-                                                        <option value="Rubella/Congenital Rubella Syndrome" {{ $h544Data->diseaseName == 'Rubella/Congenital Rubella Syndrome' ? 'selected' : '' }}>Rubella/Congenital Rubella Syndrome</option>
-                                                        <option value="Severe Acute Respiratory Syndrome (SARS)" {{ $h544Data->diseaseName == 'Severe Acute Respiratory Syndrome (SARS)' ? 'selected' : '' }}>Severe Acute Respiratory Syndrome (SARS)</option>
-                                                        <option value="Simple continued fever of over 7 days or more" {{$h544Data->diseaseName == 'Simple continued fever of over 7 days '.$or.' more' ? 'selected' : '' }}>Simple continued fever of over 7 days or more</option>
-                                                        <option value="Tetanus/Neonatal tetanus" {{ $h544Data->diseaseName == 'Tetanus/Neonatal tetanus' ? 'selected' : '' }}>Tetanus/Neonatal tetanus</option>
+                                                        <option value="Neonatal Tetanus" {{ $h544Data->diseaseName == 'Neonatal Tetanus' ? 'selected' : '' }}>Neonatal Tetanus</option>
+                                                        <option value="Rubella / Congenital Rubella Syndrom" {{ $h544Data->diseaseName == 'Rubella / Congenital Rubella Syndrom' ? 'selected' : '' }}>Rubella / Congenital Rubella Syndrom</option>
+                                                        <option value="Simple Continued Fever of over 7 days or more" {{$h544Data->diseaseName == 'Simple Continued Fever of over 7 days '.$or.' more' ? 'selected' : '' }}>Simple Continued Fever of over 7 days or more</option>
+                                                        <option value="Tetanus" {{ $h544Data->diseaseName == 'Tetanus' ? 'selected' : '' }}>Tetanus</option>
                                                         <option value="Tuberculosis" {{ $h544Data->diseaseName == 'Tuberculosis' ? 'selected' : '' }}>Tuberculosis</option>
                                                         <option value="Typhus Fever" {{ $h544Data->diseaseName == 'Typhus Fever' ? 'selected' : '' }}>Typhus Fever</option>
                                                         <option value="Viral Hepatitis" {{ $h544Data->diseaseName == 'Viral Hepatitis' ? 'selected' : '' }}>Viral Hepatitis</option>
+                                                        <option value="Whooping Cough" {{ $h544Data->diseaseName == 'Whooping Cough' ? 'selected' : '' }}>Whooping Cough</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -337,7 +340,7 @@
                                             <div class="form-group row">
                                                 <label for="visitArea" class="col-sm-4 col-form-label">Recent Visit to the Disease Area</label>
                                                 <div class="col-sm-7">
-                                                    <textarea id="visitArea" class="form-control{{ $errors->has('visitArea') ? ' is-invalid' : '' }}" name="visitArea" rows="3" value="{{ old('visitArea') }}" autofocus></textarea>
+                                                    <textarea id="visitArea" class="form-control{{ $errors->has('visitArea') ? ' is-invalid' : '' }}" name="visitArea" rows="3" autofocus>{{ $h544Data->visitArea }}</textarea>
                                                 </div>
                                             </div>
                                         </td>
@@ -1039,16 +1042,16 @@
                                             </div>
                                         </td>
                                         @if($h544Data->status == 'draft')
-                                        <td style="padding-top: 0%; padding-bottom: 0%;">
-                                            <div class="form-group row mb-0">
-                                                <div class="offset-md-8">
-                                                    <!-- <input class="btn btn-primary" type="button" name="save" value="Save"> -->
-                                                    <button type="submit" name="save" class="btn btn-primary">Save</button>
-                                                    &ensp;&ensp;
-                                                    <button type="submit" name="send" class="btn btn-primary">Send</button>
+                                            <td style="padding-top: 0%; padding-bottom: 0%;">
+                                                <div class="form-group row mb-0">
+                                                    <div class="offset-md-8">
+                                                        <!-- <input class="btn btn-primary" type="button" name="save" value="Save"> -->
+                                                        <button type="submit" name="save" class="btn btn-primary">Save</button>
+                                                        &ensp;&ensp;
+                                                        <button type="submit" name="send" class="btn btn-primary">Send</button>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
+                                            </td>
                                         @endif
                                     </tr>
                                 </tbody>
