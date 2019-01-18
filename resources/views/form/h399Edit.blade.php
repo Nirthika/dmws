@@ -24,7 +24,11 @@
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="../../mOHHome" style="text-decoration: none;">Home</a></li>
+        @if ($userType == 'RDHS')
+            <li class="breadcrumb-item"><a href="../../rDHSHome" style="text-decoration: none;">Home</a></li>
+        @elseif ($userType == 'MOH')
+            <li class="breadcrumb-item"><a href="../../mOHHome" style="text-decoration: none;">Home</a></li>
+        @endif 
         <li class="breadcrumb-item active" aria-current="page">H399</li>
     </ol>
 </nav>
@@ -226,7 +230,7 @@
                                                 @for ($i = 1; $i < 26; $i++)
                                                     <?php $x = 'countR1C'.$i; $disease = trim($diseases[$i-1]); ?>
                                                     <td style="vertical-align: middle;">
-                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus>
+                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus oninput="setMin(this);">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -236,7 +240,7 @@
                                                 @for ($i = 1; $i < 26; $i++)
                                                     <?php $x = 'countR2C'.$i; $disease = trim($diseases[$i-1]); ?>
                                                     <td style="vertical-align: middle;">
-                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus>
+                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus oninput="setMin(this);">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -246,7 +250,7 @@
                                                 @for ($i = 1; $i < 26; $i++)
                                                     <?php $x = 'countR3C'.$i; $disease = trim($diseases[$i-1]); ?>
                                                     <td style="vertical-align: middle;">
-                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus>
+                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus oninput="setMin(this);">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -256,7 +260,7 @@
                                                 @for ($i = 1; $i < 26; $i++)
                                                     <?php $x = 'countR4C'.$i; $disease = trim($diseases[$i-1]); ?>
                                                     <td style="vertical-align: middle;">
-                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus>
+                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus oninput="setMin(this);">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -266,7 +270,7 @@
                                                 @for ($i = 1; $i < 26; $i++)
                                                     <?php $x = 'countR5C'.$i; $disease = trim($diseases[$i-1]); ?>
                                                     <td style="vertical-align: middle;">
-                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus>
+                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus oninput="setMin(this);">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -276,7 +280,7 @@
                                                 @for ($i = 1; $i < 26; $i++)
                                                     <?php $x = 'countR6C'.$i; $disease = trim($diseases[$i-1]); ?>
                                                     <td style="vertical-align: middle;">
-                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus>
+                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus oninput="setMin(this);">
                                                     </td>
                                                 @endfor
                                             </tr>
@@ -286,7 +290,7 @@
                                                 @for ($i = 1; $i < 26; $i++)
                                                     <?php $x = 'countR7C'.$i; $disease = trim($diseases[$i-1]); ?>
                                                     <td style="vertical-align: middle;">
-                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus>
+                                                        <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="{{ $data->$disease }}" style="width: 80px;" autofocus oninput="setMin(this);">
                                                     </td>
                                                 @endfor
                                             </tr>

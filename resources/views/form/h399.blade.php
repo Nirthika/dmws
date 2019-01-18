@@ -11,7 +11,7 @@
             }
             document.getElementById('total'+$j).value = $total;
         }
-    }
+    }    
 </script>
 <script src="{{ asset('js/h399.js') }}"></script>
 
@@ -216,7 +216,7 @@
                                         @for ($i = 1; $i < 26; $i++)
                                             <?php $x = 'countR1C'.$i; ?>
                                             <td style="vertical-align: middle;">
-                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus>
+                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus oninput="setMin(this);">
                                             </td>
                                         @endfor
                                     </tr>
@@ -225,7 +225,7 @@
                                         @for ($i = 1; $i < 26; $i++)
                                             <?php $x = 'countR2C'.$i; ?>
                                             <td style="vertical-align: middle;">
-                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus>
+                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus oninput="setMin(this);">
                                             </td>
                                         @endfor
                                     </tr>
@@ -234,7 +234,7 @@
                                         @for ($i = 1; $i < 26; $i++)
                                             <?php $x = 'countR3C'.$i; ?>
                                             <td style="vertical-align: middle;">
-                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus>
+                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus oninput="setMin(this);">
                                             </td>
                                         @endfor
                                     </tr>
@@ -243,7 +243,7 @@
                                         @for ($i = 1; $i < 26; $i++)
                                             <?php $x = 'countR4C'.$i; ?>
                                             <td style="vertical-align: middle;">
-                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus>
+                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus oninput="setMin(this);">
                                             </td>
                                         @endfor
                                     </tr>
@@ -252,7 +252,7 @@
                                         @for ($i = 1; $i < 26; $i++)
                                             <?php $x = 'countR5C'.$i; ?>
                                             <td style="vertical-align: middle;">
-                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus>
+                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus oninput="setMin(this);">
                                             </td>
                                         @endfor
                                     </tr>
@@ -261,7 +261,7 @@
                                         @for ($i = 1; $i < 26; $i++)
                                             <?php $x = 'countR6C'.$i; ?>
                                             <td style="vertical-align: middle;">
-                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus>
+                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus oninput="setMin(this);">
                                             </td>
                                         @endfor
                                     </tr>
@@ -270,7 +270,7 @@
                                         @for ($i = 1; $i < 26; $i++)
                                             <?php $x = 'countR7C'.$i; ?>
                                             <td style="vertical-align: middle;">
-                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus>
+                                                <input type="number" class="form-control input-sm" id="{{ $x }}" name="{{ $x }}" min="0" value="0" style="width: 80px;" autofocus oninput="setMin(this);">
                                             </td>
                                         @endfor
                                     </tr>

@@ -1119,6 +1119,7 @@ INSERT INTO `totals` (`h399RecordId`, `mOHArea`, `internationallyNotifiableDisea
 (2, 'Jaffna', 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:55', '2019-01-11 09:09:55');
 
 CREATE TABLE `weeklySummarys` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `h399RecordId` int(11) NOT NULL,
   `summary` varchar(100) NOT NULL,
   `internationallyNotifiableDiseases` int(5) DEFAULT '0',
@@ -1148,25 +1149,25 @@ CREATE TABLE `weeklySummarys` (
   `whoopingCough` int(5) DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`h399RecordId`, `summary`),
+  PRIMARY KEY (`id`),
   CONSTRAINT weeklysummarys_h399_record_id FOREIGN KEY (h399RecordId) REFERENCES h399s(h399RecordId) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `weeklySummarys` (`h399RecordId`, `summary`, `internationallyNotifiableDiseases`, `acutePoliomyelitis`, `chickenPox`, `dengueFever`, `diphtheria`, `dysentery`, `encephalitis`, `entericFever`, `foodPoisoning`, `humanRabies`, `leishmaniasis`, `leprosy`, `leptospirosis`, `malaria`, `neasles`, `meningities`, `mumps`, `neonatalTetanus`, `rubella`, `simpleConFever`, `tetanus`, `tuberculosis`, `typhusFever`, `viralHepatitis`, `whoopingCough`, `created_at`, `updated_at`) VALUES
-(1, 'Cases awaiting investigation at the end of the week', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:26', '2019-01-11 09:09:26'),
-(1, 'Cases confirmed as a non-notifiable disease during the week', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:26', '2019-01-11 09:09:26'),
-(1, 'Cases confirmed as a notifiable disease during the week', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:26', '2019-01-11 09:09:26'),
-(1, 'Cases decided as belonging to other MOH areas during the week', 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:25', '2019-01-11 09:09:25'),
-(1, 'Cases decided as untraceable during the week', 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:25', '2019-01-11 09:09:25'),
-(1, 'Cases informed earlier and awaiting investigation at beginning of the week', 0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:25', '2019-01-11 09:09:25'),
-(1, 'New cases notified during the week', 5, 0, 0, 68, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:25', '2019-01-11 09:09:25'),
-(2, 'Cases awaiting investigation at the end of the week', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:56', '2019-01-11 09:09:56'),
-(2, 'Cases confirmed as a non-notifiable disease during the week', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:55', '2019-01-11 09:09:55'),
-(2, 'Cases confirmed as a notifiable disease during the week', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:56', '2019-01-11 09:09:56'),
-(2, 'Cases decided as belonging to other MOH areas during the week', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:55', '2019-01-11 09:09:55'),
-(2, 'Cases decided as untraceable during the week', 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:55', '2019-01-11 09:09:55'),
-(2, 'Cases informed earlier and awaiting investigation at beginning of the week', 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:55', '2019-01-11 09:09:55'),
-(2, 'New cases notified during the week', 0, 89, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:55', '2019-01-11 09:09:55');
+INSERT INTO `weeklySummarys` (`id`, `h399RecordId`, `summary`, `internationallyNotifiableDiseases`, `acutePoliomyelitis`, `chickenPox`, `dengueFever`, `diphtheria`, `dysentery`, `encephalitis`, `entericFever`, `foodPoisoning`, `humanRabies`, `leishmaniasis`, `leprosy`, `leptospirosis`, `malaria`, `neasles`, `meningities`, `mumps`, `neonatalTetanus`, `rubella`, `simpleConFever`, `tetanus`, `tuberculosis`, `typhusFever`, `viralHepatitis`, `whoopingCough`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Cases awaiting investigation at the end of the week', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:26', '2019-01-11 09:09:26'),
+(2, 1, 'Cases confirmed as a non-notifiable disease during the week', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:26', '2019-01-11 09:09:26'),
+(3, 1, 'Cases confirmed as a notifiable disease during the week', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:26', '2019-01-11 09:09:26'),
+(4, 1, 'Cases decided as belonging to other MOH areas during the week', 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:25', '2019-01-11 09:09:25'),
+(5, 1, 'Cases decided as untraceable during the week', 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:25', '2019-01-11 09:09:25'),
+(6, 1, 'Cases informed earlier and awaiting investigation at beginning of the week', 0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:25', '2019-01-11 09:09:25'),
+(7, 1, 'New cases notified during the week', 5, 0, 0, 68, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:25', '2019-01-11 09:09:25'),
+(8, 2, 'Cases awaiting investigation at the end of the week', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:56', '2019-01-11 09:09:56'),
+(9, 2, 'Cases confirmed as a non-notifiable disease during the week', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:55', '2019-01-11 09:09:55'),
+(10, 2, 'Cases confirmed as a notifiable disease during the week', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:56', '2019-01-11 09:09:56'),
+(11, 2, 'Cases decided as belonging to other MOH areas during the week', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:55', '2019-01-11 09:09:55'),
+(12, 2, 'Cases decided as untraceable during the week', 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:55', '2019-01-11 09:09:55'),
+(13, 2, 'Cases informed earlier and awaiting investigation at beginning of the week', 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:55', '2019-01-11 09:09:55'),
+(14, 2, 'New cases notified during the week', 0, 89, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2019-01-11 09:09:55', '2019-01-11 09:09:55');
 
 CREATE TABLE `chankanais` (
   `h399RecordId` int(11) NOT NULL,

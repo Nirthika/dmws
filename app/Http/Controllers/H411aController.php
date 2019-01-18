@@ -125,10 +125,11 @@ class H411aController extends Controller
      */
     public function show($id)
     {
+        $userType = Auth::user()->userType;
         $h411aData = H411a::where('h411as.h411aRecordId', $id)
                     ->select('h411as.*')
                     ->first();
-        return view('/form/h411aEdit', compact('h411aData'));
+        return view('/form/h411aEdit', compact('userType', 'h411aData'));
     }
 
     /**

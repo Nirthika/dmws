@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// use DB;
 use Auth;
 use App\MOH;
 use App\User;
@@ -134,7 +133,6 @@ class H399Controller extends Controller
                         $disease = trim($diseases[$j]);
                         $mOH->$disease=$request->$x;
                     }
-
                     $mOH->save();
                 }            
             } 
@@ -177,6 +175,7 @@ class H399Controller extends Controller
      */
     public function show($id)
     {
+        $userType = Auth::user()->userType;
         $mOHArea = $this->mOH->where('userId',Auth::user()->id)->first()->mOHArea;
         $pHIRanges = $this->pHIInMOH->where('mOHArea',$mOHArea)->select('pHIInMOHs.pHIRange')
                     ->get();
@@ -216,7 +215,7 @@ class H399Controller extends Controller
         // else if ($h399Data->mOHArea == 'Uduvil') 
         //     $mOHData = Uduvil::where('uduvils.h399RecordId', $id)->select('uduvils.*')->get();
 
-        return view('/form/h399Edit', compact('pHIRanges', 'diseaseData', 'h399Data', 'summaryData', 'diseases'));
+        return view('/form/h399Edit', compact('userType', 'pHIRanges', 'diseaseData', 'h399Data', 'summaryData', 'diseases'));
     }
 
     /**
@@ -315,10 +314,9 @@ class H399Controller extends Controller
         
         $summaryes = array('Cases awaiting investigation at the end of the week', 'Cases confirmed as a non-notifiable disease during the week', 'Cases confirmed as a notifiable disease during the week', 'Cases decided as belonging to other MOH areas during the week', 'Cases decided as untraceable during the week', 'Cases informed earlier and awaiting investigation at beginning of the week', 'New cases notified during the week');
         
-        $summaryData = WeeklySummary::where('weeklySummarys.h399RecordId', $id)->select('weeklySummarys.*')->get();
-        // $summaryData = DB::table('weeklySummarys')->where('weeklySummarys.h399RecordId', $id)
-        //                 ->select('weeklySummarys.*')->get();
-        // dd($summaryData);
+        $summaryData = WeeklySummary::where('weeklySummarys.h399RecordId', $id)
+                        ->select('weeklySummarys.*')->get();
+
         for ($i = 0; $i < count($summaryes); $i++) {
             $weeklySummary = $summaryData[$i];
             $weeklySummary->h399RecordId=$h399->h399RecordId;

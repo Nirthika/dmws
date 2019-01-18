@@ -130,8 +130,12 @@
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="../../doctorHome" style="text-decoration: none;">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Edit H544</li>
+        @if ($userType == 'Doctor')
+            <li class="breadcrumb-item"><a href="../../doctorHome" style="text-decoration: none;">Home</a></li>
+        @elseif ($userType == 'MOH')
+            <li class="breadcrumb-item"><a href="../../mOHHome" style="text-decoration: none;">Home</a></li>
+        @endif
+        <li class="breadcrumb-item active" aria-current="page">H544</li>
     </ol>
 </nav>
 

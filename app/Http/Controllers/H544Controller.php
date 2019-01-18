@@ -189,12 +189,13 @@ class H544Controller extends Controller
      */
     public function show($id)
     {
+        $userType = Auth::user()->userType;
         $notification = Notification::find($id);
         $h544Data = Notification::where('notifications.paId', $notification->paId)
                     ->join('patients', 'patients.paId', '=', 'notifications.paId')
                     ->select('patients.*', 'notifications.*')
                     ->first();
-        return view('/form/h544Edit', compact('h544Data'));
+        return view('/form/h544Edit', compact('userType', 'h544Data'));
     }
 
     /**

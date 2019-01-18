@@ -8,6 +8,7 @@ class WeeklySummary extends Model
 {
     protected $table = 'weeklySummarys';
     // protected $primaryKey = array('h399RecordId', 'summary');
+    // protected $primaryKey = 'h399RecordId';
 
     /**
      * The attributes that are mass assignable.

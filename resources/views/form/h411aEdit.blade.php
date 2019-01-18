@@ -38,7 +38,11 @@
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="../../mOHHome" style="text-decoration: none;">Home</a></li>
+        @if ($userType == 'EU')
+            <li class="breadcrumb-item"><a href="../../eUHome" style="text-decoration: none;">Home</a></li>
+        @elseif ($userType == 'MOH')
+            <li class="breadcrumb-item"><a href="../../mOHHome" style="text-decoration: none;">Home</a></li>
+        @endif         
         <li class="breadcrumb-item active" aria-current="page">H411a</li>
     </ol>
 </nav>
