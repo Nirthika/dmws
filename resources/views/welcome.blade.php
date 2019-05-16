@@ -46,10 +46,10 @@
     <section id="feature">
         <div class="card-deck">
             <div class="card">
-                <img class="card-img-top" src="<?= asset('images/1officers.jpg') ?>" alt="Card image cap" style="background-color: #e6f2ff;">
+                <img class="card-img-top" src="<?= asset('images/1officers.png') ?>" alt="Card image cap" style="background-color: #e6f2ff;">
                 <div class="card-body" style="padding: 0.5rem;">
-                    <h5 class="card-title" style="font-weight: bold;">Officers</h5>
-                    <p class="card-text">Notification officers in dengue surveillance.</p>                        
+                    <h5 class="card-title" style="font-weight: bold;">Our Team</h5>
+                    <p class="card-text">Members involved in dengue surveillance.</p>                        
                 </div>
                 <div class="card-footer" style="padding: 0.3rem 1.0rem;">
                   <a href="{{ url('/officers') }}" class="more">More...</a>
@@ -58,11 +58,11 @@
             <div class="card">
                 <img class="card-img-top" src="<?= asset('images/1communication.png') ?>" alt="Card image cap" style="background-color: #e6f2ff;">
                 <div class="card-body" style="padding: 0.5rem;">
-                    <h5 class="card-title" style="font-weight: bold;">Informing</h5>
-                    <p class="card-text">Information Sharing to relevant authorities.</p>
+                    <h5 class="card-title" style="font-weight: bold;">Sitemap</h5>
+                    <p class="card-text">Sharing information to relevant authorities.</p>
                 </div>
                 <div class="card-footer" style="padding: 0.3rem 1.0rem;">
-                  <a href="{{ url('/informing') }}" class="more">More...</a>
+                  <a href="{{ url('/sitemap') }}" class="more">More...</a>
                 </div>
             </div>
             <div class="card">
@@ -72,7 +72,7 @@
                     <p class="card-text">Monitor the dengue transformation.</p>
                 </div>
                 <div class="card-footer" style="padding: 0.3rem 1.0rem;">
-                  <a href="#" class="more">More...</a>
+                  <a href="{{ url('/monitoring') }}" class="more">More...</a>
                 </div>
             </div>
             <div class="card">
@@ -82,7 +82,7 @@
                     <p class="card-text">Alert on dengue surveillance.</p>
                 </div>
                 <div class="card-footer" style="padding: 0.3rem 1.0rem;">
-                  <a href="{{ url('/alerting') }}" class="more">More...</a>
+                  <a href="#" class="more">More...</a>
                 </div>
             </div>
             <div class="card">
@@ -102,7 +102,7 @@
                     <p class="card-text">Verification details from laboratory.</p>
                 </div>
                 <div class="card-footer" style="padding: 0.3rem 1.0rem;">
-                  <a href="#" class="more">More...</a>
+                  <a href="{{ url('/labTest') }}" class="more">More...</a>
                 </div>
             </div>
         </div>
@@ -171,17 +171,17 @@
                     @csrf
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Name" name="name" required>
+                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Your Name" name="name" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Email" name="email" required>
+                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Your Email" name="email" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <input id="phoneNo" type="text" class="form-control{{ $errors->has('phoneNo') ? ' is-invalid' : '' }}" placeholder="### #######" name="phoneNo" required>
+                            <input id="phoneNo" type="text" class="form-control{{ $errors->has('phoneNo') ? ' is-invalid' : '' }}" placeholder="Your Contact No. (Optional)" name="phoneNo" required>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -202,7 +202,7 @@
     <!-- Contact Us Section -->
     <div class="well" style="background-color: #cccccc;">
         <footer>
-            <p style="text-align: center; padding: 0.5%;">&copy; {{ ' RA. Department of Computer Science. University of Jaffna' }}</p>
+            <p style="text-align: center; padding: 0.5%;">&copy; {{ ' RA. Department of Computer Science. University of Jaffna 2019' }}</p>
         </footer>
     </div>
 </div>

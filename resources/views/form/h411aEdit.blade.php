@@ -33,6 +33,11 @@
             }
         }
     }
+    function confSubmit() {
+        var x = confirm("Are you sure you want to submit the form?");
+        if (x) return true;
+        else return false;
+    }
 </script>
 <script src="{{ asset('js/h411a.js') }}"></script>
 
@@ -64,7 +69,7 @@
                         </div>
                     @endif
                     <br/>
-                    <form id="h411aEdit" method="POST" action="/h411a/{{ $h411aData->h411aRecordId }}">
+                    <form id="h411aEdit" method="POST" action="/h411a/{{ $h411aData->h411aRecordId }}" onsubmit="return confSubmit()">
                         @csrf
                         <input name="_method" type="hidden" value="PATCH">
                         <div class="table-responsive">

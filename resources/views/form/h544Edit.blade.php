@@ -125,6 +125,11 @@
         opt.text = text;
         id1.options.add(opt);
     }
+    function confSubmit() {
+        var x = confirm("Are you sure you want to submit the form?");
+        if (x) return true;
+        else return false;
+    }
 </script>
 <script src="{{ asset('js/h544.js') }}"></script>
 
@@ -153,7 +158,7 @@
                         </div>
                     @endif
                     <br>
-                    <form id="h544Edit" method="POST" action="/h544/{{ $h544Data->id }}">
+                    <form id="h544Edit" method="POST" action="/h544/{{ $h544Data->id }}" onsubmit="return confSubmit()">
                         @csrf
                         <input name="_method" type="hidden" value="PATCH">
                         <div class="table-responsive">
@@ -640,7 +645,7 @@
                                                         <option value="Kandarmadam S.E" {{ $h544Data->resGSDivName == 'Kandarmadam S.E' ? 'selected' : '' }}>Kandarmadam S.E</option>
                                                         <option value="Kandarmadam S.W" {{ $h544Data->resGSDivName == 'Kandarmadam S.W' ? 'selected' : '' }}>Kandarmadam S.W</option>
                                                         <option value="Keerisuddan" {{ $h544Data->resGSDivName == 'Keerisuddan' ? 'selected' : '' }}>Keerisuddan</option>
-                                                        <option value="Kodday" {{ $h544Data->resGSDivName == 'Kodday' ? 'selected' : '' }}>Kodday</option>
+                                                        <option value="koddady" {{ $h544Data->resGSDivName == 'koddady' ? 'selected' : '' }}>koddady</option>
                                                         <option value="Madhu" {{ $h544Data->resGSDivName == 'Madhu' ? 'selected' : '' }}>Madhu</option>
                                                         <option value="Maruthady" {{ $h544Data->resGSDivName == 'Maruthady' ? 'selected' : '' }}>Maruthady</option>
                                                         <option value="Moor Street North" {{ $h544Data->resGSDivName == 'Moor Street North' ? 'selected' : '' }}>Moor Street North</option>
@@ -708,7 +713,7 @@
                                                         <option value="Kandarmadam S.E" {{ $h544Data->curGSDivName == 'Kandarmadam S.E' ? 'selected' : '' }}>Kandarmadam S.E</option>
                                                         <option value="Kandarmadam S.W" {{ $h544Data->curGSDivName == 'Kandarmadam S.W' ? 'selected' : '' }}>Kandarmadam S.W</option>
                                                         <option value="Keerisuddan" {{ $h544Data->curGSDivName == 'Keerisuddan' ? 'selected' : '' }}>Keerisuddan</option>
-                                                        <option value="Kodday" {{ $h544Data->curGSDivName == 'Kodday' ? 'selected' : '' }}>Kodday</option>
+                                                        <option value="koddady" {{ $h544Data->curGSDivName == 'koddady' ? 'selected' : '' }}>koddady</option>
                                                         <option value="Madhu" {{ $h544Data->curGSDivName == 'Madhu' ? 'selected' : '' }}>Madhu</option>
                                                         <option value="Maruthady" {{ $h544Data->curGSDivName == 'Maruthady' ? 'selected' : '' }}>Maruthady</option>
                                                         <option value="Moor Street North" {{ $h544Data->curGSDivName == 'Moor Street North' ? 'selected' : '' }}>Moor Street North</option>

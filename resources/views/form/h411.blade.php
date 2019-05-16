@@ -9,6 +9,11 @@
             if ('radio'===inp[i].type || 'checkbox'===inp[i].type) inp[i].checked = false;
         }
     }
+    function confSubmit() {
+        var x = confirm("Are you sure you want to submit the form?");
+        if (x) return true;
+        else return false;
+    }
 </script>
 <script src="{{ asset('js/h411.js') }}"></script>
 
@@ -36,7 +41,7 @@
                         </div>
                     @endif
                     <br>
-                    <form method="POST" action="/h411">
+                    <form method="POST" action="/h411" onsubmit="return confSubmit()">
                         @csrf
                         <div class="row justify-content-center">
                             <div class="col-sm-6">
@@ -276,7 +281,7 @@
                                                         <option value="Kandarmadam S.E">Kandarmadam S.E</option>
                                                         <option value="Kandarmadam S.W">Kandarmadam S.W</option>
                                                         <option value="Keerisuddan">Keerisuddan</option>
-                                                        <option value="Kodday">Kodday</option>
+                                                        <option value="koddady">koddady</option>
                                                         <option value="Madhu">Madhu</option>
                                                         <option value="Maruthady">Maruthady</option>
                                                         <option value="Moor Street North">Moor Street North</option>

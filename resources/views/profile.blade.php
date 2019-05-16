@@ -39,9 +39,9 @@
                                 <h3 class="card-title">{{ $user->name }}</h3>
                                 {{ $user->userType }}
                             </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><i style="color: #005ce6;">{{ $user->email }}</i></li>
-                                </ul>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><i style="color: #005ce6;">{{ $user->email }}</i></li>
+                            </ul>
                             <div class="card-body" style="padding: 1.5%;">
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-link" data-toggle="modal" data-target="#editUser">Edit</button>
@@ -145,8 +145,8 @@
                                                     <td style="border-right: 1px solid #dee2e6;"><h5>Address</h5></td>
                                                     <td>
                                                         <h5>{{ $addLine1 }}, {{ $addLine2 }}, 
-                                                            {{ $province }}, 
-                                                            {{ $district }}.
+                                                            {{ $district }}, 
+                                                            {{ $province }}.
                                                         </h5>
                                                     </td>
                                                     <td></td>
@@ -241,6 +241,18 @@
                                                         <td><h5>{{ $eU->insName }}</h5></td>
                                                     </tr>
                                                 @endif
+                                                @if ($user->userType == 'Principal Investigator')
+                                                    <tr>
+                                                        <td style="border-right: 1px solid #dee2e6;"><h5>Institute</h5></td>
+                                                        <td><h5>{{ $pI->insName }}</h5></td>
+                                                    </tr>
+                                                @endif
+                                                @if ($user->userType == 'Research Assistant')
+                                                    <tr>
+                                                        <td style="border-right: 1px solid #dee2e6;"><h5>Institute</h5></td>
+                                                        <td><h5>{{ $rA->insName }}</h5></td>
+                                                    </tr>
+                                                @endif
                                                 <tr>
                                                     <td></td>
                                                     <td style="float: right;">
@@ -276,15 +288,15 @@
                                                                                 <label for="gender" class="col-md-4 col-form-label">Gender:</label>
                                                                                 <div class="col-md-8">
                                                                                     <div class="custom-control custom-radio custom-control-inline">
-                                                                                        <input type="radio" id="male" name="gender" class="custom-control-input" value="Male" {{ $gender == 'Male' ? 'checked' : '' }} required>
+                                                                                        <input type="radio" id="male" name="gender" class="custom-control-input" value="Male" @if($gender == 'Male') checked @endif required>
                                                                                         <label class="custom-control-label" for="male">Male</label>
                                                                                     </div>
                                                                                     <div class="custom-control custom-radio custom-control-inline">
-                                                                                        <input type="radio" id="female" name="gender" class="custom-control-input" value="Female" {{ $gender == 'Female' ? 'checked' : '' }} required>
+                                                                                        <input type="radio" id="female" name="gender" class="custom-control-input" value="Female" @if($gender == 'Female') checked @endif required>
                                                                                         <label class="custom-control-label" for="female">Female</label>
                                                                                     </div>
                                                                                     <div class="custom-control custom-radio custom-control-inline">
-                                                                                        <input type="radio" id="other" name="gender" class="custom-control-input" value="Other" {{ $gender == 'Other' ? 'checked' : '' }} required>
+                                                                                        <input type="radio" id="other" name="gender" class="custom-control-input" value="Other" @if($gender == 'Other') checked @endif required>
                                                                                         <label class="custom-control-label" for="other">Other</label>
                                                                                     </div>
                                                                                 </div>      
@@ -303,31 +315,31 @@
                                                                                 <label for="district" class="col-md-4 col-form-label"></label>
                                                                                 <div class="col-md-8">
                                                                                     <select id="district" name="district" class="form-control" required onchange="selectProvince(this,province)">
-                                                                                        <option value="Ampara" {{ $district == 'Ampara' ? 'selected' : '' }}>Ampara</option>
-                                                                                        <option value="Anuradhapura" {{ $district == 'Anuradhapura' ? 'selected' : '' }}>Anuradhapura</option>
-                                                                                        <option value="Badulla" {{ $district == 'Badulla' ? 'selected' : '' }}>Badulla</option>
-                                                                                        <option value="Batticaloa" {{ $district == 'Batticaloa' ? 'selected' : '' }}>Batticaloa</option>
-                                                                                        <option value="Colombo" {{ $district == 'Colombo' ? 'selected' : '' }}>Colombo</option>
-                                                                                        <option value="Galle" {{ $district == 'Galle' ? 'selected' : '' }}>Galle</option>
-                                                                                        <option value="Gampaha" {{ $district == 'Gampaha' ? 'selected' : '' }}>Gampaha</option>
-                                                                                        <option value="Hambantota" {{ $district == 'Hambantota' ? 'selected' : '' }}>Hambantota</option>
-                                                                                        <option value="Jaffna" {{ $district == 'Jaffna' ? 'selected' : '' }}>Jaffna</option>
-                                                                                        <option value="Kalutara" {{ $district == 'Kalutara' ? 'selected' : '' }}>Kalutara</option>
-                                                                                        <option value="Kandy" {{ $district == 'Kandy' ? 'selected' : '' }}>Kandy</option>
-                                                                                        <option value="Kegalle" {{ $district == 'Kegalle' ? 'selected' : '' }}>Kegalle</option>
-                                                                                        <option value="Kilinochchi" {{ $district == 'Kilinochchi' ? 'selected' : '' }}>Kilinochchi</option>
-                                                                                        <option value="Kurunegala" {{ $district == 'Kurunegala' ? 'selected' : '' }}>Kurunegala</option>
-                                                                                        <option value="Mannar" {{ $district == 'Mannar' ? 'selected' : '' }}>Mannar</option>
-                                                                                        <option value="Matale" {{ $district == 'Matale' ? 'selected' : '' }}>Matale</option>
-                                                                                        <option value="Matara" {{ $district == 'Matara' ? 'selected' : '' }}>Matara</option>
-                                                                                        <option value="Monaragala" {{ $district == 'Monaragala' ? 'selected' : '' }}>Monaragala</option>
-                                                                                        <option value="Mullaitivu" {{ $district == 'Mullaitivu' ? 'selected' : '' }}>Mullaitivu</option>
-                                                                                        <option value="Nuwara Eliya" {{ $district == 'Nuwara Eliya' ? 'selected' : '' }}>Nuwara Eliya</option>
-                                                                                        <option value="Polonnaruwa" {{ $district == 'Polonnaruwa' ? 'selected' : '' }}>Polonnaruwa</option>
-                                                                                        <option value="Puttalam" {{ $district == 'Puttalam' ? 'selected' : '' }}>Puttalam</option>
-                                                                                        <option value="Ratnapura" {{ $district == 'Ratnapura' ? 'selected' : '' }}>Ratnapura</option>
-                                                                                        <option value="Trincomalee" {{ $district == 'Trincomalee' ? 'selected' : '' }}>Trincomalee</option>
-                                                                                        <option value="Vavuniya" {{ $district == 'Vavuniya' ? 'selected' : '' }}>Vavuniya</option>
+                                                                                        <option value="Ampara" @if($district === 'Ampara') selected @endif>Ampara</option>
+                                                                                        <option value="Anuradhapura" @if($district == 'Anuradhapura') selected @endif>Anuradhapura</option>
+                                                                                        <option value="Badulla" @if($district == 'Badulla') selected @endif>Badulla</option>
+                                                                                        <option value="Batticaloa" @if($district == 'Batticaloa') selected @endif>Batticaloa</option>
+                                                                                        <option value="Colombo" @if($district == 'Colombo') selected @endif>Colombo</option>
+                                                                                        <option value="Galle" @if($district == 'Galle') selected @endif>Galle</option>
+                                                                                        <option value="Gampaha" @if($district == 'Gampaha') selected @endif>Gampaha</option>
+                                                                                        <option value="Hambantota" @if($district == 'Hambantota') selected @endif>Hambantota</option>
+                                                                                        <option value="Jaffna" @if($district === 'Jaffna') selected @endif>Jaffna</option>
+                                                                                        <option value="Kalutara" @if($district == 'Kalutara') selected @endif>Kalutara</option>
+                                                                                        <option value="Kandy" @if($district == 'Kandy') selected @endif>Kandy</option>
+                                                                                        <option value="Kegalle" @if($district == 'Kegalle') selected @endif>Kegalle</option>
+                                                                                        <option value="Kilinochchi" @if($district == 'Kilinochchi') selected @endif>Kilinochchi</option>
+                                                                                        <option value="Kurunegala" @if($district == 'Kurunegala') selected @endif>Kurunegala</option>
+                                                                                        <option value="Mannar" @if($district == 'Mannar') selected @endif>Mannar</option>
+                                                                                        <option value="Matale" @if($district == 'Matale') selected @endif>Matale</option>
+                                                                                        <option value="Matara" @if($district == 'Matara') selected @endif>Matara</option>
+                                                                                        <option value="Monaragala" @if($district == 'Monaragala') selected @endif>Monaragala</option>
+                                                                                        <option value="Mullaitivu" @if($district == 'Mullaitivu') selected @endif>Mullaitivu</option>
+                                                                                        <option value="Nuwara Eliya" @if($district == 'Nuwara Eliya') checked @endif>Nuwara Eliya</option>
+                                                                                        <option value="Polonnaruwa" @if($district == 'Polonnaruwa') selected @endif>Polonnaruwa</option>
+                                                                                        <option value="Puttalam" @if($district == 'Puttalam') selected @endif>Puttalam</option>
+                                                                                        <option value="Ratnapura" @if($district == 'Ratnapura') selected @endif>Ratnapura</option>
+                                                                                        <option value="Trincomalee" @if($district == 'Trincomalee') selected @endif>Trincomalee</option>
+                                                                                        <option value="Vavuniya" @if($district == 'Vavuniya') selected @endif>Vavuniya</option>
                                                                                     </select>
                                                                                     <label for="district" class="col-form-label-sm text-md-left">District</label>
                                                                                 </div>
@@ -577,6 +589,22 @@
                                                                                             <option value="Renny Dental &amp; Optical Service" {{ $eU->insName == 'Renny Dental &amp; Optical Service' ? 'selected' : '' }}>Renny Dental &amp; Optical Service</option>
                                                                                             <option value="Suharni Hospital" {{ $eU->insName == 'Suharni Hospital' ? 'selected' : '' }}>Suharni Hospital</option>
                                                                                         </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endif
+                                                                            @if ($user->userType == 'Principal Investigator')
+                                                                                <div class="form-group row" id="insName">
+                                                                                    <label for="insName" class="col-md-4 col-form-label">Institute</label>
+                                                                                    <div class="col-md-8">
+                                                                                        <input type="text" class="form-control{{ $errors->has('insName') ? ' is-invalid' : '' }}" id="insName" name="insName" value="{{ $pI->insName }}" readonly autofocus>
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endif
+                                                                            @if ($user->userType == 'Research Assistant')
+                                                                                <div class="form-group row" id="insName">
+                                                                                    <label for="insName" class="col-md-4 col-form-label">Institute</label>
+                                                                                    <div class="col-md-8">
+                                                                                        <input type="text" class="form-control{{ $errors->has('insName') ? ' is-invalid' : '' }}" id="insName" name="insName" value="{{ $rA->insName }}" readonly autofocus>
                                                                                     </div>
                                                                                 </div>
                                                                             @endif

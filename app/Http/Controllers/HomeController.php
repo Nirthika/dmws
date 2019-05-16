@@ -47,6 +47,10 @@ class HomeController extends Controller
                 return redirect('/rDHS/create');
             } elseif (Session::get('userType') == 'Doctor') {
                 return redirect('/doctor/create');
+            } elseif (Session::get('userType') == 'Principal Investigator') {
+                return redirect('/pI/create');
+            } elseif (Session::get('userType') == 'Research Assistant') {
+                return redirect('/rA/create');
             } else{
                 return "Invalid user type";
             }
@@ -61,6 +65,10 @@ class HomeController extends Controller
                 return redirect('/rDHSHome');
             } elseif (Session::get('userType') == 'Doctor') {
                 return redirect('/doctorHome');
+            } elseif (Session::get('userType') == 'Principal Investigator') {
+                return redirect('/labResults');
+            } elseif (Session::get('userType') == 'Research Assistant') {
+                return redirect('/labResults');
             } else{
                 return "Invalid user type";
             }

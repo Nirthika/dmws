@@ -12,6 +12,11 @@
             }
         }
     }
+    function confSubmit() {
+        var x = confirm("Are you sure you want to submit the form?");
+        if (x) return true;
+        else return false;
+    }
 </script>
 <script src="{{ asset('js/h411.js') }}"></script>
 
@@ -43,7 +48,7 @@
                         </div>
                     @endif
                     <br>
-                    <form id="h411Edit" method="POST" action="/h411/{{ $h411Data->h411RecordId }}">
+                    <form id="h411Edit" method="POST" action="/h411/{{ $h411Data->h411RecordId }}" onsubmit="return confSubmit()">
                         @csrf
                         <input name="_method" type="hidden" value="PATCH">
                         <div class="row justify-content-center">
@@ -286,7 +291,7 @@
                                                         <option value="Kandarmadam S.E" {{ $h411Data->gSDivName == 'Kandarmadam S.E' ? 'selected' : '' }}>Kandarmadam S.E</option>
                                                         <option value="Kandarmadam S.W" {{ $h411Data->gSDivName == 'Kandarmadam S.W' ? 'selected' : '' }}>Kandarmadam S.W</option>
                                                         <option value="Keerisuddan" {{ $h411Data->gSDivName == 'Keerisuddan' ? 'selected' : '' }}>Keerisuddan</option>
-                                                        <option value="Kodday" {{ $h411Data->gSDivName == 'Kodday' ? 'selected' : '' }}>Kodday</option>
+                                                        <option value="koddady" {{ $h411Data->gSDivName == 'koddady' ? 'selected' : '' }}>koddady</option>
                                                         <option value="Madhu" {{ $h411Data->gSDivName == 'Madhu' ? 'selected' : '' }}>Madhu</option>
                                                         <option value="Maruthady" {{ $h411Data->gSDivName == 'Maruthady' ? 'selected' : '' }}>Maruthady</option>
                                                         <option value="Moor Street North" {{ $h411Data->gSDivName == 'Moor Street North' ? 'selected' : '' }}>Moor Street North</option>

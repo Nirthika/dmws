@@ -28,6 +28,11 @@
         document.getElementById("birthYear").value='';
         document.getElementById("birthDate").value='';
         document.getElementById("age").value=0;
+    }    
+    function confSubmit() {
+        var x = confirm("Are you sure you want to submit the form?");
+        if (x) return true;
+        else return false;
     }
 </script>
 <script src="{{ asset('js/h544.js') }}"></script>
@@ -53,7 +58,7 @@
                         </div>
                     @endif
                     <br>
-                    <form method="POST" action="/h544">
+                    <form method="POST" action="/h544" onsubmit="return confSubmit()">
                         @csrf
                         <div class="table-responsive">
                             <table class="table table-borderless">
@@ -395,7 +400,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                <small id="labTestAlert" class="form-text text-muted">Please Select Atleast One Test</small>                                            
+                                                <small id="labTestAlert" class="form-text text-muted">Please Select Atleast One Test</small>
                                                 </div> 
                                             </div>
                                         </td>
@@ -488,7 +493,7 @@
                                                         <option value="Kandarmadam S.E">Kandarmadam S.E</option>
                                                         <option value="Kandarmadam S.W">Kandarmadam S.W</option>
                                                         <option value="Keerisuddan">Keerisuddan</option>
-                                                        <option value="Kodday">Kodday</option>
+                                                        <option value="koddady">koddady</option>
                                                         <option value="Madhu">Madhu</option>
                                                         <option value="Maruthady">Maruthady</option>
                                                         <option value="Moor Street North">Moor Street North</option>
@@ -556,7 +561,7 @@
                                                         <option value="Kandarmadam S.E">Kandarmadam S.E</option>
                                                         <option value="Kandarmadam S.W">Kandarmadam S.W</option>
                                                         <option value="Keerisuddan">Keerisuddan</option>
-                                                        <option value="Kodday">Kodday</option>
+                                                        <option value="koddady">koddady</option>
                                                         <option value="Madhu">Madhu</option>
                                                         <option value="Maruthady">Maruthady</option>
                                                         <option value="Moor Street North">Moor Street North</option>

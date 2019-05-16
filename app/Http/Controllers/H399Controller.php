@@ -176,7 +176,7 @@ class H399Controller extends Controller
     public function show($id)
     {
         $userType = Auth::user()->userType;
-        $mOHArea = $this->mOH->where('userId',Auth::user()->id)->first()->mOHArea;
+        $mOHArea = H399::where('h399s.h399RecordId', $id)->first()->mOHArea;
         $pHIRanges = $this->pHIInMOH->where('mOHArea',$mOHArea)->select('pHIInMOHs.pHIRange')
                     ->get();
         $diseaseData = Patient::where('patients.curMOHArea', $mOHArea)
@@ -226,6 +226,7 @@ class H399Controller extends Controller
      */
     public function edit($id)
     {
+        $userType = Auth::user()->userType;
         $mOHArea = $this->mOH->where('userId',Auth::user()->id)->first()->mOHArea;
         $pHIRanges = $this->pHIInMOH->where('mOHArea',$mOHArea)->select('pHIInMOHs.pHIRange')
                     ->get();
@@ -239,7 +240,7 @@ class H399Controller extends Controller
 
         $diseases = array('internationallyNotifiableDiseases', 'acutePoliomyelitis', 'chickenPox', 'dengueFever', 'diphtheria', 'dysentery', 'encephalitis', 'entericFever', 'foodPoisoning', 'humanRabies', 'leishmaniasis', 'leprosy', 'leptospirosis', 'malaria', 'neasles', 'meningities', 'mumps', 'neonatalTetanus', 'rubella', 'simpleConFever', 'tetanus', 'tuberculosis', 'typhusFever', 'viralHepatitis', 'whoopingCough');
 
-        return view('/form/h399Edit', compact('pHIRanges', 'diseaseData', 'h399Data', 'summaryData', 'diseases'));
+        return view('/form/h399Edit', compact('userType', 'pHIRanges', 'diseaseData', 'h399Data', 'summaryData', 'diseases'));
     }
 
     /**

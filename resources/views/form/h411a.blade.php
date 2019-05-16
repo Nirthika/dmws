@@ -11,6 +11,11 @@
         document.getElementById("birthDate").value='';
         document.getElementById("age").value=0;
     }
+    function confSubmit() {
+        var x = confirm("Are you sure you want to submit the form?");
+        if (x) return true;
+        else return false;
+    }
 </script>
 <script src="{{ asset('js/h411a.js') }}"></script>
 
@@ -38,7 +43,7 @@
                         </div>
                     @endif
                     <br/>
-                    <form method="POST" action="/h411a">
+                    <form method="POST" action="/h411a" onsubmit="return confSubmit()">
                         @csrf
                         <div class="table-responsive">
                             <table class="table table-borderless">

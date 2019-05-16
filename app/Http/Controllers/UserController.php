@@ -5,11 +5,16 @@ namespace App\Http\Controllers;
 use Auth;
 use Image;
 use App\EU;
+use App\PI;
+use App\RA;
 use App\MOH;
 use App\PHI;
 use App\RDHS;
 use App\User;
 use App\Doctor;
+use App\Patient;
+use App\Notification;
+use App\GSDivInDSDiv;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -46,8 +51,86 @@ class UserController extends Controller
                     ->join('users', 'users.id', '=', 'eUs.userId')
                     ->select('users.*', 'eUs.*')
                     ->get();
+        $pIData = PI::where('users.status', 'yes')
+                    ->join('users', 'users.id', '=', 'pIs.userId')
+                    ->select('users.*', 'pIs.*')
+                    ->get();
+        $rAData = RA::where('users.status', 'yes')
+                    ->join('users', 'users.id', '=', 'rAs.userId')
+                    ->select('users.*', 'rAs.*')
+                    ->get();
 
-        return view('officers', compact('doctorData', 'mOHData', 'pHIData', 'rDHSData', 'eUData'));
+        return view('officers', compact('doctorData', 'mOHData', 'pHIData', 'rDHSData', 'eUData', 'pIData', 'rAData'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getMap()
+    {
+        $from = today()->toDateString();
+        $to = today()->toDateString();
+
+        $onsetDates = Notification::select('notifications.onsetDate')
+                    ->get();
+
+        $paIds = Notification::where('notifications.onsetDate', '>=', $from)
+                    ->where('notifications.onsetDate', '<=', $to)
+                    ->select('notifications.paId')
+                    ->get();
+
+        $latitude = array();
+        $longitude = array();
+        $gSDivName = array();
+
+        for ($i = 0; $i < count($paIds); $i++) {  
+            $curGSDiv = Patient::where('paId',$paIds[$i]->paId)->first()->curGSDiv;
+            $curGSDivName = Patient::where('paId',$paIds[$i]->paId)->first()->curGSDivName;
+            array_push($gSDivName, $curGSDivName);
+            $lat = GSDivInDSDiv::where('gSDivInDSDivs.gSDiv', $curGSDiv)->first()->latitude;               
+            array_push($latitude, $lat);
+            $lng = GSDivInDSDiv::where('gSDivInDSDivs.gSDiv', $curGSDiv)->first()->longitude;
+            array_push($longitude, $lng);
+        }
+        return view('monitoring', compact('from', 'to', 'latitude', 'longitude', 'gSDivName'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function getMapCoordinates(Request $request)
+    {
+        $from=$request->from;
+        $to=$request->to;
+
+
+        $onsetDates = Notification::select('notifications.onsetDate')
+                    ->get();
+
+        $paIds = Notification::where('notifications.onsetDate', '>=', $from)
+                    ->where('notifications.onsetDate', '<=', $to)
+                    ->select('notifications.paId')
+                    ->get();
+
+        $latitude = array();
+        $longitude = array();
+        $gSDivName = array();
+
+        for ($i = 0; $i < count($paIds); $i++) {  
+            $curGSDiv = Patient::where('paId',$paIds[$i]->paId)->first()->curGSDiv;
+            $curGSDivName = Patient::where('paId',$paIds[$i]->paId)->first()->curGSDivName;
+            array_push($gSDivName, $curGSDivName);
+            $lat = GSDivInDSDiv::where('gSDivInDSDivs.gSDiv', $curGSDiv)->first()->latitude;               
+            array_push($latitude, $lat);
+            $lng = GSDivInDSDiv::where('gSDivInDSDivs.gSDiv', $curGSDiv)->first()->longitude;
+            array_push($longitude, $lng);
+        }
+        return view('monitoring', compact('from', 'to', 'latitude', 'longitude', 'gSDivName'));
     }
 
     /**
@@ -63,6 +146,8 @@ class UserController extends Controller
         $mOH = MOH::where('userId', $user->id)->first();
         $eU = EU::where('userId', $user->id)->first();
         $rDHS = RDHS::where('userId', $user->id)->first();
+        $pI = PI::where('userId', $user->id)->first();
+        $rA = RA::where('userId', $user->id)->first();
 
         if ($user->status == 'yes'){
             if ($user->userType == 'Doctor'){
@@ -115,8 +200,28 @@ class UserController extends Controller
                 $district = $eU->district;
                 $contactNoOffice = $eU->contactNoOffice;
                 $contactNoMobile = $eU->contactNoMobile;
+            } else if ($user->userType == 'Principal Investigator'){
+                $firstName = $pI->firstName;
+                $lastName = $pI->lastName;
+                $gender = $pI->gender;
+                $addLine1 = $pI->addLine1;
+                $addLine2 = $pI->addLine2;
+                $province = $pI->province;
+                $district = $pI->district;
+                $contactNoOffice = $pI->contactNoOffice;
+                $contactNoMobile = $pI->contactNoMobile;
+            } else if ($user->userType == 'Research Assistant'){
+                $firstName = $rA->firstName;
+                $lastName = $rA->lastName;
+                $gender = $rA->gender;
+                $addLine1 = $rA->addLine1;
+                $addLine2 = $rA->addLine2;
+                $province = $rA->province;
+                $district = $rA->district;
+                $contactNoOffice = $rA->contactNoOffice;
+                $contactNoMobile = $rA->contactNoMobile;
             }
-            return view('profile', compact('user', 'firstName', 'lastName', 'gender', 'addLine1', 'addLine2', 'province', 'district', 'contactNoOffice', 'contactNoMobile', 'doctor', 'pHI', 'mOH', 'rDHS', 'eU'));
+            return view('profile', compact('user', 'firstName', 'lastName', 'gender', 'addLine1', 'addLine2', 'province', 'district', 'contactNoOffice', 'contactNoMobile', 'doctor', 'pHI', 'mOH', 'rDHS', 'eU', 'pI', 'rA'));
         } else {
             return view('profile', compact('user'));
         }

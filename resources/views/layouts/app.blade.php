@@ -25,6 +25,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/map/ol.css') }}" type="text/css">
 </head>
 <body>
     <div id="app" style="overflow: hidden;">
@@ -47,10 +48,10 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a></li>
-                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
-                            <li><a class="nav-link" href="#aboutUs">{{ __('About') }}</a></li>
+                            <li><a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a></li>&emsp;
+                            <li><a class="nav-link" href="{{ route('login') }}" style="width:65px">{{ __('Sign in') }}</a></li>&emsp;
+                            <li><a class="nav-link" href="{{ route('register') }}" style="width:68px">{{ __('Sign up') }}</a></li>&emsp;
+                            <li><a class="nav-link" href="#aboutUs" style="width:65px">{{ __('About') }}</a></li>
                             <li><a class="nav-link" href="#contactUs">{{ __('Contact') }}</a></li>
                         @else
                             <li>

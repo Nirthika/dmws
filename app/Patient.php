@@ -15,6 +15,6 @@ class Patient extends Model
      * @var array
      */   
     protected $fillable = [
-        'userId', 'institute', 'insName', 'firstName', 'lastName', 'nickName', 'nICNum', 'gender', 'birthDate', 'birthYear', 'age', 'nextOfKinFirstName', 'nextOfKinLastName', 'guardian', 'guardianFirstName', 'guardianLastName', 'ethnicGroup', 'resAddLine1', 'resAddLine2', 'resGSDivName', 'resGSDiv', 'resDSDiv', 'resDistrict', 'resProvince', 'resMOHArea', 'resPHIRange', 'resLandmark', 'sameAddress', 'curAddLine1', 'curAddLine2', 'curGSDivName', 'curGSDiv', 'curDSDiv', 'curDistrict', 'curProvince', 'curMOHArea', 'curPHIRange', 'curLandmark', 'contactNoMobile', 'contactNoHome', 'visitArea',
+        'paId', 'userId', 'institute', 'insName', 'firstName', 'lastName', 'nickName', 'nICNum', 'gender', 'birthDate', 'birthYear', 'age', 'nextOfKinFirstName', 'nextOfKinLastName', 'guardian', 'guardianFirstName', 'guardianLastName', 'ethnicGroup', 'resAddLine1', 'resAddLine2', 'resGSDivName', 'resGSDiv', 'resDSDiv', 'resDistrict', 'resProvince', 'resMOHArea', 'resPHIRange', 'resLandmark', 'sameAddress', 'curAddLine1', 'curAddLine2', 'curGSDivName', 'curGSDiv', 'curDSDiv', 'curDistrict', 'curProvince', 'curMOHArea', 'curPHIRange', 'curLandmark', 'contactNoMobile', 'contactNoHome', 'visitArea',
     ];
 }

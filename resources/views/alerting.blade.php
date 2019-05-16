@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<script>
+<!-- <script>
   window.onload = magnify;
   function magnify(imgID, zoom) {
     var img, glass, w, h, bw;
@@ -57,62 +57,62 @@
       return {x : x, y : y};
     }
   }
-</script>
+</script> -->
 
 <div class="container" style="margin-top: 3%">
-    <div class="accordion" id="accordionExample">
+    <!-- <div class="accordion" id="accordionExample">
         <div class="row justify-content-center">
-          <div class="card" style="width: 70%">
-        <div class="card-body">
-          <h5 class="card-title">Jaffna Dengue Risk Map</h5>
-        </div>
-        <div class="img-magnifier-container" style="width: 100%;">
-          <img class="card-img-bottom" id="map1" src="images/denqueRiskMap1.png">
-        </div>
-      </div>      
+            <div class="card" style="width: 70%">
+                <div class="card-body">
+                    <h5 class="card-title">Jaffna Dengue Risk Map</h5>
+                    <div class="img-magnifier-container">
+                        <img class="card-img-bottom" id="map1" src="images/denqueRiskMap1.png">
+                    </div>
+                </div>
+            </div>      
         </div>
         <br/>
         <div class="row justify-content-center">
             <div class="card" style="width: 70%">
-        <div class="card-body">
-          <h5 class="card-title">Jaffna Dengue Risk Map include Main Road and DS Division Boundry</h5>
-        </div>
-        <div class="img-magnifier-container" style="width: 100%">
-          <img class="card-img-bottom" id="map2" src="images/denqueRiskMap2.jpg">
-        </div>
-      </div>      
-        </div>
-        <br/>
-        <div class="row justify-content-center">
-            <div class="card" style="width: 70%">
-        <div class="card-body">
-          <h5 class="card-title">Jaffna Dengue Risk Map include Minor Road</h5>
-        </div>
-        <div class="img-magnifier-container" style="width: 100%">
-          <img class="card-img-bottom" id="map3" src="images/denqueRiskMap3DS.jpg">
-        </div>
-      </div>    
+                <div class="card-body">
+                    <h5 class="card-title">Jaffna Dengue Risk Map include Main Road and DS Division Boundry</h5>
+                </div>
+                <div class="img-magnifier-container" style="width: 100%">
+                    <img class="card-img-bottom" id="map2" src="images/denqueRiskMap2.jpg">
+                </div>
+            </div>      
         </div>
         <br/>
         <div class="row justify-content-center">
             <div class="card" style="width: 70%">
-        <div class="card-body">
-          <h5 class="card-title">Jaffna Dengue Risk Map include GS Division</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Jaffna Dengue Risk Map include Minor Road</h5>
+                </div>
+                <div class="img-magnifier-container" style="width: 100%">
+                    <img class="card-img-bottom" id="map3" src="images/denqueRiskMap3DS.jpg">
+                </div>
+            </div>    
         </div>
-        <div class="img-magnifier-container" style="width: 100%">
-          <img class="card-img-bottom" id="map4" src="images/denqueRiskMap4GS.jpg">
-        </div>
-      </div>      
+        <br/>
+        <div class="row justify-content-center">
+            <div class="card" style="width: 70%">
+                <div class="card-body">
+                    <h5 class="card-title">Jaffna Dengue Risk Map include GS Division</h5>
+                </div>
+                <div class="img-magnifier-container" style="width: 100%">
+                    <img class="card-img-bottom" id="map4" src="images/denqueRiskMap4GS.jpg">
+                </div>
+            </div>      
         </div>
         <br/>        
-    </div>
+    </div> -->
 </div>
 
-<script>
-  /* Initiate Magnify Function with the id of the image, and the strength of the magnifier glass:*/
+<!-- <script>
+   // Initiate Magnify Function with the id of the image, and the strength of the magnifier glass:
   magnify("map1", 3);
   magnify("map2", 3);
   magnify("map3", 3);
   magnify("map4", 3);
-</script>
+</script> -->
 @endsection

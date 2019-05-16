@@ -47,7 +47,7 @@ class EUController extends Controller
             'areaCode' => 'required|digits:3',
             'phoneNo' => 'required|digits:7',
             'phoneMobile' => 'required|digits:10',
-            'insName' => 'required|string|max:35',
+            'insName' => 'required|string|max:50',
         ]);
     }
 

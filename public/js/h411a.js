@@ -37,7 +37,7 @@ function getAge() {
 	        age = 0;
 	    } else age = year - birthYear2;
 	}
-	else{
+	else {
 		if (birthDate == "" || birthDate == 0) age = 0;
 		else age = year - birthDate.getFullYear();
 	}

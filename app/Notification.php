@@ -14,7 +14,7 @@ class Notification extends Model
      * @var array
      */   
     protected $fillable = [
-        'id', 'userId', 'paId', 'status', 'institute', 'insName', 'diseaseGroup', 'diseaseName', 'onsetDate', 'admissionDate', 'regOrBHTNo', 'ward', 'labResults', 'ns1', 'igm', 'igg', 'designation',
+        'id', 'userId', 'paId', 'status', 'institute', 'insName', 'diseaseGroup', 'diseaseName', 'onsetDate', 'admissionDate', 'regOrBHTNo', 'ward', 'labResults', 'ns1', 'igm', 'igg', 'mMERLTest', 'designation',
     ];
 }
 

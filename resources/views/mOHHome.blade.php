@@ -8,6 +8,14 @@
     </div>
 @endif
 
+<script type="text/javascript">
+    function confirmDelete() {
+        var x = confirm("Are you sure you want to delete?");
+        if (x) return true;
+        else return false;
+    }    
+</script>
+
 <div class="container" style="margin-top: 2%;">
     <br/>
     <div class="row justify-content-center">
@@ -89,7 +97,7 @@
                                                 </td>
                                                 <td>{{ $sent->updated_at }}</td>
                                                 <td>
-                                                    <form method="POST" action="/h399/{{ $sent->h399RecordId }}">
+                                                    <form method="POST" action="/h399/{{ $sent->h399RecordId }}" onsubmit="return confirmDelete()">
                                                         @csrf
                                                         <input name="_method" type="hidden" value="DELETE">
                                                         <button class="btn btn-link" type="submit">Delete</button>
@@ -157,7 +165,7 @@
                                                 </td>
                                                 <td>{{ $sent->updated_at }}</td>
                                                 <td>
-                                                    <form method="POST" action="/h411a/{{ $sent->h411aRecordId }}">
+                                                    <form method="POST" action="/h411a/{{ $sent->h411aRecordId }}" onsubmit="return confirmDelete()">
                                                         @csrf
                                                         <input name="_method" type="hidden" value="DELETE">
                                                         <button class="btn btn-link" type="submit">Delete</button>

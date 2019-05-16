@@ -19,6 +19,11 @@
             }
         }
     }
+    function confSubmit() {
+        var x = confirm("Are you sure you want to submit the form?");
+        if (x) return true;
+        else return false;
+    }
 </script>
 <script src="{{ asset('js/h399.js') }}"></script>
 
@@ -50,7 +55,7 @@
                         </div>
                     @endif
                     <br/>
-                    <form id="h399Edit" method="POST" action="/h399/{{ $h399Data->h399RecordId }}">
+                    <form id="h399Edit" method="POST" action="/h399/{{ $h399Data->h399RecordId }}" onsubmit="return confSubmit()">
                         <h6><i><b>Part I - Cases notified during the week</b></i></h6>
                         <br/>
                         @csrf

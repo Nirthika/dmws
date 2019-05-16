@@ -11,7 +11,12 @@
             }
             document.getElementById('total'+$j).value = $total;
         }
-    }    
+    }
+    function confSubmit() {
+        var x = confirm("Are you sure you want to submit the form?");
+        if (x) return true;
+        else return false;
+    }
 </script>
 <script src="{{ asset('js/h399.js') }}"></script>
 
@@ -39,7 +44,7 @@
                         </div>
                     @endif
                     <br/>
-                    <form method="POST" action="/h399">
+                    <form method="POST" action="/h399" onsubmit="return confSubmit()">
                         <h6><i><b>Part I - Cases notified during the week</b></i></h6>
                         <br/>
                         @csrf
