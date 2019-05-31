@@ -163,7 +163,7 @@
                         <input name="_method" type="hidden" value="PATCH">
                         <div class="table-responsive">
                             <table class="table table-borderless">
-                                <tbody>                                    
+                                <tbody>
                                     <tr>
                                         <td style="border-right: 1px solid #dee2e6; padding-bottom: 0%; width: 50%;">
                                             @if($h544Data->institute == 'Government')

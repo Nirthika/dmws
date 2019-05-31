@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\User;
 use App\Patient;
 use App\LabResult;
 use App\Notification;
@@ -26,7 +27,10 @@ class LabResultController extends Controller
                     ->join('patients', 'patients.paId', '=', 'notifications.paId')
                     ->select('patients.*', 'notifications.*')
                     ->get();
-        return view('labResults', compact('patients'));
+        $user = Auth::user();
+        $userType = $user->userType;
+
+        return view('labResults', compact('patients', 'userType'));
     }
 
     /**
@@ -103,8 +107,22 @@ class LabResultController extends Controller
      */
     public function getLabResultsSummary()
     {
-        $results = LabResult::select('labResults.*')->get();
-        return view('labResultsSummary', compact('results'));
+        $results = LabResult::select('labResults.*')->get();        
+        if (Auth::user() == NULL) $userType = '';
+        else $userType = Auth::user()->userType;
+        return view('labResultsSummary', compact('results', 'userType'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getDeatailsForLabTestGraph()
+    {
+        $denvData = LabResult::select('labResults.admissionDate', 'labResults.denv1', 'labResults.denv2', 'labResults.denv3', 'labResults.denv4')
+                    ->get();
+        return view('labTest', compact('denvData'));
     }
 
     /**
@@ -126,7 +144,11 @@ class LabResultController extends Controller
      */
     public function edit($id)
     {
-        //
+        $result = LabResult::where('labResults.id', $id)
+                    ->select('labResults.*')
+                    ->first();
+        $userType = Auth::user()->userType;
+        return view('labResultsEdit', compact('result', 'userType'));
     }
 
     /**

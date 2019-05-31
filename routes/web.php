@@ -27,7 +27,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 	Route::post('/profile/{id}', 'UserController@update');
 	Route::post('/labResults/{id}', 'LabResultController@update');
 	Route::get('/officers', 'UserController@getOfficersDetails');
-	Route::get('/monitoring', 'UserController@getMap');
+	Route::get('/monitoring', 'UserController@getDetails');
 	Route::post('/monitoring', 'UserController@getMapCoordinates');
 
 	Route::get('/eUHome', 'EUController@index');
@@ -35,8 +35,13 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 	Route::get('/pHIHome', 'PHIController@index');
 	Route::get('/rDHSHome', 'RDHSController@index');
 	Route::get('/doctorHome', 'DoctorController@index');
+	Route::get('/pIHome', 'PIController@index');
+	// Route::get('/rAHome', 'RAController@index');
 	Route::get('/labResults', 'LabResultController@index');
+	Route::get('/fieldSurvey', 'FieldSurveyController@index');
+	Route::get('/labTest', 'LabResultController@getDeatailsForLabTestGraph');
 	Route::get('/labResultsSummary', 'LabResultController@getLabResultsSummary');
+	Route::get('/fieldSurveySummary', 'FieldSurveyController@getFieldSurveySummary');
 	
 	Route::get('/sitemap', function () {
 	    return view('sitemap');
@@ -44,10 +49,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 	Route::get('/alerting', function () {
 	    return view('alerting');
 	});
-	Route::get('/labTest', function () {
-	    return view('labTest');
-	});
-
+	
 	Route::get('/form/h544', 'H544Controller@getDesignation');
 	Route::get('/form/h411a', 'H411aController@getMOHAreaAndRegNo');
 	Route::get('/form/h411', 'H411Controller@getPHIRangeAndRegNo');
@@ -60,9 +62,11 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 	Route::resource('doctor','DoctorController');
 	Route::resource('pI','PIController');
 	Route::resource('rA','RAController');
+	Route::resource('labTechnician','LabTechnicianController');
 	Route::resource('h544','H544Controller');
 	Route::resource('h411a','H411aController');
 	Route::resource('h411','H411Controller');
 	Route::resource('h399','H399Controller');
 	Route::resource('labResults','LabResultController');
+	Route::resource('fieldSurvey','FieldSurveyController');
 });

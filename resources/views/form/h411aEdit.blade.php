@@ -205,7 +205,7 @@
                                                         <input type="checkbox" id="yearOnly" class="custom-control-input{{ $errors->has('yearOnly') ? ' is-invalid' : '' }}" name="yearOnly" value="{{ old('yearOnly') }}" autofocus onclick="checkDOB()" @if($h411aData->birthYear != NULL) checked @endif>
                                                         <label for="yearOnly" class="custom-control-label">Year Only</label>
                                                     </div>
-                                                </div>        
+                                                </div>
                                             </div>
 
                                             <div class="form-group row" id="yearOfBirth" style="display:none">

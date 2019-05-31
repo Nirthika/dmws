@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\RA;
 use App\User;
 use App\Patient;
 use App\Notification;
+use App\LabTechnician;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class RAController extends Controller
+class LabTechnicianController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -54,7 +54,7 @@ class RAController extends Controller
      */
     public function create()
     {
-        return view('rA');
+        return view('labTechnician');
     }
 
     /**
@@ -70,21 +70,21 @@ class RAController extends Controller
         if ($validator->fails()) { 
             return redirect()->back()->withErrors($validator)->withInput();
         } else {
-            $rA = new RA;
-            $rA->userId=Auth::user()->id;
-            $rA->firstName=$request->firstName;
-            $rA->lastName=$request->lastName;
-            $rA->gender=$request->gender;
-            $rA->addLine1=$request->addLine1;
-            $rA->addLine2=$request->addLine2;
-            $rA->district=$request->district;
-            $rA->province=$request->province;
-            $rA->contactNoOffice=$request->areaCode.$request->phoneNo;
-            $rA->contactNoMobile=$request->phoneMobile;
-            $rA->insName=$request->insName;     
-            $rA->save();  
+            $lT = new LabTechnician;
+            $lT->userId=Auth::user()->id;
+            $lT->firstName=$request->firstName;
+            $lT->lastName=$request->lastName;
+            $lT->gender=$request->gender;
+            $lT->addLine1=$request->addLine1;
+            $lT->addLine2=$request->addLine2;
+            $lT->district=$request->district;
+            $lT->province=$request->province;
+            $lT->contactNoOffice=$request->areaCode.$request->phoneNo;
+            $lT->contactNoMobile=$request->phoneMobile;
+            $lT->insName=$request->insName;     
+            $lT->save();  
 
-            $user->where('id', '=', $rA->userId)->update(array('status' => 'yes'));
+            $user->where('id', '=', $lT->userId)->update(array('status' => 'yes'));
             
             return redirect("labResults");
         }

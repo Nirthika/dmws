@@ -247,6 +247,12 @@
                                                         <td><h5>{{ $pI->insName }}</h5></td>
                                                     </tr>
                                                 @endif
+                                                @if ($user->userType == 'Laboratory Technician')
+                                                    <tr>
+                                                        <td style="border-right: 1px solid #dee2e6;"><h5>Institute</h5></td>
+                                                        <td><h5>{{ $lT->insName }}</h5></td>
+                                                    </tr>
+                                                @endif
                                                 @if ($user->userType == 'Research Assistant')
                                                     <tr>
                                                         <td style="border-right: 1px solid #dee2e6;"><h5>Institute</h5></td>
@@ -597,6 +603,14 @@
                                                                                     <label for="insName" class="col-md-4 col-form-label">Institute</label>
                                                                                     <div class="col-md-8">
                                                                                         <input type="text" class="form-control{{ $errors->has('insName') ? ' is-invalid' : '' }}" id="insName" name="insName" value="{{ $pI->insName }}" readonly autofocus>
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endif
+                                                                            @if ($user->userType == 'Laboratory Technician')
+                                                                                <div class="form-group row" id="insName">
+                                                                                    <label for="insName" class="col-md-4 col-form-label">Institute</label>
+                                                                                    <div class="col-md-8">
+                                                                                        <input type="text" class="form-control{{ $errors->has('insName') ? ' is-invalid' : '' }}" id="insName" name="insName" value="{{ $lT->insName }}" readonly autofocus>
                                                                                     </div>
                                                                                 </div>
                                                                             @endif

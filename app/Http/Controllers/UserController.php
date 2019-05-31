@@ -13,8 +13,10 @@ use App\RDHS;
 use App\User;
 use App\Doctor;
 use App\Patient;
+use App\FieldSurvey;
 use App\Notification;
 use App\GSDivInDSDiv;
+use App\LabTechnician;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -55,12 +57,16 @@ class UserController extends Controller
                     ->join('users', 'users.id', '=', 'pIs.userId')
                     ->select('users.*', 'pIs.*')
                     ->get();
+        $lTData = LabTechnician::where('users.status', 'yes')
+                    ->join('users', 'users.id', '=', 'labTechnicians.userId')
+                    ->select('users.*', 'labTechnicians.*')
+                    ->get();
         $rAData = RA::where('users.status', 'yes')
                     ->join('users', 'users.id', '=', 'rAs.userId')
                     ->select('users.*', 'rAs.*')
                     ->get();
 
-        return view('officers', compact('doctorData', 'mOHData', 'pHIData', 'rDHSData', 'eUData', 'pIData', 'rAData'));
+        return view('officers', compact('doctorData', 'mOHData', 'pHIData', 'rDHSData', 'eUData', 'pIData', 'rAData', 'lTData'));
     }
 
     /**
@@ -68,7 +74,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getMap()
+    public function getDetails()
     {
         $from = today()->toDateString();
         $to = today()->toDateString();
@@ -94,7 +100,10 @@ class UserController extends Controller
             $lng = GSDivInDSDiv::where('gSDivInDSDivs.gSDiv', $curGSDiv)->first()->longitude;
             array_push($longitude, $lng);
         }
-        return view('monitoring', compact('from', 'to', 'latitude', 'longitude', 'gSDivName'));
+
+        $results = FieldSurvey::select('fieldSurveys.*')->get();
+
+        return view('monitoring', compact('from', 'to', 'latitude', 'longitude', 'gSDivName', 'results'));
     }
 
     /**
@@ -130,7 +139,10 @@ class UserController extends Controller
             $lng = GSDivInDSDiv::where('gSDivInDSDivs.gSDiv', $curGSDiv)->first()->longitude;
             array_push($longitude, $lng);
         }
-        return view('monitoring', compact('from', 'to', 'latitude', 'longitude', 'gSDivName'));
+
+        $results = FieldSurvey::select('fieldSurveys.*')->get();
+        
+        return view('monitoring', compact('from', 'to', 'latitude', 'longitude', 'gSDivName', 'results'));
     }
 
     /**
@@ -148,6 +160,7 @@ class UserController extends Controller
         $rDHS = RDHS::where('userId', $user->id)->first();
         $pI = PI::where('userId', $user->id)->first();
         $rA = RA::where('userId', $user->id)->first();
+        $lT = LabTechnician::where('userId', $user->id)->first();
 
         if ($user->status == 'yes'){
             if ($user->userType == 'Doctor'){
@@ -210,6 +223,16 @@ class UserController extends Controller
                 $district = $pI->district;
                 $contactNoOffice = $pI->contactNoOffice;
                 $contactNoMobile = $pI->contactNoMobile;
+            } else if ($user->userType == 'Laboratory Technician'){
+                $firstName = $lT->firstName;
+                $lastName = $lT->lastName;
+                $gender = $lT->gender;
+                $addLine1 = $lT->addLine1;
+                $addLine2 = $lT->addLine2;
+                $province = $lT->province;
+                $district = $lT->district;
+                $contactNoOffice = $lT->contactNoOffice;
+                $contactNoMobile = $lT->contactNoMobile;
             } else if ($user->userType == 'Research Assistant'){
                 $firstName = $rA->firstName;
                 $lastName = $rA->lastName;
@@ -221,7 +244,7 @@ class UserController extends Controller
                 $contactNoOffice = $rA->contactNoOffice;
                 $contactNoMobile = $rA->contactNoMobile;
             }
-            return view('profile', compact('user', 'firstName', 'lastName', 'gender', 'addLine1', 'addLine2', 'province', 'district', 'contactNoOffice', 'contactNoMobile', 'doctor', 'pHI', 'mOH', 'rDHS', 'eU', 'pI', 'rA'));
+            return view('profile', compact('user', 'firstName', 'lastName', 'gender', 'addLine1', 'addLine2', 'province', 'district', 'contactNoOffice', 'contactNoMobile', 'doctor', 'pHI', 'mOH', 'rDHS', 'eU', 'pI', 'rA', 'lT'));
         } else {
             return view('profile', compact('user'));
         }

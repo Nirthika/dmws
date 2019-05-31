@@ -19,7 +19,7 @@ class PIController extends Controller
      */
     public function index()
     {
-        //
+        return view('pIHome');
     }
 
     /**

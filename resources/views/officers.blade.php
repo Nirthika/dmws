@@ -5,7 +5,7 @@
     <div class="accordion" id="accordionExample">
         <div class="card">
             <div class="card-header text-center">
-                <h3><b><font color="#0033cc">The Team</font></b></h3>
+                <h3 style="color: #0033cc;"><b>The Team</b></h3>
             </div>
             <div class="card-header" id="headingOne">
                 <h5 class="mb-0">
@@ -156,38 +156,7 @@
                     @endfor
                 </div>
             </div>
-
-            <div class="card-header" id="headingFive">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">Epidemiologist</button>
-                </h5>
-            </div>
-            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                <div class="card-body"> 
-                    <?php $x = count($eUData) ?>                               
-                    @for ($i = $x-1; $i >= 0;)
-                        <div class="row">
-                            @for ($j = 0; $j < 6; $j++)
-                                <div class="col-md-2 col-sm-4" style="padding: 0.5%">
-                                    <div class="card">
-                                        <img class="card-img-top" src="{{ asset('uploads/avatars/' . $eUData[$i]->avatar) }}" alt="Card image cap">
-                                        <div class="card-body" style="padding: 5%; height:6rem;">
-                                            <h6 class="card-title" style="font-weight: bold;">{{ $eUData[$i]->lastName }}</h6>
-                                            <p class="card-text">{{ $eUData[$i]->insName }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php $i-- ?>
-                                @if ($i < 0)
-                                    @break
-                                @endif
-                            @endfor
-                        </div>
-                    @endfor
-                </div>
-            </div>
         </div>
     </div>
 </div>
 @endsection
-Medical Laboratory Technologist

@@ -72,13 +72,16 @@
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page">Home</li>
+        @if ($userType == 'Principal Investigator')
+            <li class="breadcrumb-item"><a href="/pIHome" style="text-decoration: none;">Home</a></li>
+        @endif
+        <li class="breadcrumb-item active" aria-current="page">Add Results</li>
         <li class="breadcrumb-item"><a href="/labResultsSummary" style="text-decoration: none;">Summary</a></li>
     </ol>
 </nav>
 
 <div class="container" style="margin-top: 2%">          
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-sm-3">
             <div class="card-deck">
                 <div class="card">
@@ -110,9 +113,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-8">
             <div class="card-deck">
-                <div class="card">
+                <div class="card w-100">
                     <div class="card-header"><h5>Laboratory Results</h5></div>
                     <div class="card-body"> 
                         <div class="table-responsive">
@@ -293,8 +296,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td style="padding-bottom: 0%; width: 50%;">
-                                            </td>
+                                            <td style="padding-bottom: 0%; width: 50%;"></td>
                                             <td style="padding-top: 0%; padding-bottom: 0%;">
                                                 <div class="form-group row mb-0">
                                                     <div class="offset-md-8">                               

@@ -46,8 +46,9 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `status`, `userType`, `a
 (12, 'Peranantharajah', 'peranantharajah@gmail.com', '$2y$10$ebIfQDmd1.yUexj/MpugUuV7LOGsknyxtpKyIubmnQczBSSQ128wq', 'yes', 'Doctor', '1540277714.jpg', '', '', ''),
 (13, 'Sivansuthan', 'suthan@gmail.com', '$2y$10$ozBAtnAgWybMYDGaI6izX.P2Z5Km6FlYdB05IhzVR5cP3vVt9pif6', 'no', 'Doctor', 'default.jpg', '', '', ''),
 (14, 'Surendran', 'surendran@gmail.com', '$2y$10$ozBAtnAgWybMYDGaI6izX.P2Z5Km6FlYdB05IhzVR5cP3vVt9pif6', 'yes', 'Principal Investigator', '1557378614.jpg', '', '', ''),
-(15, 'Research Assistant', 'ra@gmail.com', '$2y$10$ozBAtnAgWybMYDGaI6izX.P2Z5Km6FlYdB05IhzVR5cP3vVt9pif6', 'yes', 'Research Assistant', '1557382416.jpg', '', '', ''),
-(16, 'Admin', 'admin@gmail.com', '$2y$10$ozBAtnAgWybMYDGaI6izX.P2Z5Km6FlYdB05IhzVR5cP3vVt9pif6', 'yes', 'Admin', 'default.jpg', '', '', '');
+(15, 'Laboratory Technician', 'tibu@gmail.com', '$2y$10$ozBAtnAgWybMYDGaI6izX.P2Z5Km6FlYdB05IhzVR5cP3vVt9pif6', 'yes', 'Laboratory Technician', '1557382416.jpg', '', '', ''),
+(16, 'Research Assistant', 'ra@gmail.com', '$2y$10$ozBAtnAgWybMYDGaI6izX.P2Z5Km6FlYdB05IhzVR5cP3vVt9pif6', 'yes', 'Research Assistant', '1558086775.jpg', '', '', ''),
+(17, 'Admin', 'admin@gmail.com', '$2y$10$ozBAtnAgWybMYDGaI6izX.P2Z5Km6FlYdB05IhzVR5cP3vVt9pif6', 'yes', 'Admin', 'default.jpg', '', '', '');
 
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
@@ -884,6 +885,27 @@ CREATE TABLE `pIs` (
 INSERT INTO `pIs` (`userId`, `firstName`, `lastName`, `gender`, `addLine1`, `addLine2`, `district`, `province`, `contactNoOffice`, `contactNoMobile`, `insName`, `created_at`, `updated_at`) VALUES
 (14, 'Noble', 'Surendran', 'Male', '45, Brown Rd', 'Kandarmadam', 'Jaffna', 'Northern', '0212215542', '0777161561', 'Medical and Molecular Entomology Research Laboratory', '', '');
 
+CREATE TABLE `labTechnicians` (
+  `userId` int(10) UNSIGNED NOT NULL,
+  `firstName` text NOT NULL,
+  `lastName` text NOT NULL,
+  `gender` text NOT NULL,
+  `addLine1` text NOT NULL,
+  `addLine2` text,
+  `district` varchar(50) NOT NULL,
+  `province` varchar(50) NOT NULL,
+  `contactNoOffice` text NOT NULL,
+  `contactNoMobile` text NOT NULL,
+  `insName` varchar(60) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL, 
+  PRIMARY KEY (`userId`),
+  CONSTRAINT lab_tech_user_id FOREIGN KEY (userId) REFERENCES users(id) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `labTechnicians` (`userId`, `firstName`, `lastName`, `gender`, `addLine1`, `addLine2`, `district`, `province`, `contactNoOffice`, `contactNoMobile`, `insName`, `created_at`, `updated_at`) VALUES
+(15, 'Tibutius', 'Thanesh', 'Male', '17/2 St. Anne’s lane', 'Chundikuli', 'Jaffna', 'Northern', '0212215543', '0777161500', 'Medical and Molecular Entomology Research Laboratory', '', '');
+
 CREATE TABLE `rAs` (
   `userId` int(10) UNSIGNED NOT NULL,
   `firstName` text NOT NULL,
@@ -903,7 +925,7 @@ CREATE TABLE `rAs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `rAs` (`userId`, `firstName`, `lastName`, `gender`, `addLine1`, `addLine2`, `district`, `province`, `contactNoOffice`, `contactNoMobile`, `insName`, `created_at`, `updated_at`) VALUES
-(15, 'Tibutius', 'Thanesh', 'Male', '2, Amman Rd', 'Arasady', 'Jaffna', 'Northern', '0212215543', '0777161500', 'Medical and Molecular Entomology Research Laboratory', '', '');
+(16, 'Sharanga', 'Santhirasegaram', 'Female', '85, Supramanium Road', 'Ariyalai', 'Jaffna', 'Northern', '0212215543', '0777161500', 'Medical and Molecular Entomology Research Laboratory', '', '');
 
 CREATE TABLE `patients` (
   `paId` int(11) NOT NULL AUTO_INCREMENT,
@@ -1022,6 +1044,30 @@ CREATE TABLE `labResults` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `lab_bht_no` (`bHTNo`),
   CONSTRAINT lab_pa_id FOREIGN KEY (paId) REFERENCES patients(paId) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE `fieldSurveys` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `month` varchar(50) NOT NULL,
+  `year` int(4) NOT NULL,
+  `visitArea` varchar(50) NOT NULL,
+  `waterTank` int(4) DEFAULT 0,
+  `bottle` int(4) DEFAULT 0,
+  `teaCup` int(4) DEFAULT 0,
+  `coconutShell` int(4) DEFAULT 0,
+  `flowerPot` int(4) DEFAULT 0,
+  `yoghurtCup` int(4) DEFAULT 0,
+  `petWaterSource` int(4) DEFAULT 0,
+  `fridgeWasteWaterContainer` int(4) DEFAULT 0,
+  `other` int(4) DEFAULT 0,
+  `totalContainer` int(10) DEFAULT 0,
+  `larvaPositive` int(4) DEFAULT 0,
+  `containerIndex` float DEFAULT 0,
+  `aegypti` varchar(4) DEFAULT 0,
+  `albopictus` varchar(4) DEFAULT 0,  
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 CREATE TABLE `h411as` (
